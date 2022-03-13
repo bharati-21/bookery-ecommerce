@@ -1,0 +1,13 @@
+:root {
+    /* background colors */
+    --light-theme-bg-color: #FBF8F3;
+    --dark-theme-bg-color: #282827;
+    
+    /* default/ text colors */
+    --dark-theme-default-color: #f6f7f9;
+
+    /* primary-colors */
+    --light-theme-primary-color: #0074a6;
+    --dark-theme-primary-color: #149eca;
+    --secondary-color: #f79e02;
+}
