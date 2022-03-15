@@ -5,6 +5,8 @@
     
     /* default/ text colors */
     --dark-theme-default-color: #f6f7f9;
+    --light-theme-default-color: #282827;
+    --light-theme-hover-color: #929292;
 
     /* primary-colors */
     --light-theme-primary-color: #0074a6;
