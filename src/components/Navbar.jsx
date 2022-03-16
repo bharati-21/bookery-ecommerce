@@ -28,15 +28,15 @@ const Navbar = () => {
                 <h2 className="search-container-head">Welcome</h2>
                 <p>What book are you in the mood for today?</p>
                 <form>
-                    <div class="input-group input-search-group input-default input-inline">
-                        <label class="text-label flex-row flex-align-center flex-justify-between p-0-25 px-0-5" for="input-inline-search">
-                            <input type="text" id="input-inline-search" class="px-0-25 input-text" placeholder="Search Book..." />
+                    <div className="input-group input-search-group input-default input-inline">
+                        <label className="text-label flex-row flex-align-center flex-justify-between p-0-25 px-0-5" htmlFor="input-inline-search">
+                            <input type="text" id="input-inline-search" className="px-0-25 input-text" placeholder="Search Book..." />
                             <button type='submit' className="btn-search-submit flex-row flex-align-center">
                                 <SearchIcon style={{color: "var(--light-theme-default-color)"}} />
                             </button>
                         </label>
-                    <span class="text-message mt-0-5"></span>
-                </div>
+                        <span className="text-message mt-0-5"></span>
+                    </div>
                 </form>
             </div>
             
@@ -64,7 +64,7 @@ const Navbar = () => {
                     <AccountCircleIcon  />
                 </li>
             </ul>
-        </nav>
+        </nav>            
     );
 }
 
