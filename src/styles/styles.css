@@ -1,10 +1,22 @@
 @import url('https://elixir-ui.netlify.app/Components/elixir.css');
 @import url('./reset.css');
 @import url('./variables.css');
+@import url('./landing-page.css');
 @import url('./header.css');
+@import url('./navbar.css');
+@import url('./footer.css');
 
 body {
     font-family: 'Roboto', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    width: var(--space-0-5);
+    height: var(--space-0-5);
+}
+      
+body::-webkit-scrollbar-thumb {
+    background-color: var(--light-theme-default-color);
 }
 
 .App {
