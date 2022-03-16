@@ -1,108 +1,70 @@
-.navbar {
-    padding: var(--space-1) var(--space-3);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Catamaran', sans-serif;
-    margin: 0 auto;
-    box-shadow: 0 0 0.25em var(--box-shadow-color);
+.parallax-image {
+    background: url('../assets/images/library-img.jpg') no-repeat center center/ cover; 
+    background-attachment: fixed;
+    height: 100vh;
+    top: -10vh;
+    position: static !important;
 }
 
-.navbar .logo {
-    font-family: 'Ubuntu', sans-serif;
-    letter-spacing: 3px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.navbar .nav-link {
-    cursor: pointer;
-    transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -webkit-transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -moz-transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -ms-transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -o-transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.navbar .nav-link:hover {
-    color: var(--light-theme-hover-color);
-}
-
-.navbar .navlinks {
-    display: flex;
-    gap: var(--space-2);
-}
-
-.navlinks .nav-link {
-    font-weight: 550;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
-
-.nav-icons .nav-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-icons.navlinks {
-    gap: 1.5rem;
-}
-
-.badge-container .badge-default {
-    background-color: var(--dark-theme-bg-color);
-    color: var(--light-theme-bg-color);
-    font-size: 10px;
-    width: 14px;
-    height: 14px;
-}
-
-.navbar .search-container {
-    text-align: center;
-    position: fixed;
-    top: 0;
-    gap: var(--space-1);
-    bottom: 0;
-    left: 50%;
-    right: 0;
-    background: #111;
-    color: var(--light-theme-bg-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    padding: var(--space-3);
-    display: none;
-}
-
-.search-container form, .search-container .input-search-group {
-    width: 100%;
-}
-
-.input-search-group .input-text {
-    font-size: 0.9rem;
-    width: 80%;
-}
-
-.input-search-group label.text-label {
-    border: none;
-    outline: none; 
-}
-
-.input-search-group label.text-label:focus-within {
-    outline: none;
-}
-
-.btn-search-submit {
-    outline: none;
-    border: none;
-    background: transparent;
-}
-
-.search-container .close-icon {
-    align-self: flex-end;
-    right: 3rem;
-    top: 2rem;
+.parallax-image::before {
     position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-bg-color);
+    z-index: 2;
+}
+
+.parallax-image > * {
+    position: relative; 
+    z-index: 3;
+}
+
+.hero-container {
+    height: 95vh;
+}
+
+.hero-content {
+    position: absolute;
+    z-index: 0;
+    color: var(--light-theme-bg-color);
+}
+
+.hero-content h1 {
+    line-height:1.1;
+}
+
+.hero-cta {
+    width: max-content;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-cta:hover {
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+}
+
+.hero-cta .icon {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-cta:hover .icon {
+    transform: translateX(5px);
+    -webkit-transform: translateX(5px);
+    -moz-transform: translateX(5px);
+    -ms-transform: translateX(5px);
+    -o-transform: translateX(5px);
 }
