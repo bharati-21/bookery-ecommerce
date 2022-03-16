@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Header } from '../components/Header';
-import { landingPageImages } from '../assets/LandingPage/index';
+import { landingPageImages } from '../assets/LandingPage/';
  
 
 const LandingPage = () => {
