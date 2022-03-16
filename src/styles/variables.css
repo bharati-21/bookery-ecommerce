@@ -8,8 +8,9 @@
     --light-theme-default-color: #282827;
     --light-theme-hover-color: #929292;
 
-    /* primary-colors */
-    --light-theme-primary-color: #0074a6;
-    --dark-theme-primary-color: #149eca;
-    --secondary-color: #f79e02;
+    --overlay-text-color: #2842581a;
+    --overlay-bg-color: rgba(0,0,0,0.5);
+
+    --text-color: #282827;
+    --text-active-color: #282827be;
 }
