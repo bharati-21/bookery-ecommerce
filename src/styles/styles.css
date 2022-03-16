@@ -1,2 +1,43 @@
+@import url('https://elixir-ui.netlify.app/Components/elixir.css');
 @import url('./reset.css');
 @import url('./variables.css');
+@import url('./landing-page.css');
+@import url('./header.css');
+@import url('./navbar.css');
+@import url('./footer.css');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    width: var(--space-0-5);
+    height: var(--space-0-5);
+}
+      
+body::-webkit-scrollbar-thumb {
+    background-color: var(--light-theme-default-color);
+}
+
+.App {
+    min-height: 100vh;
+    background-color: var(--light-theme-bg-color);
+    color: var(--light-theme-default-color);
+}
+
+.display-none {
+    display: none;
+}
+
+.btn {
+    border-radius:  0;
+    -webkit-border-radius:  0;
+    -moz-border-radius:  0;
+    -ms-border-radius:  0;
+    -o-border-radius:  0;
+}
+
+.btn-light:hover {
+    background-color: var(--light-gray-color);
+    border-color: var(--light-gray-color);
+}

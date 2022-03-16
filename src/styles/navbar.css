@@ -1,0 +1,112 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding: var(--space-1) var(--space-3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Catamaran', sans-serif;
+    margin: 0 auto;
+    background-color: rgba(245, 247, 250, 0.9);
+    box-shadow: 0 0 0.25em var(--box-shadow-color);
+}
+
+.navbar .logo {
+    font-family: 'Ubuntu', sans-serif;
+    letter-spacing: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.navbar .nav-link {
+    cursor: pointer;
+    transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navbar .nav-link:hover {
+    color: var(--light-theme-hover-color);
+}
+
+.navbar .navlinks {
+    display: flex;
+    gap: var(--space-1-5);
+}
+
+.navlinks .nav-link {
+    font-weight: 550;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.nav-icons .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-container .badge-default {
+    background-color: var(--dark-theme-bg-color);
+    color: var(--light-theme-bg-color);
+    font-size: 0.75rem;
+    width: 0.875;
+    height: 0.875;
+}
+
+.navbar .search-container {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    gap: var(--space-1);
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    background: #111;
+    color: var(--light-theme-bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    padding: var(--space-3);
+    display: none;
+}
+
+.search-container form, .search-container .input-search-group {
+    width: 100%;
+}
+
+.input-search-group .input-text {
+    font-size: 0.9rem;
+    width: 80%;
+}
+
+.input-search-group label.text-label {
+    border: none;
+    outline: none; 
+}
+
+.input-search-group label.text-label:focus-within {
+    outline: none;
+}
+
+.btn-search-submit {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.search-container .close-icon {
+    align-self: flex-end;
+    right: 3rem;
+    top: 2rem;
+    position: absolute;
+}
+
+.mobile-search-icon {
+    color: var(--light-theme-default-color);
+}

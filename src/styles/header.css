@@ -1,0 +1,70 @@
+.parallax-image {
+    background: url('../assets/images/library-img.jpg') no-repeat center center/ cover; 
+    background-attachment: fixed;
+    height: 100vh;
+    top: -10vh;
+    position: static !important;
+}
+
+.parallax-image::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-bg-color);
+    z-index: 2;
+}
+
+.parallax-image > * {
+    position: relative; 
+    z-index: 3;
+}
+
+.hero-container {
+    height: 95vh;
+}
+
+.hero-content {
+    position: absolute;
+    z-index: 0;
+    color: var(--light-theme-bg-color);
+}
+
+.hero-content h1 {
+    line-height:1.1;
+}
+
+.hero-cta {
+    width: max-content;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-cta:hover {
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+}
+
+.hero-cta .icon {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -moz-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -ms-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero-cta:hover .icon {
+    transform: translateX(5px);
+    -webkit-transform: translateX(5px);
+    -moz-transform: translateX(5px);
+    -ms-transform: translateX(5px);
+    -o-transform: translateX(5px);
+}
