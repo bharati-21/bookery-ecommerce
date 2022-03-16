@@ -32,7 +32,7 @@ const Navbar = () => {
                         <label className="text-label flex-row flex-align-center flex-justify-between p-0-25 px-0-5" htmlFor="input-inline-search">
                             <input type="text" id="input-inline-search" className="px-0-25 input-text" placeholder="Search Book..." />
                             <button type='submit' className="btn-search-submit flex-row flex-align-center">
-                                <SearchIcon style={{color: "var(--light-theme-default-color)"}} />
+                                <SearchIcon className="mobile-search-icon" />
                             </button>
                         </label>
                         <span className="text-message mt-0-5"></span>
