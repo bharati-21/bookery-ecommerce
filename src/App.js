@@ -9,13 +9,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
 /* Page imports */
-import { LandingPage } from "./pages/LandingPage";
-import { Products } from "./pages/Products";
-import { Cart } from "./pages/Cart";
-import { WishList } from "./pages/WishList";
-import { Signup } from "./pages/Signup";
-import { Login } from "./pages/Login";
-import { Logout } from "./pages/Logout";
+import { LandingPage, Products, Cart, WishList, Signup, Login, Logout } from './pages/';
 
 
 function App() {
