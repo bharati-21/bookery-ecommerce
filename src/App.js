@@ -1,14 +1,16 @@
+/* Style imports */
 import "./styles/styles.css";
-import { Navbar } from './components/Navbar';
 
+/* Component imports */
+import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { LandingPage } from "./pages/LandingPage";
+import { Routes } from "./routes/Routes";
 
 function App() {
     return (
         <div className="App">
             <Navbar  />
-            <LandingPage  />
+            <Routes  />         
             <Footer  />
         </div>
     );
