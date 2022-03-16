@@ -25,6 +25,10 @@ body::-webkit-scrollbar-thumb {
     color: var(--light-theme-default-color);
 }
 
+.page-wrapper {
+    min-height: 100vh;
+}
+
 .display-none {
     display: none;
 }
