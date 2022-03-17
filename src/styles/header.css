@@ -1,9 +1,10 @@
 .parallax-image {
     background: url('../assets/images/library-img.jpg') no-repeat center center/ cover; 
     background-attachment: fixed;
-    height: 100vh;
+    height: 110vh;
     top: -10vh;
-    position: static !important;
+    position: relative;
+    width: 100%;
 }
 
 .parallax-image::before {
@@ -24,6 +25,7 @@
 
 .hero-container {
     height: 95vh;
+    width: 100%;
 }
 
 .hero-content {
