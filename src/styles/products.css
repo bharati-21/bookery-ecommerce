@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+.products-main {
+    font-family: 'Open Sans', sans-serif;
+    align-items: start;
+    justify-content: center;
+    gap: var(--space-2);
+}
+
+.grid-row-span {
+    grid-column: 1/-1;
+    width: 100%;
+}
+
+.products-main .main-head {
+    border-bottom: 2px solid var(--light-gray-color);
+}
+
+.list-sorting-options {
+    gap: 1rem;
+}
+
+.sorting-option .btn {
+    font-size: 0.95rem;
+}
+
+.border-bottom {
+    border-bottom: 1px solid var(--text-color);
+}
+
+.product-filters {
+    border: 2px solid var(--light-gray-color);
+    width: 250px;
+}
+
+.product-filters .list-head {
+    border-radius: var(--br-2);
+    -webkit-border-radius: var(--br-2);
+    -moz-border-radius: var(--br-2);
+    -ms-border-radius: var(--br-2);
+    -o-border-radius: var(--br-2);
+}
+
+.product-filters .list-stacked .list-item:hover {
+    border-radius: var(--br-2);
+    -webkit-border-radius: var(--br-2);
+    -moz-border-radius: var(--br-2);
+    -ms-border-radius: var(--br-2);
+    -o-border-radius: var(--br-2);
+}
+
+.product-card .list-stacked {
+    border-radius: var(--br-5);
+    -webkit-border-radius: var(--br-5);
+    -moz-border-radius: var(--br-5);
+    -ms-border-radius: var(--br-5);
+    -o-border-radius: var(--br-5);
+}
+
+.product-catalog {
+    width: 100%;
+}
+
+.products-container {
+    gap: var(--space-2);
+    justify-items: center;
+}
+
+.product-card {
+    --wishlist-bg: #ff6058;
+    border-radius: var(--br-4);
+    -webkit-border-radius: var(--br-4);
+    -moz-border-radius: var(--br-4);
+    -ms-border-radius: var(--br-4);
+    -o-border-radius: var(--br-4);
+    max-width: 250px;
+    border: 1px solid var(--card-border-color);
+}
+
+.product-card:hover {
+    box-shadow: 0px 0px 5px 2px var(--overlay-text-color);
+}
+
+.product-card .card-header img {
+    border-radius: inherit;
+    -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+    -ms-border-radius: inherit;
+    -o-border-radius: inherit;  
+    height: 100%;
+    object-fit: contain;  
+}
+
+.product-card .btn-card-wishlist {
+    display: flex;
+}
+
+.product-card.card .card-title {
+    line-height: 1;
+}
+
+.btn.btn-card-wishlist  {
+    display: flex;
+    background-color: var(--wishlist-bg);
+    color: var(--bg-card-color);
+    border-radius: var(--br-50);
+    -webkit-border-radius: var(--br-50);
+    -moz-border-radius: var(--br-50);
+    -ms-border-radius: var(--br-50);
+    -o-border-radius: var(--br-50);
+}
+
+.btn.btn-card-wishlist .icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.btn.btn-card-wishlist .icon svg {
+   
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+}
+
+.product-card .btn-card-wishlist:hover {
+    background-color: var(--error-color);
+    color: var(--bg-card-color);
+}
+
+.card-wishlist-btn:hover .icon {
+    color: var(--bg-card-color);
+}
+
+.genre-label, .rating-label, .book-cover-label {
+    width: 100%;
+    gap: var(--space-0-5);
+}
+
+.card-content, .product-price {
+    width: 100%;
+}
+
+.product-card .card-content sup {
+    position: relative;
+    top: 4px;
+    margin-left: var(--space-0-25);
+    display: inline-block;
+}
+
+.discounted-price, .discount-percentage {   
+    font-weight: var(--weight-sbold);
+}
+
+.discounted-price sup {
+    top: 5px; 
+}
+
+.input-range {
+    width: 100%;
+    accent-color: var(--primary-color);
+}
+
+@media screen and (max-width: 768px) {
+    .product-filters {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .product-filters {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .product-filters {
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .product-filters {
+        display: none;
+    }
+
+    .products-main {
+        grid-template-columns: 1fr;
+    }
+}

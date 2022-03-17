@@ -1,8 +1,5 @@
 import React from 'react';
-import { Navbar } from './Navbar';
-import  heroImg  from '../assets/images/library-img.jpg';
 import ArrowRightAltSharpIcon from '@mui/icons-material/ArrowRightAltSharp';
-
 
 const Header = () => {
   return (
