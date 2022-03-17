@@ -2,8 +2,7 @@
 import "./styles/styles.css";
 
 /* Component imports */
-import { Navbar } from './components/Navbar';
-import { Footer } from './components/Footer';
+import { Navbar, Footer } from './components/';
 import { Routes } from "./routes/Routes";
 
 function App() {

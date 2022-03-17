@@ -1,4 +1,8 @@
-import React from 'react'
+import React from 'react';
+
+import { products } from '../backend/db/products';
+
+import { Filters, ProductList, SortingOptions } from '../components/';
 
 const Products = () => {
   return (
