@@ -3,7 +3,7 @@ import ArrowRightAltSharpIcon from '@mui/icons-material/ArrowRightAltSharp';
 
 const Header = () => {
   return (
-    <header className="header parallax-image">
+    <header className="header parallax-image flex-row flex-align-center flex-justify-center">
         <section className="hero-container flex flex-col flex-align-center flex-justify-center">
             <article className="hero-content flex-col mx-2">
                 <h1 className="hero-head text-light">
