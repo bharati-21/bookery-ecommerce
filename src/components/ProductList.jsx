@@ -1,4 +1,4 @@
-import { ProductItem } from '../components/ProductItem';
+import { ProductItem } from './ProductItem';
 const ProductList = () => {
     return (
         <section className="product-catalog">
