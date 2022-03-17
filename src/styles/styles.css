@@ -1,9 +1,10 @@
 @import url('https://elixir-ui.netlify.app/Components/elixir.css');
 @import url('./reset.css');
 @import url('./variables.css');
-@import url('./landing-page.css');
-@import url('./header.css');
 @import url('./navbar.css');
+@import url('./header.css');
+@import url('./landing-page.css');
+@import url('./products.css');
 @import url('./footer.css');
 
 body {
@@ -44,4 +45,13 @@ body::-webkit-scrollbar-thumb {
 .btn-light:hover {
     background-color: var(--light-gray-color);
     border-color: var(--light-gray-color);
+}
+
+.list-spaced .list-head {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.text-underline {
+    text-decoration: underline;
 }
