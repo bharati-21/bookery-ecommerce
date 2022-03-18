@@ -28,7 +28,7 @@ export const products = [
         coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1474154022l/3._SY475_.jpg'
     },
     {
-        __id: uuid(),
+        _id: uuid(),
         title: "Atomic Habits",
         author: "James Clear",
         sellingPrice: "₹507",
