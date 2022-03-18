@@ -67,6 +67,7 @@
 }
 
 .product-card {
+    font-family: 'Catamaran', sans-serif;
     --wishlist-bg: #ff6058;
     border-radius: var(--br-4);
     -webkit-border-radius: var(--br-4);
@@ -74,7 +75,13 @@
     -ms-border-radius: var(--br-4);
     -o-border-radius: var(--br-4);
     max-width: 250px;
+    height: 100%;
     border: 1px solid var(--card-border-color);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .product-card:hover {
@@ -87,7 +94,6 @@
     -moz-border-radius: inherit;
     -ms-border-radius: inherit;
     -o-border-radius: inherit;  
-    height: 100%;
     object-fit: contain;  
 }
 
@@ -95,8 +101,16 @@
     display: flex;
 }
 
-.product-card.card .card-title {
-    line-height: 1;
+.product-card.card .card-title,
+.product-card .card-subtitle {
+    line-clamp: 2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 1.1;
+    font-family: 'Catamaran', sans-serif;
 }
 
 .btn.btn-card-wishlist  {
@@ -110,7 +124,7 @@
     -o-border-radius: var(--br-50);
 }
 
-.btn.btn-card-wishlist .icon {
+.btn-card-wishlist .icon {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -119,8 +133,7 @@
     height: 1.5rem;
 }
 
-.btn.btn-card-wishlist .icon svg {
-   
+.btn-card-wishlist .icon svg {
     display: flex; 
     flex-direction: column;
     align-items: center;
@@ -146,19 +159,34 @@
     width: 100%;
 }
 
-.product-card .card-content sup {
-    position: relative;
-    top: 4px;
-    margin-left: var(--space-0-25);
-    display: inline-block;
-}
-
-.discounted-price, .discount-percentage {   
+.price-discounted, .percentage-discount {   
     font-weight: var(--weight-sbold);
+    line-height: 1.2;
 }
 
-.discounted-price sup {
-    top: 5px; 
+.card-genres .list {
+    gap: var(--space-0-25) var(--space-0-5);
+}
+
+.card-genres .list li:nth-child(even) {
+    background-color: var(--warning-color);
+}
+
+.card-genres .list li:nth-child(odd) {
+    background-color: var(--text-color);
+}
+
+.product-card .badge {
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    font-size: 0.9rem;
+}
+
+.card-genres .badge {
+    position: static;
 }
 
 .input-range {
