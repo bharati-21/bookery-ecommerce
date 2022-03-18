@@ -13,4 +13,9 @@
 
     --text-color: #282827;
     --text-active-color: #282827be;
+
+    --primary-color: #26a8ff;
+    --primary-active-color: #0091F2;
+    --primary-bg-color: #b7e2ff;
+    --secondary-color: #256ae5;
 }
