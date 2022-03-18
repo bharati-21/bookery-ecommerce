@@ -1,9 +1,12 @@
 import { ProductItem } from './ProductItem';
-const ProductList = () => {
+
+const ProductList = ({ products }) => {
     return (
         <section className="product-catalog">
             <article className="products-container grid grid-autofit">
-                <ProductItem />
+                {
+                    products.map(product => <ProductItem product={product} key={product.id} />)
+                }
             </article>
         </section>
     )
