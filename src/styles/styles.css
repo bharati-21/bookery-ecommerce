@@ -55,3 +55,7 @@ body::-webkit-scrollbar-thumb {
 .text-underline {
     text-decoration: underline;
 }
+
+.products-main {
+    min-height: 100vh;
+}
