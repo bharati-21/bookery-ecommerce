@@ -1,12 +1,12 @@
 import axios from 'axios';
 export const fetchProducts = async (productDispatch) => {
     try {
-        const { data, status } = await axios.get('/api/products');
+        const { data : {products}, status } = await axios.get('/api/products');
         if(status >= 200 && status < 300) {
             productDispatch({
                 type: 'INIT_PRODUCTS_SUCCESS', 
                 payload: {
-                    products: data,
+                    products,
                     error: null,
                     loading: false
                 }
