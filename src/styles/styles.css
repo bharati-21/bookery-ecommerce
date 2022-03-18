@@ -35,11 +35,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .btn {
-    border-radius:  0;
-    -webkit-border-radius:  0;
-    -moz-border-radius:  0;
-    -ms-border-radius:  0;
-    -o-border-radius:  0;
+    border-radius: var(--br-2);
+    -webkit-border-radius: var(--br-2);
+    -moz-border-radius: var(--br-2);
+    -ms-border-radius: var(--br-2);
+    -o-border-radius: var(--br-2);
 }
 
 .btn-light:hover {
@@ -58,4 +58,8 @@ body::-webkit-scrollbar-thumb {
 
 .products-main {
     min-height: 100vh;
+}
+
+.badge-error {
+    background-color: var(--error-color)
 }
