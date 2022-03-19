@@ -64,15 +64,15 @@ const ProductItem = ({ product:
                     <div className="card-price flex-row flex-align-start flex-justify-between">
                         <div className="discounted-price flex-col">
                             <p className="price-discounted">
-                                {sellingPrice}
+                                ₹ {sellingPrice}
                             </p>
                             <span className="success-color percentage-discount">
-                                {discountPercent}
+                                {discountPercent} %
                             </span> 
                         </div>
                         <p className="price-original">
                             <span className="text-linethrough error-color">
-                                {originalPrice}
+                                ₹ {originalPrice}
                             </span>   
                         </p>
                     </div>
