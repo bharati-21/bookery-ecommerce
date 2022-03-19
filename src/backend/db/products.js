@@ -37,7 +37,7 @@ export const products = [
         discountPrice: 292.00,
         totalRatings: 34993,
         totalStars: 4.6,
-        genres: ['Nonfiction', 'Health', 'Self Help', 'Philosophy', 'Science'],
+        genres: ['Non-Fiction', 'Health', 'Self Help', 'Philosophy', 'Science'],
         bookType: 'Hardcover',
         offers: {
             fastDelivery: true,
@@ -394,7 +394,7 @@ export const products = [
         discountPrice: 160.00,
         totalRatings: 3445,
         totalStars: 4.5,
-        genres: ['Nonfiction', 'Self Help', 'Philosophy', 'Psychology', 'Mental Health'],
+        genres: ['Non-Fiction', 'Self Help', 'Philosophy', 'Psychology', 'Mental Health'],
         bookType: 'Hardcover',
         offers: {
             fastDelivery: false,
