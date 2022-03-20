@@ -120,7 +120,7 @@ export const products = [
         discountPercent: 20,
         discountPrice: 300.00,
         totalRatings: 347170,
-        totalStars: 4.38,
+        totalStars: 4.6,
         genres: ['Non-Fiction', 'Health', 'Self Help', 'Philosophy', 'Science'],
         bookType: 'Hardcover',
         offers: {
@@ -361,6 +361,7 @@ export const products = [
             inStock: true,
             bestSeller: true
         },
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1588286863l/634583._SY475_.jpg'
     },
     {
         _id: uuid(),
