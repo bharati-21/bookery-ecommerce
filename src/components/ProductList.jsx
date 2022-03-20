@@ -1,5 +1,5 @@
 import { useFilter } from '../contexts';
-import { filterByGenres } from '../utils/';
+import { filterByGenres, filterByPrice } from '../utils/';
 import { ProductItem } from './ProductItem';
 
 const ProductList = ({ products }) => {
@@ -7,12 +7,14 @@ const ProductList = ({ products }) => {
     const { filterState } = useFilter();
 
     const productsFilteredByGenre = filterByGenres(products, filterState.genres);
+    const productsFilteredByPrice = filterByPrice(productsFilteredByGenre, filterState.price);
 
     return (
         <section className="product-catalog">
+            <p className="text-reg mb-1">Number of Books: {productsFilteredByPrice.length}</p>
             <article className="products-container grid grid-autofit">
                 {
-                    productsFilteredByGenre.map(product => <ProductItem product={product} key={product._id} />)
+                    productsFilteredByPrice.map(product => <ProductItem product={product} key={product._id} />)
                 }
             </article>
         </section>
