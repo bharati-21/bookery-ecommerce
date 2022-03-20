@@ -18,6 +18,10 @@ const ProductItem = ({ product:
         } 
     }) => {
 
+    
+    const localeOriginalPrice = originalPrice.toLocaleString("en-IN", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const localeSellingPrice = sellingPrice.toLocaleString("en-IN", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
     const genreMapping = genres.map(genre => 
         <li key={`${_id}-${genre}`} className="badge text-xs badge-secondary p-0-25 px-0-5 genre-item">
             {genre} 
@@ -64,7 +68,7 @@ const ProductItem = ({ product:
                     <div className="card-price flex-row flex-align-start flex-justify-between">
                         <div className="discounted-price flex-col">
                             <p className="price-discounted">
-                                ₹ {sellingPrice}
+                                ₹ {localeSellingPrice}
                             </p>
                             <span className="success-color percentage-discount">
                                 {discountPercent} %
@@ -72,7 +76,7 @@ const ProductItem = ({ product:
                         </div>
                         <p className="price-original">
                             <span className="text-linethrough error-color">
-                                ₹ {originalPrice}
+                                ₹ {localeOriginalPrice}
                             </span>   
                         </p>
                     </div>
