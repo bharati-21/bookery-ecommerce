@@ -8,7 +8,6 @@ const filterByBookTypes = (ratingFilteredBooks, bookTypeFilters) => {
     // If some book types are checked, then filter books with those types
     for(const bookTypeFilter in bookTypeFilters) {
         const isBookTypeSelected = bookTypeFilters[bookTypeFilter];
-        console.log(isBookTypeSelected)
 
         // If book type is checked and a book is not already in the filtered list, add it to the list. Else, skip adding the book
         const booksWithBookType = ratingFilteredBooks.filter(({ id, bookType }) => isBookTypeSelected && !booksFilteredyByBookTypes.find(filteredByBookType => filteredByBookType.id === id) 
