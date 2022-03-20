@@ -1,4 +1,4 @@
-import { useFilter } from "../contexts";
+import { useFilter } from "contexts/";
 import { SortingOptionItem } from './SortingOptionItem';
 import { v4 as uuid } from 'uuid';
 
@@ -20,7 +20,7 @@ const SortingOptions = () => {
         {
             id: uuid(),
             option: 'Price- Low to High',
-            value: 'PRICE_LOW_TO-HIGH'
+            value: 'PRICE_LOW_TO_HIGH'
         },
         {
             id: uuid(),
