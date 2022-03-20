@@ -8,16 +8,16 @@ import { v4 as uuid } from "uuid";
 export const products = [
     {
         _id: uuid(),
-        title: "Harry Potter and the Philosopher's Stone",
+        title: "Harry Potter Complete Set",
         author: "J.K. Rowling",
-        sellingPrice: 374.00,
-        originalPrice: 499.00,
-        discountPercent: 25,
-        discountPrice: 125.00,
-        totalRatings: 36310,
-        totalStars: 4.7,
+        sellingPrice: 2888.00,
+        originalPrice: 4999.00,
+        discountPercent: 42,
+        discountPrice: 2111.00,
+        totalRatings: 82150,
+        totalStars: 4.8,
         genres: ['Fiction', 'Fantasy', 'Young Adult', 'Adventure', 'Childrens'],
-        bookType: 'Paperback',
+        bookType: 'Hardcover',
         offers: {
             fastDelivery: true,
             freeDelivery: false,
@@ -25,28 +25,28 @@ export const products = [
             inStock: true,
             bestSeller: false
         },
-        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1474154022l/3._SY475_.jpg'
+        coverImg: 'https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B550%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9780545162074_p3_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D'
     },
     {
         _id: uuid(),
-        title: "Atomic Habits",
-        author: "James Clear",
-        sellingPrice: 507.00,
-        originalPrice: 799.00,
-        discountPercent: 40,
+        title: "7 Mindsets for Success, Happiness and Fulfilment",
+        author: "Swami Mukundananda",
+        sellingPrice: 228.00,
+        originalPrice: 295.00,
+        discountPercent: 23,
         discountPrice: 292.00,
-        totalRatings: 34993,
-        totalStars: 4.6,
-        genres: ['Non-Fiction', 'Health', 'Self Help', 'Philosophy', 'Science'],
-        bookType: 'Hardcover',
+        totalRatings: 372,
+        totalStars: 4.5,
+        genres: ['Non-Fiction', 'Spirituality', 'Self Help', 'Philosophy', 'Psychology'],
+        bookType: 'Paperback',
         offers: {
             fastDelivery: true,
             freeDelivery: true,
             newArrival: false,
             inStock: true,
-            bestSeller: true
+            bestSeller: false
         },
-        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535115320l/40121378._SY475_.jpg'
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1569209892l/51987423._SX318_SY475_.jpg'
     },
     {
         _id: uuid(),
@@ -56,8 +56,8 @@ export const products = [
         originalPrice: 472.00,
         discountPercent: 44,
         discountPrice: 207.00,
-        totalRatings: 9198,
-        totalStars: 4.5,
+        totalRatings: 879,
+        totalStars: 4.4,
         genres: ['Romance', 'Contemporary Romance', 'Adult', 'Fiction', 'Academia'],
         bookType: 'Paperback',
         offers: {
@@ -71,15 +71,15 @@ export const products = [
     },
     {
         _id: uuid(),
-        title: "Harry Potter and the Chamber of Secrets",
-        author: "J.K. Rowling",
-        sellingPrice: 309.00,
-        originalPrice: 499.00,
-        discountPercent: 38,
-        discountPrice: 190.00,
-        totalRatings: 29731,
-        totalStars: 4.2,
-        genres: ['Fiction', 'Fantasy', 'Young Adult', 'Adventure', 'Childrens'],
+        title: "Why We Sleep: Unlocking the Power of Sleep and Dreams",
+        author: "Matthew Walker",
+        sellingPrice: 347.00,
+        originalPrice: 599.00,
+        discountPercent: 42,
+        discountPrice: 272.00,
+        totalRatings: 129469,
+        totalStars: 4.4,
+        genres: ['Non-Fiction', 'Neuroscience', 'Health', 'Psychology', 'Self Help'],
         bookType: 'Paperback',
         offers: {
             fastDelivery: true,
@@ -88,61 +88,61 @@ export const products = [
             inStock: true,
             bestSeller: false
         },
-        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1474169725l/15881._SY475_.jpg'
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1556604137l/34466963._SY475_.jpg'
     },
     {
         _id: uuid(),
-        title: "House of Earth and Blood (Crescent City)",
-        author: "Sarah J. Maas",
-        sellingPrice: 543.00,
-        originalPrice: 799.00,
-        discountPercent: 32,
-        discountPrice: 256.00,
-        totalRatings: 19615,
-        totalStars: 4.7,
-        genres: ['Fantasy', 'Romance', 'New Adult', 'Fiction', 'Fairies'],
-        bookType: 'Paperback',
-        offers: {
-            fastDelivery: false,
-            freeDelivery: true,
-            newArrival: false,
-            inStock: true,
-            bestSeller: true
-        },
-        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1559142847l/44778083.jpg'
-    },
-    {
-        _id: uuid(),
-        title: "Harry Potter and the Prisoner of Azkaban",
-        author: "J.K. Rowling",
-        sellingPrice: 321.00,
-        originalPrice: 499.00,
-        discountPercent: 36,
-        discountPrice: 178.00,
-        totalRatings: 22491,
-        totalStars: 4.8,
-        genres: ['Fiction', 'Fantasy', 'Young Adult', 'Adventure', 'Childrens'],
+        title: "The Krishna Key",
+        author: "Ashwin Sanghi",
+        sellingPrice: 440.00,
+        originalPrice: 450.00,
+        discountPercent: 2,
+        discountPrice: 10.00,
+        totalRatings: 19017,
+        totalStars: 3.6,
+        genres: ['Fiction', 'Thriller', 'Mythology', 'Historical', 'Mystery'],
         bookType: 'Paperback',
         offers: {
             fastDelivery: false,
             freeDelivery: false,
             newArrival: false,
-            inStock: true,
+            inStock: false,
             bestSeller: false
         },
-        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1630547330l/5._SY475_.jpg'
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1341289060l/15733523.jpg'
     },
     {
         _id: uuid(),
-        title: "Harry Potter and the Goblet of Fire",
-        author: "J.K. Rowling",
+        title: "Atomic Habits",
+        author: "James Clear",
+        sellingPrice: 507.00,
+        originalPrice: 799.00,
+        discountPercent: 37,
+        discountPrice: 292.00,
+        totalRatings: 347170,
+        totalStars: 4.38,
+        genres: ['Non-Fiction', 'Health', 'Self Help', 'Philosophy', 'Science'],
+        bookType: 'Hardcover',
+        offers: {
+            fastDelivery: true,
+            freeDelivery: true,
+            newArrival: false,
+            inStock: true,
+            bestSeller: true
+        },
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535115320l/40121378._SY475_.jpg'
+    },
+    {
+        _id: uuid(),
+        title: "Attitude Is Everything",
+        author: "Jeff Keller",
         sellingPrice: 429.00,
         originalPrice: 699.00,
         discountPercent: 39,
         discountPrice: 270.00,
-        totalRatings: 20005,
-        totalStars: 4.3,
-        genres: ['Fiction', 'Fantasy', 'Young Adult', 'Adventure', 'Childrens'],
+        totalRatings: 2886,
+        totalStars: 4.4,
+        genres: ['Non-Fiction', 'Slef Help', 'Personal Development', 'Leadership', 'Motivational'],
         bookType: 'Paperback',
         offers: {
             fastDelivery: false,
@@ -151,7 +151,7 @@ export const products = [
             inStock: true,
             bestSeller: false
         },
-        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1554006152l/6.jpg'
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1482649723l/33561786._SY475_.jpg'
     },
     {
         _id: uuid(),
@@ -161,8 +161,8 @@ export const products = [
         originalPrice: 399.00,
         discountPercent: 26,
         discountPrice: 103.00,
-        totalRatings: 10204,
-        totalStars: 4.7,
+        totalRatings: 2143296,
+        totalStars: 4.4,
         genres: ['Historical', 'Fiction', 'Young Adult', 'Classics', 'War'],
         bookType: 'Paperback',
         offers: {
@@ -173,27 +173,6 @@ export const products = [
             bestSeller: true
         },
         coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1522157426l/19063._SY475_.jpg'
-    },
-    {
-        _id: uuid(),
-        title: "Harry Potter and the Order of the Phoenix",
-        author: "J.K. Rowling",
-        sellingPrice: 480.00,
-        originalPrice: 799.00,
-        discountPercent: 40,
-        discountPrice: 319.00,
-        totalRatings: 18666,
-        totalStars: 4.7,
-        genres: ['Fiction', 'Fantasy', 'Young Adult', 'Adventure', 'Childrens'],
-        bookType: 'Paperback',
-        offers: {
-            fastDelivery: false,
-            freeDelivery: true,
-            newArrival: false,
-            inStock: true,
-            bestSeller: false
-        },
-        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg'
     },
     {
         _id: uuid(),
@@ -218,24 +197,45 @@ export const products = [
     },
     {
         _id: uuid(),
-        title: "House of Sky and Breath (Crescent City)",
-        author: "Sarah J. Maas",
-        sellingPrice: 623.00,
-        originalPrice: 799.00,
-        discountPercent: 22,
-        discountPrice: 176.00,
-        totalRatings: 9996,
-        totalStars: 4.8,
-        genres: ['Fantasy', 'Romance', 'New Adult', 'Fiction', 'Fairies'],
+        title: "Lean In: Women, Work, and the Will to Lead",
+        author: "heryl Sandberg",
+        sellingPrice: 385.00,
+        originalPrice: 699.00,
+        discountPercent: 45,
+        discountPrice: 314.00,
+        totalRatings:  243804,
+        totalStars: 3.9,
+        genres: ['Non-Fiction', 'Feminism', 'Leadership', 'Business', 'Autobiography'],
+        bookType: 'Hardcover',
+        offers: {
+            fastDelivery: false,
+            freeDelivery: true,
+            newArrival: false,
+            inStock: true,
+            bestSeller: false
+        },
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1630483761l/16071764._SY475_.jpg'
+    },
+    {
+        _id: uuid(),
+        title: "Divergent Series Complete Set",
+        author: "Veronica Roth",
+        sellingPrice: 962.00,
+        originalPrice: 1599.00,
+        discountPercent: 40,
+        discountPrice: 637.00,
+        totalRatings: 43526,
+        totalStars: 3.2,
+        genres: ['Dystopian', 'Fiction', 'Fantasy', 'Romance', 'Young Adult'],
         bookType: 'Paperback',
         offers: {
             fastDelivery: false,
             freeDelivery: true,
-            newArrival: true,
+            newArrival: false,
             inStock: true,
             bestSeller: false
         },
-        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1559142847l/44778083.jpg'
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1372682053l/17383994.jpg'
     },
     {
         _id: uuid(),
@@ -243,41 +243,20 @@ export const products = [
         author: "Fredrik Backman",
         sellingPrice: 270.00,
         originalPrice: 299.00,
-        discountPercent: 32,
+        discountPercent: 1,
         discountPrice: 129.00,
         totalRatings: 32852,
         totalStars: 4.5,
         genres: ['Fiction', 'Contemporary', 'Humor', 'Adult', 'Novel'],
-        bookType: 'Hardcover',
+        bookType: 'Paperback',
         offers: {
             fastDelivery: false,
             freeDelivery: false,
             newArrival: false,
-            inStock: false,
+            inStock: true,
             bestSeller: false
         },
         coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1405259930l/18774964.jpg'
-    },
-    {
-        _id: uuid(),
-        title: "Harry Potter and the Half Blood Prince",
-        author: "J.K. Rowling",
-        sellingPrice: 440.00,
-        originalPrice: 699.00,
-        discountPercent: 37,
-        discountPrice: 259.00,
-        totalRatings: 22751,
-        totalStars: 4.4,
-        genres: ['Fiction', 'Fantasy', 'Young Adult', 'Adventure', 'Childrens'],
-        bookType: 'Paperback',
-        offers: {
-            fastDelivery: true,
-            freeDelivery: true,
-            newArrival: false,
-            inStock: true,
-            bestSeller: true
-        },
-        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1587697303l/1._SX318_.jpg'
     },
     {
         _id: uuid(),
@@ -302,24 +281,45 @@ export const products = [
     },
     {
         _id: uuid(),
-        title: "Harry Potter and the Deathly Hallows",
-        author: "J.K. Rowling",
-        sellingPrice: 624.00,
-        originalPrice: 738.00,
-        discountPercent: 15,
-        discountPrice: 114.00,
-        totalRatings: 25340,
-        totalStars: 4.6,
-        genres: ['Fiction', 'Fantasy', 'Young Adult', 'Adventure', 'Childrens'],
+        title: "Palace of Illusions",
+        author: "Chitra Banerjee Divakaruni",
+        sellingPrice: 263.00,
+        originalPrice: 450.00,
+        discountPercent: 42,
+        discountPrice: 187.00,
+        totalRatings: 42043,
+        totalStars: 4.2,
+        genres: ['Fiction', 'Mythology', 'Historical', 'Retellins', 'Cultural'],
         bookType: 'Paperback',
         offers: {
             fastDelivery: true,
             freeDelivery: true,
             newArrival: false,
-            inStock: false,
+            inStock: true,
             bestSeller: false
         },
-        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1474171184l/136251._SY475_.jpg'
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1396229073l/1774836.jpg'
+    },
+    {
+        _id: uuid(),
+        title: "Twilight",
+        author: "Stephenie Meyer",
+        sellingPrice: 399.00,
+        originalPrice: 499.00,
+        discountPercent: 20,
+        discountPrice: 100.00,
+        totalRatings: 5671177,
+        totalStars: 2.7,
+        genres: ['Fantasy', 'Young Adult', 'Romance', 'Fiction', 'Paranomal'],
+        bookType: 'Paperback',
+        offers: {
+            fastDelivery: true,
+            freeDelivery: true,
+            newArrival: false,
+            inStock: true,
+            bestSeller: false
+        },
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1361039443l/41865.jpg'
     },
     {
         _id: uuid(),
@@ -344,6 +344,26 @@ export const products = [
     },
     {
         _id: uuid(),
+        title: "Wings of Fire",
+        author: "Dr. A.P.J. Abdul Kalam and Arun Tiwari",
+        sellingPrice: 190.00,
+        originalPrice: 299.00,
+        discountPercent: 36,
+        discountPrice: 109.00,
+        totalRatings: 46630,
+        totalStars: 4.3,
+        genres: ['Biography', 'Non-Fiction', 'Inspirational', 'Science', 'History'],
+        bookType: 'Paperback',
+        offers: {
+            fastDelivery: false,
+            freeDelivery: false,
+            newArrival: false,
+            inStock: true,
+            bestSeller: true
+        },
+    },
+    {
+        _id: uuid(),
         title: "Love Hypothesis",
         author: "Ali Hazelwood",
         sellingPrice: 277.00,
@@ -365,14 +385,35 @@ export const products = [
     },
     {
         _id: uuid(),
+        title: "The Psychology of Money",
+        author: "Morgan Housel",
+        sellingPrice: 290.00,
+        originalPrice: 399.00,
+        discountPercent: 27,
+        discountPrice: 109.00,
+        totalRatings: 51051,
+        totalStars: 4.4,
+        genres: ['Economics', 'Finance', 'Psychology', 'Business', 'Self Help'],
+        bookType: 'Paperback',
+        offers: {
+            fastDelivery: false,
+            freeDelivery: true,
+            newArrival: false,
+            inStock: true,
+            bestSeller: true
+        },
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1581527774l/41881472._SY475_.jpg'
+    },
+    {
+        _id: uuid(),
         title: "Harry Potter and the Cursed Child: Parts One and Two",
         author: "John Tiffany (Adaptation), Jack Thorne, J.K. Rowling",
         sellingPrice: 240.00,
         originalPrice: 399.00,
         discountPercent: 40,
         discountPrice: 159.00,
-        totalRatings: 23096,
-        totalStars: 4.4,
+        totalRatings: 848359,
+        totalStars: 1.9,
         genres: ['Fiction', 'Fantasy', 'Young Adult', 'Adventure', 'Childrens'],
         bookType: 'Paperback',
         offers: {
@@ -392,8 +433,8 @@ export const products = [
         originalPrice: 499.00,
         discountPercent: 32,
         discountPrice: 160.00,
-        totalRatings: 3445,
-        totalStars: 4.5,
+        totalRatings: 36382,
+        totalStars: 4.1,
         genres: ['Non-Fiction', 'Self Help', 'Philosophy', 'Psychology', 'Mental Health'],
         bookType: 'Hardcover',
         offers: {
@@ -407,14 +448,35 @@ export const products = [
     },
     {
         _id: uuid(),
+        title: "City of Bones",
+        author: "Cassandra Clare",
+        sellingPrice: 366.00,
+        originalPrice: 450.00,
+        discountPercent: 25,
+        discountPrice: 124.00,
+        totalRatings: 22751,
+        totalStars: 2.4,
+        genres: ['Fantasy', 'Young Adult', 'Romance', 'Paranomal', 'Fiction'],
+        bookType: 'Paperback',
+        offers: {
+            fastDelivery: true,
+            freeDelivery: true,
+            newArrival: false,
+            inStock: true,
+            bestSeller: false
+        },
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1432730315l/256683._SY475_.jpg'
+    },
+    {
+        _id: uuid(),
         title: "To Kill a Mockingbird",
         author: "Harper Lee",
         sellingPrice: 227.00,
         originalPrice: 399.00,
         discountPercent: 43,
         discountPrice: 172.00,
-        totalRatings: 45948,
-        totalStars: 4.0,
+        totalRatings: 5202423,
+        totalStars: 3.7,
         genres: ['Fiction', 'Classics', 'Historical', 'Academic', 'Young Adult'],
         bookType: 'Paperback',
         offers: {
@@ -426,5 +488,46 @@ export const products = [
         },
         coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1553383690l/2657.jpg'
     },
+    {
+        _id: uuid(),
+        title: "The Great Railway Bazaar",
+        author: "Paul Theroux",
+        sellingPrice: 250.00,
+        originalPrice: 399.00,
+        discountPercent: 37,
+        discountPrice: 140.00,
+        totalRatings: 18293,
+        totalStars: 3.5,
+        genres: ['Travel', 'Non-Fiction', 'Cultural', 'Autobiography', 'Classics'],
+        bookType: 'Paperback',
+        offers: {
+            fastDelivery: true,
+            freeDelivery: false,
+            newArrival: false,
+            inStock: true,
+            bestSeller: false
+        },
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1440437557l/63689._SY475_.jpg'
+    },
+    {
+        _id: uuid(),
+        title: "House of Sky and Breath",
+        author: "Sarah J. Maas",
+        sellingPrice: 529.00,
+        originalPrice: 799.00,
+        discountPercent: 34,
+        discountPrice: 270.00,
+        totalRatings: 59559,
+        totalStars: 4.6,
+        genres: ['Fantasy', 'Romance', 'Adult', 'Fairies', 'Fiction'],
+        bookType: 'Paperback',
+        offers: {
+            fastDelivery: true,
+            freeDelivery: false,
+            newArrival: true,
+            inStock: true,
+            bestSeller: false
+        },
+        coverImg: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1633097753l/40132775._SY475_.jpg'
+    }
 ];
-
