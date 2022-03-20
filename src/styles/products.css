@@ -41,6 +41,11 @@
     -o-border-radius: var(--br-2);
 }
 
+li.list-head:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
 .product-filters .list-stacked .list-item:hover {
     border-radius: var(--br-2);
     -webkit-border-radius: var(--br-2);
