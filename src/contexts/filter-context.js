@@ -5,20 +5,19 @@ import { filterReducerFunction } from '../reducers';
 const initialFilterState = {
     sortBy: '',
     genres: {
-        isFiction: false,
-        isNonFiction: false,
-        isRomance: false,
-        isClassics: false,
-        isFantasy: false,
-        isMystery: false,
-        isThriller: false,
-        isHumor: false
+        "Fiction": false,
+        "Non-Fiction": false,
+        "Romance": false,
+        "Classics": false,
+        "Fantasy": false,
+        "Mystery": false,
+        "Thriller": false,
     },
-    ratings: '',
+    ratingsMoreThan: 0,
     price: 1000,
     bookType: {
-        isPaperback: false,
-        isHardcover: false
+        Paperback: false,
+        Hardcover: false
     }
 }
 
