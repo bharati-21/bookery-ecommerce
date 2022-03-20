@@ -1,4 +1,2 @@
-import { useProduct, ProductProvider } from "./product-context";
-import { useFilter, FilterProvider } from "./filter-context";
-
-export { useProduct, useFilter, ProductProvider, FilterProvider };
+export { useProduct, ProductProvider } from "./product-context";
+export { useFilter, FilterProvider } from "./filter-context";

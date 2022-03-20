@@ -1,21 +1,19 @@
-import { Filters } from './Filters';
-import { Footer } from './Footer';
-import { Header } from './Header';
-import { Navbar } from './Navbar';
-import { ProductItem } from './ProductItem';
-import { ProductList } from './ProductList';
-import { SortingOptions } from './SortingOptions';
+export { Filters } from './Filters';
+export { Footer } from './Footer';
+export { Header } from './Header';
+export { Navbar } from './Navbar';
+export { ProductItem } from './ProductItem';
+export { ProductList } from './ProductList';
+export { SortingOptions } from './SortingOptions';
 
-import { BookTypeFilterOption } from './FilterOptions/BookTypeFilters/BookTypeFilterOption'
-import { BookTypeFilters } from './FilterOptions/BookTypeFilters/BookTypeFilters';
+export { BookTypeFilterOption } from './FilterOptions/BookTypeFilters/BookTypeFilterOption'
+export { BookTypeFilters } from './FilterOptions/BookTypeFilters/BookTypeFilters';
 
-import { RatingFilterOption } from './FilterOptions/RatingFilters/RatingFilterOption';
-import { RatingFilters } from './FilterOptions/RatingFilters/RatingFilters';
+export { RatingFilterOption } from './FilterOptions/RatingFilters/RatingFilterOption';
+export { RatingFilters } from './FilterOptions/RatingFilters/RatingFilters';
 
-import { GenreFilterOption } from './FilterOptions/GenreFilters/GenreFilterOption';
-import { GenreFilters } from './FilterOptions/GenreFilters/GenreFilters';
+export { GenreFilterOption } from './FilterOptions/GenreFilters/GenreFilterOption';
+export { GenreFilters } from './FilterOptions/GenreFilters/GenreFilters';
 
-import { PriceFilters } from './FilterOptions/PriceFilters/PriceFilters';
-import { ClearFilters } from './FilterOptions/ClearFilters'
-
-export { Filters, Footer, Header, Navbar, ProductList, ProductItem, SortingOptions, GenreFilterOption, BookTypeFilterOption, RatingFilterOption, GenreFilters, PriceFilters, RatingFilters, BookTypeFilters, ClearFilters };
+export { PriceFilters } from './FilterOptions/PriceFilters/PriceFilters';
+export { ClearFilters } from './FilterOptions/ClearFilters'

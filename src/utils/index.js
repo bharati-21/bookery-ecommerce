@@ -1,9 +1,6 @@
-import { fetchProducts } from "./fetchProducts";
-import { filterByGenres } from './filterByGenres';
-import { filterByPrice } from './filterByPrice';
-import { filterByRatings } from './filterByRatings';
-import { filterByBookTypes } from './filterByBookTypes';
-import { sortBooks } from './sortBooks';
-
-
-export { fetchProducts, filterByGenres, filterByPrice, filterByRatings, filterByBookTypes, sortBooks };
+export { fetchProducts } from "./fetchProducts";
+export { filterByGenres } from './filterByGenres';
+export { filterByPrice } from './filterByPrice';
+export { filterByRatings } from './filterByRatings';
+export { filterByBookTypes } from './filterByBookTypes';
+export { sortBooks } from './sortBooks';

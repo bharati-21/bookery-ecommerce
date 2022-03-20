@@ -24,7 +24,7 @@ const initialFilterState = {
         Paperback: false,
         Hardcover: false
     }
-}
+};
 
 const filterReducerFunction = (prevFilterState, { filterType, filterPayload }) => {
     switch(filterType) {

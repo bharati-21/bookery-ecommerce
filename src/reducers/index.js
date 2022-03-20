@@ -1,4 +1,2 @@
-import { productReducerFunction } from './productReducer';
-import { filterReducerFunction, initialFilterState } from './filterReducer';
-
-export { productReducerFunction, filterReducerFunction, initialFilterState };
+export { productReducerFunction } from './productReducer';
+export { filterReducerFunction, initialFilterState } from './filterReducer';
