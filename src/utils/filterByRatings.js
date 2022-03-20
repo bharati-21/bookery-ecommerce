@@ -1,5 +1,3 @@
-const filterByRatings = (priceFilteredBooks, minRatingValue) => {
-    return priceFilteredBooks.filter(({ totalStars }) => totalStars >= minRatingValue);
-}
+const filterByRatings = (priceFilteredBooks, minRatingValue) => priceFilteredBooks.filter(({ totalStars }) => totalStars >= minRatingValue);
 
 export { filterByRatings };
