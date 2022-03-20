@@ -11,7 +11,7 @@ const ProductList = ({ products }) => {
 
     return (
         <section className="product-catalog">
-            <p className="text-reg mb-1">Number of Books: {productsFilteredByPrice.length}</p>
+            <p className="text-reg mb-1">Number of Books: <span className="primary-color">{productsFilteredByPrice.length}</span></p>
             <article className="products-container grid grid-autofit">
                 {
                     productsFilteredByPrice.map(product => <ProductItem product={product} key={product._id} />)
