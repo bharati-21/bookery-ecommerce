@@ -1,4 +1,4 @@
-import { useFilter } from "../../../contexts";
+import { useFilter } from "contexts/";
 
 const BookTypeFilterOption = ({ bookTypeFilter }) => {
 

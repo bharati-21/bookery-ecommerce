@@ -1,5 +1,5 @@
-import { useFilter } from '../contexts';
-import { filterByGenres, filterByPrice, filterByRatings, filterByBookTypes, sortBooks } from '../utils/';
+import { useFilter } from 'contexts/';
+import { filterByGenres, filterByPrice, filterByRatings, filterByBookTypes, sortBooks } from 'utils/';
 import { ProductItem } from './ProductItem';
 
 const ProductList = ({ products }) => {

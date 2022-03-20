@@ -1,7 +1,5 @@
-import React from 'react';
-
-import { Header } from '../components/';
-import { landingPageImages } from '../assets/LandingPage/';
+import { Header } from 'components/';
+import { landingPageImages } from 'assets/LandingPage/';
  
 
 const LandingPage = () => {

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from 'react';
 
-import { fetchProducts } from '../utils/';
-import { productReducerFunction } from '../reducers/';
+import { fetchProducts } from 'utils/';
+import { productReducerFunction } from 'reducers/';
 
 const initalProductState = {
     products: [],

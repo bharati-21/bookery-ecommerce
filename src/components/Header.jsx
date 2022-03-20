@@ -1,4 +1,3 @@
-import React from 'react';
 import ArrowRightAltSharpIcon from '@mui/icons-material/ArrowRightAltSharp';
 
 const Header = () => {
