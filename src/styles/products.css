@@ -86,7 +86,7 @@ li.list-head:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .product-card:hover {
