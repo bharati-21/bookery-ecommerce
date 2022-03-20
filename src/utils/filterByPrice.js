@@ -1,5 +1,5 @@
 const filterByPrice = (genreFilteredBooks, maxPriceValue) => {
-    return genreFilteredBooks.filter(({ totalStars }) => totalStars <= maxPriceValue);
+    return genreFilteredBooks.filter(({ sellingPrice }) => sellingPrice <= maxPriceValue);
 }
 
 export { filterByPrice };
