@@ -1,5 +1,6 @@
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import StarIcon from '@mui/icons-material/Star';
 
 const ProductItem = ({ product: 
         {
@@ -21,6 +22,8 @@ const ProductItem = ({ product:
     
     const localeOriginalPrice = originalPrice.toLocaleString("en-IN", {minimumFractionDigits: 2, maximumFractionDigits: 2});
     const localeSellingPrice = sellingPrice.toLocaleString("en-IN", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+    const localeTotalRatings = totalRatings.toLocaleString("en-IN");
 
     const genreMapping = genres.map(genre => 
         <li key={`${_id}-${genre}`} className="badge text-xs badge-secondary p-0-25 px-0-5 genre-item">
@@ -52,8 +55,19 @@ const ProductItem = ({ product:
                     <FavoriteBorderIcon  />
                 </span>
             </button>
+
             <div className="card-header p-1">
                 <img src={coverImg} alt={title} />
+                <div className="rating-container rating-badge m-1 px-0-75">
+                <span className="rating-value flex-row flex-align-center flex-justify-center">
+                    {totalStars}
+                    <StarIcon className="star-icon ml-0-25 mr-0-5 success-color"/>
+                    |
+                    <span className="ml-0-5 rating-count">
+                        {localeTotalRatings}
+                    </span>  
+                </span>               
+            </div>
             </div>
             <div className="card-body px-0-75">
                 <div className="card-description my-0-25">
