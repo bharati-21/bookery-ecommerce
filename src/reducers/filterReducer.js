@@ -3,11 +3,10 @@ const filterActions = {
     FILTER_BY_PRICE: 'FILTER_BY_PRICE',
     FILTER_BY_RATINGS: 'FILTER_BY_RATINGS',
     FILTER_BY_BOOK_TYPE: 'FILTER_BY_BOOK_TYPE',
-    SORT_BY_PRICE: 'SORT_BY_PRICE',
-    SORT_BY_RATINGS: 'SORT_BY_RATINGS'
+    SORT_BY: 'SORT_BY'
 };
 
-const filterReducerFunction = (prevFilterState, {filterType, filterPayload }) => {
+const filterReducerFunction = (prevFilterState, { filterType, filterPayload }) => {
     switch(filterType) {
         case filterActions.FILTER_BY_GENRE:
             return {...prevFilterState, 
@@ -30,7 +29,9 @@ const filterReducerFunction = (prevFilterState, {filterType, filterPayload }) =>
 
         case filterActions.FILTER_BY_PRICE: 
             return {...prevFilterState, price: filterPayload};
-
+        
+        case filterActions.SORT_BY:
+            return {...prevFilterState, sortBy: filterPayload};
     }
 }
 
