@@ -41,6 +41,11 @@
     -o-border-radius: var(--br-2);
 }
 
+li.list-head:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
 .product-filters .list-stacked .list-item:hover {
     border-radius: var(--br-2);
     -webkit-border-radius: var(--br-2);
@@ -81,7 +86,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .product-card:hover {
@@ -148,6 +153,25 @@
 
 .card-wishlist-btn:hover .icon {
     color: var(--bg-card-color);
+}
+
+.rating-container {
+    position: absolute;
+    bottom: 0.25rem;
+    left: 0.25rem;
+    font-size: 0.95rem;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.rating-container .star-icon {
+    width: 1rem;
+    height: 1rem;
 }
 
 .genre-label, .rating-label, .book-cover-label {

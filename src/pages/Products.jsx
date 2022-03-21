@@ -1,7 +1,5 @@
-import React from 'react';
-
-import { useProduct } from '../contexts/product-context';
-import { Filters, ProductList, SortingOptions } from '../components/';
+import { useProduct } from 'contexts/';
+import { Filters, ProductList, SortingOptions } from 'components/';
 
 const Products = () => {
     const { productState: { products, loading, error} } = useProduct();
@@ -19,7 +17,7 @@ const Products = () => {
                         </h2>
                         <SortingOptions />
                     </div>
-                    <Filters  />
+                    <Filters />
                     <ProductList products={products} />
                 </>
             }

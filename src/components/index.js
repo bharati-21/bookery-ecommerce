@@ -1,10 +1,19 @@
-import { Filters } from './Filters';
-import { Footer } from './Footer';
-import { Header } from './Header';
-import { Navbar } from './Navbar';
-import { ProductItem } from './ProductItem';
-import { ProductList } from './ProductList';
-import { SortingOptions } from './SortingOptions';
+export { Filters } from './Filters';
+export { Footer } from './Footer';
+export { Header } from './Header';
+export { Navbar } from './Navbar';
+export { ProductItem } from './ProductItem';
+export { ProductList } from './ProductList';
+export { SortingOptions } from './SortingOptions';
 
+export { BookTypeFilterOption } from './FilterOptions/BookTypeFilters/BookTypeFilterOption'
+export { BookTypeFilters } from './FilterOptions/BookTypeFilters/BookTypeFilters';
 
-export { Filters, Footer, Header, Navbar, ProductList, ProductItem, SortingOptions};
+export { RatingFilterOption } from './FilterOptions/RatingFilters/RatingFilterOption';
+export { RatingFilters } from './FilterOptions/RatingFilters/RatingFilters';
+
+export { GenreFilterOption } from './FilterOptions/GenreFilters/GenreFilterOption';
+export { GenreFilters } from './FilterOptions/GenreFilters/GenreFilters';
+
+export { PriceFilters } from './FilterOptions/PriceFilters/PriceFilters';
+export { ClearFilters } from './FilterOptions/ClearFilters'
