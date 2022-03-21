@@ -2,7 +2,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import StarIcon from '@mui/icons-material/Star';
 
-const ProductItem = ({ product: 
+const ProductItem = ({ book: 
         {
             author,
             bookType,
