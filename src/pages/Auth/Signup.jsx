@@ -56,7 +56,7 @@ const Signup = () => {
                             <label className="text-label text-reg flex-col mx-auto text-sm" htmlFor="input-psd">
                                 Password
                                 <span className="password-input-toggler">
-                                    <input type={`${showPassword ? 'text' : 'password'}`} id="input-psd" className="input-text px-0-75 py-0-5 mt-0-25" placeholder="********" autoComplete='off' name="password" onChange={handleFormDataChange} value={password} required />
+                                    <input type={`${showPassword ? 'text' : 'password'}`} id="input-psd" className="input-text px-0-75 py-0-5 mt-0-25 text-sm" placeholder="********" autoComplete='off' name="password" onChange={handleFormDataChange} value={password} required />
                                     <button type="button" className="btn btn-icon icon-show-psd" onClick={handleChangePasswordVisibility}>
                                         <span className="icon mui-icon">
                                             {showPasswordIcon}
@@ -80,7 +80,7 @@ const Signup = () => {
                             <input type="submit" value="Sign Up" className="btn btn-primary px-0-75 py-0-25 btn-full-width text-reg" />
                             <Link to="/login" className="btn btn-link btn-primary mt-0-75">
                                 Already have an account?
-                                Login <span className="icon icon-chevron-right">
+                                Login <span className="icon mui-icon icon-chevron-right">
                                     <ChevronRightIcon />
                                 </span>
                             </Link>
