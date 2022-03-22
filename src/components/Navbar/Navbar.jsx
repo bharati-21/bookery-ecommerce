@@ -6,6 +6,8 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 
+import './navbar.css';
+
 const Navbar = () => {
     return (
         <nav className="navbar">
