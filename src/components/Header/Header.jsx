@@ -1,6 +1,8 @@
 import React from 'react';
 import ArrowRightAltSharpIcon from '@mui/icons-material/ArrowRightAltSharp';
 
+import './header.css';
+
 const Header = () => {
   return (
     <header className="header parallax-image flex-row flex-align-center flex-justify-center">
