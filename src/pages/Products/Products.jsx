@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { useProduct } from '../contexts/product-context';
-import { Filters, ProductList, SortingOptions } from '../components/';
+import { useProduct } from '../../contexts/product-context';
+import { Filters, ProductList, SortingOptions } from '../../components';
+import './products.css';
 
 const Products = () => {
     const { productState: { products, loading, error} } = useProduct();
