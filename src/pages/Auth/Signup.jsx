@@ -23,7 +23,8 @@ const Signup = () => {
     const showPasswordIcon = showPassword ? <VisibilityOffIcon /> : <VisibilityIcon /> 
 
     const handleFormSubmit = event => {
-        console.log('Login Form Submit Handler')
+        event.preventDefault();
+        console.log('Signup Form Submit Handler')
     }
 
     const { name, email, password } = formData;
@@ -36,7 +37,7 @@ const Signup = () => {
                     <h3 className="text-center text-uppercase auth-head mb-2">
                         Sign Up
                     </h3>
-                    <form method="POST" className="auth-form px-1" onSubmit={handleFormSubmit}>
+                    <form className="auth-form px-1" onSubmit={handleFormSubmit}>
                         <div className="input-group input-default mt-1-5 mx-auto">
                             <label className="text-label text-reg flex-col mx-auto" htmlFor="input-signup-fname">
                                 Name
