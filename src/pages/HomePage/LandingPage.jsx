@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Header } from '../components/';
-import { landingPageImages } from '../assets/LandingPage/';
- 
+import { Header } from '../../components';
+import { landingPageImages } from '../../assets/LandingPage';
+import './landing-page.css';
 
 const LandingPage = () => {
     const { genres: {fiction, fantasy, romance, thriller, mystery, nonFiction, poem, classics }} = landingPageImages;
