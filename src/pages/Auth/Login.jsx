@@ -1,18 +1,48 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
 import './auth.css';
 
 const Login = () => {
+
+    const [formData, setFormData] = useState(
+        {
+            email: '',
+            password: ''
+        }
+    );
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleFormDataChange = event => {
+        const { name, value } = event.target;
+        setFormData(prevFormData => ({...prevFormData, [name]: value}));
+    }
+
+    const showPasswordIcon = showPassword ? <VisibilityOffIcon /> : <VisibilityIcon /> 
+
+    const handleFormSubmit = event => {
+        console.log('Login Form Submit Handler')
+    }
+
+    const { email, password } = formData;
+    const handleChangePasswordVisibility = () => setShowPassword(prevShowPassword => !prevShowPassword);
+
     return (
-        <main className="auth-main flex-col flex-align-center flex-justify-center mx-auto py-2 px-3">
+        <section className="auth-main flex-col flex-align-center flex-justify-center mx-auto py-2 px-3">
             <div className="auth-wrapper">
                 <section className="auth-container login-container mx-auto mb-1 px-1-5 py-2">
                     <h3 className="text-center text-uppercase auth-head mb-1">
                         Login
                     </h3>
-                    <form className="auth-form px-1 flex-col flex-align-center flex-justify-center">
+                    <form method="POST" className="auth-form px-1 flex-col flex-align-center flex-justify-center" onSubmit={handleFormSubmit}>
                         <div className="input-group input-default mt-1-5 mx-auto">
                             <label className="text-label text-reg flex-col mx-auto" htmlFor="input-login-email">
                                 Email
-                                <input type="email" id="input-login-email" className="input-text text-sm px-0-75 py-0-5 mt-0-25" placeholder="janedoe@gmail.com" required />
+                                <input type="email" name="email" id="input-login-email" className="input-text text-sm px-0-75 py-0-5 mt-0-25" placeholder="janedoe@gmail.com" value={email} onChange={handleFormDataChange} required />
                             </label>
                             <span className="text-message mt-0-5"></span>
                         </div>
@@ -20,11 +50,10 @@ const Login = () => {
                             <label className="text-label text-reg flex-col mx-auto text-sm" htmlFor="input-login-psd">
                                 Password
                                 <span className="password-input-toggler">
-                                    <input type="password" id="input-login-psd" className="input-text px-0-75 py-0-25 mt-0-25" placeholder="********"
-                                    required />
-                                    <button className="btn btn-icon icon-show-psd">
-                                        <span className="icon">
-                                            <i className="fas fa-eye"></i>
+                                    <input type={`${showPassword ? "text": "password"}`} id="input-login-psd" className="input-text px-0-75 py-0-5 mt-0-25 text-sm" placeholder="********" name="password" value={password} onChange={handleFormDataChange} autoComplete="off" required />
+                                    <button type="button" className="btn btn-icon icon-show-psd" onClick={handleChangePasswordVisibility}>
+                                        <span className="icon mui-icon">
+                                            {showPasswordIcon}
                                         </span>
                                     </button>
                                 </span>
@@ -46,16 +75,17 @@ const Login = () => {
                                 <input type="submit" className="btn btn-primary btn-full-width px-0-75 py-0-25 btn-full-width text-reg" value="Login"/>
                                 <input type="button" className="btn btn-primary btn-outline btn-full-width px-0-75 py-0-25 btn-full-width text-reg" value="Login with Test Credentials" />
                             </div>
-                            <a href="/pages/Authentication/singup/" className="btn btn-link btn-primary mt-0-75">Create a new account 
-                                <span className="icon">
-                                    <i className="fas fa-chevron-right"></i>
-                                </span>
-                            </a>
+                            <Link to="/signup" className="btn btn-link btn-primary mt-0-75">
+                                Create a new account 
+                                    <span className="icon mui-icon icon-chevron-right">
+                                        <ChevronRightIcon />
+                                    </span>
+                            </Link>
                         </div>
                     </form>
                 </section>  
             </div>         
-        </main>
+        </section>
             
             
             
