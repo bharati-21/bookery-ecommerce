@@ -1,7 +1,7 @@
-export { LandingPage } from "./LandingPage";
-export { Products } from "./Products";
-export { Cart } from "./Cart";
-export { WishList } from "./WishList";
-export { Signup } from "./Signup";
-export { Login } from "./Login";
-export { Logout } from "./Logout";
+export { LandingPage } from "./HomePage/LandingPage";
+export { Products } from "./Products/Products";
+export { Cart } from "./Cart/Cart";
+export { WishList } from "./WishList/WishList";
+export { Signup } from "./Auth/Signup";
+export { Login } from "./Auth/Login";
+export { Logout } from "./Auth/Logout";

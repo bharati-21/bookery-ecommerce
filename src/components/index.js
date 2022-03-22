@@ -1,7 +1,7 @@
 export { Filters } from './Filters';
-export { Footer } from './Footer';
-export { Header } from './Header';
-export { Navbar } from './Navbar';
+export { Footer } from './Footer/Footer';
+export { Header } from './Header/Header';
+export { Navbar } from './Navbar/Navbar';
 export { ProductItem } from './ProductItem';
 export { ProductList } from './ProductList';
 export { SortingOptions } from './SortingOptions';
