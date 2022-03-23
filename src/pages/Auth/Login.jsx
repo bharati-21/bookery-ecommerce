@@ -11,18 +11,16 @@ import { useToast } from 'custom-hooks/useToast';
 import { useAuth } from 'contexts/'
 
 const Login = () => {
-    const [formData, setFormData] = useState(
-        {
-            email: '',
-            password: ''
-        }
-    );
+    const initialFormData = {
+        email: '',
+        password: ''
+    }
+    const [formData, setFormData] = useState(initialFormData);
     const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
     const { setAuthState } = useAuth();
-
     const { showToast } = useToast();
 
     const handleFormDataChange = event => {
@@ -36,7 +34,6 @@ const Login = () => {
         event.preventDefault();
         const isLoginSuccessful = await initiateLogin(formData);
 
-
         if(isLoginSuccessful) {
             showToast('Login Successful. Please wait...', 'success');
             const { encodedToken, foundUser } = isLoginSuccessful; 
@@ -46,7 +43,10 @@ const Login = () => {
                 user: {...foundUser}
             });
             localStorage.setItem('bookery-token', encodedToken);
-            setTimeout(() => navigate('/'), 2000);
+            const timeoutId = setTimeout(() => {
+                setFormData(initialFormData);
+                navigate('/');
+            }, 2000);
         }
         else {
             showToast('Login Failed', 'error');
