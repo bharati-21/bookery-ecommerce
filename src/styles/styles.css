@@ -1,4 +1,5 @@
 @import url('https://elixir-ui.netlify.app/Components/elixir.css');
+@import url('react-toastify/dist/ReactToastify.css');
 @import url('./reset.css');
 @import url('./variables.css');
 
