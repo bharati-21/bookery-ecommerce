@@ -1,5 +1,6 @@
 import { Header } from 'components/Header/Header';
 import { landingPageImages } from 'assets/LandingPage/';
+import './landing-page.css';
  
 
 const LandingPage = () => {

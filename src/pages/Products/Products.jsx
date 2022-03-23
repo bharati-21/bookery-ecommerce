@@ -1,5 +1,6 @@
 import { useProduct } from 'contexts/';
 import { Filters, ProductList, SortingOptions } from 'components/';
+import './products.css';
 
 const Products = () => {
     const { productState: { products, loading, error} } = useProduct();
