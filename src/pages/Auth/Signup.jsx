@@ -1,19 +1,30 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
+import { initiateSignup } from 'utils/';
+import { useToast } from 'custom-hooks/useToast';
+import { useAuth } from 'contexts/';
+import './auth.css';
+
 const Signup = () => {
 
-    const [formData, setFormData] = useState(
-        {
-            name: '',
-            email: '',
-            password: '',
-        }
-    );
+    const initialFormData = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+    };
+
+    const [formData, setFormData] = useState(initialFormData);
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+
+    const { showToast } = useToast();
+    const { setAuthState } = useAuth();
 
     const handleFormDataChange = event => {
         const { name, value } = event.target;
@@ -22,12 +33,31 @@ const Signup = () => {
 
     const showPasswordIcon = showPassword ? <VisibilityOffIcon /> : <VisibilityIcon /> 
 
-    const handleFormSubmit = event => {
+    const handleFormSubmit = async event => {
         event.preventDefault();
-        console.log('Signup Form Submit Handler')
+        const isSignUpSuccessful = await initiateSignup(formData);
+        if(isSignUpSuccessful) {
+            showToast('Sign up successful. Please wait...', 'success');
+
+            const { encodedToken, foundUser } = isSignUpSuccessful;
+            setAuthState({ 
+                isAuth: true,
+                token: encodedToken,
+                user: {...foundUser}
+            });
+
+            localStorage.setItem('bookery-token', encodedToken);
+            setTimeout(() => {
+                setFormData(initialFormData);
+                navigate('/');
+            }, 2000);
+        }
+        else {
+            showToast('Sign up failed', 'error');
+        }
     }
 
-    const { name, email, password } = formData;
+    const { firstName, lastName, email, password } = formData;
     const handleChangePasswordVisibility = () => setShowPassword(prevShowPassword => !prevShowPassword);
 
     return (
@@ -40,8 +70,15 @@ const Signup = () => {
                     <form className="auth-form px-1" onSubmit={handleFormSubmit}>
                         <div className="input-group input-default mt-1-5 mx-auto">
                             <label className="text-label text-reg flex-col mx-auto" htmlFor="input-signup-fname">
-                                Name
-                                <input type="text" id="input-signup-fname" className="input-text text-sm px-0-75 py-0-5 mt-0-25" placeholder="Jane Doe" name="name" onChange={handleFormDataChange} value={name} required />
+                                First Name
+                                <input type="text" id="input-signup-fname" className="input-text text-sm px-0-75 py-0-5 mt-0-25" placeholder="Jane" name="firstName" onChange={handleFormDataChange} value={firstName} required />
+                            </label>
+                            <span className="text-message mt-0-5"></span>
+                        </div>
+                        <div className="input-group input-default mt-1-5 mx-auto">
+                            <label className="text-label text-reg flex-col mx-auto" htmlFor="input-signup-lname">
+                                Last Name
+                                <input type="text" id="input-signup-lname" className="input-text text-sm px-0-75 py-0-5 mt-0-25" placeholder="Dow" name="lastName" onChange={handleFormDataChange} value={lastName} required />
                             </label>
                             <span className="text-message mt-0-5"></span>
                         </div>
@@ -68,7 +105,7 @@ const Signup = () => {
                         </div> 
                         <div className="psd-mgmt-container mt-2 flex-row flex-align-center flex-justify-between flex-wrap">
                             <label htmlFor="checkbox-remember" className="flex-row input-checkbox-remember flex-align-center text-sm">
-                                <input type="checkbox" className="input-checkbox text-reg" id="checkbox-remember" />
+                                <input type="checkbox" className="input-checkbox text-reg" id="checkbox-remember" required />
                                 I accept terms and conditions
                             </label>
                             <div className="btn btn-link btn-primary btn-forgot-psd text-sm display-none">
