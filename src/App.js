@@ -3,7 +3,7 @@ import "./styles/styles.css";
 
 /* Component imports */
 import { Navbar, Footer } from './components/';
-import { Routes } from "./routes/Routes";
+import { Routes } from "./routes/WebsiteRoutes";
 
 function App() {
     return (
