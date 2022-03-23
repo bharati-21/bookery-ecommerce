@@ -36,6 +36,7 @@ const Login = () => {
         event.preventDefault();
         const isLoginSuccessful = await initiateLogin(formData);
 
+
         if(isLoginSuccessful) {
             showToast('Login Successful. Please wait...', 'success');
             const { encodedToken, foundUser } = isLoginSuccessful; 
@@ -55,11 +56,10 @@ const Login = () => {
     const handleChangePasswordVisibility = () => setShowPassword(prevShowPassword => !prevShowPassword);
 
     const handleLoginWithTestCredentials = event => {
-        setFormData(({
-                email: 'adarshBalika@gmail.com',
+        setFormData({
+                email: 'adarshbalika@gmail.com',
                 password: 'adarshBalika123'
-            })
-        );
+            });
     }
 
     return (            
@@ -103,7 +103,7 @@ const Login = () => {
                         <div className="auth-button-container mt-1 flex-col flex-align-center">
                             <div className="login-button-container flex-col flex-align-center flex-justify-center">
                                 <input type="submit" className="btn btn-primary btn-full-width px-0-75 py-0-25 btn-full-width text-reg" value="Login"/>
-                                <input type="button" className="btn btn-primary btn-outline btn-full-width px-0-75 py-0-25 btn-full-width text-reg" value="Login with Test Credentials" onClick={handleLoginWithTestCredentials} />
+                                <input type="submit" className="btn btn-primary btn-outline btn-full-width px-0-75 py-0-25 btn-full-width text-reg" value="Login with Test Credentials" onClick={handleLoginWithTestCredentials} />
                             </div>
                             <Link to="/signup" className="btn btn-link btn-primary mt-0-75 flex-row flex-justify-center flex-align-center">
                                 Create a new account 
