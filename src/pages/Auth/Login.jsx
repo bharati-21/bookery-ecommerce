@@ -44,7 +44,8 @@ const Login = () => {
                 isAuth: true,
                 token: encodedToken,
                 user: {...foundUser}
-            })
+            });
+            localStorage.setItem('bookery-token', encodedToken);
             setTimeout(() => navigate('/'), 2000);
         }
         else {
