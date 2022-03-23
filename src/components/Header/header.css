@@ -1,8 +1,8 @@
 .parallax-image {
     background: url('assets/images/library-img.jpg') no-repeat center center/ cover; 
     background-attachment: fixed;
-    height: 110vh;
-    top: -10vh;
+    height: 70vh;
+    top: -12vh;
     position: relative;
     width: 100%;
 }
@@ -24,14 +24,20 @@
 }
 
 .hero-container {
-    height: 95vh;
+    height: 70vh;
     width: 100%;
 }
 
 .hero-content {
+    top: 60%;
+    transform: translateY(-50%);
     position: absolute;
     z-index: 0;
     color: var(--light-theme-bg-color);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
 }
 
 .hero-content h1 {

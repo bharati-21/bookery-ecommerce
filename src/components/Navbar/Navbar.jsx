@@ -17,11 +17,11 @@ const Navbar = () => {
                     <a href="/">Shop</a>
                 </li>
             </ul>
-            <h6 className="logo nav-link">     
+            <h5 className="logo nav-link">     
                 <a href="#" className="nav-link"> 
                     Bookery
                 </a>
-            </h6>
+            </h5>
 
             <div className="search-container">
                 <CloseSharpIcon className="close-icon"/>
@@ -42,26 +42,34 @@ const Navbar = () => {
             
             <ul className="navlinks navlinks-right list list-inline nav-icons">
                     <li className="nav-link" >
-                        <SearchIcon  />
+                        <span className="icon mui-icon">
+                            <SearchIcon />
+                        </span>
                     </li>                    
                 <div className="badge-container">
                     <li className="nav-link badge-icon">
-                        <ShoppingCartIcon  />
+                        <span className="icon mui-icon">
+                            <ShoppingCartIcon  />
+                        </span>
                     </li>
-                    <span className="badge-status badge-default badge-notification p-0-25">
+                    <span className="badge-status badge-primary badge-notification p-0-25">
                         0
                     </span>
                 </div>
                 <div className="badge-container">
                     <li className="nav-link badge-icon">
-                        <FavoriteBorderIcon  />
+                        <span className="icon mui-icon">
+                            <FavoriteBorderIcon  />
+                        </span>
                     </li>
-                    <span className="badge-status badge-default badge-notification p-0-25">
+                    <span className="badge-status badge-primary badge-notification p-0-25">
                         0
                     </span>
                 </div>
                 <li className="nav-link">
-                    <AccountCircleIcon  />
+                    <span className="icon mui-icon">
+                        <AccountCircleIcon  />
+                    </span>
                 </li>
             </ul>
         </nav>            

@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="header parallax-image flex-row flex-align-center flex-justify-center">
         <section className="hero-container flex flex-col flex-align-center flex-justify-center">
-            <article className="hero-content flex-col mx-2">
+            <article className="hero-content flex-col flex-justify-center flex-align-start mx-2">
                 <h1 className="hero-head text-light">
                     One shop stop for all your book needs and moods.
                 </h1>
