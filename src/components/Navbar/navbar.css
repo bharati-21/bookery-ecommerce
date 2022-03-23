@@ -10,6 +10,7 @@
     margin: 0 auto;
     background-color: rgba(245, 247, 250, 0.9);
     box-shadow: 0 0 0.25em var(--box-shadow-color);
+    min-height: 7vh;
 }
 
 .navbar .logo {
@@ -28,18 +29,22 @@
     -o-transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.navbar .nav-link a {
+    line-height: 1;
+}
+
 .navbar .nav-link:hover {
     color: var(--light-theme-hover-color);
 }
 
 .navbar .navlinks {
     display: flex;
-    gap: var(--space-1-5);
+    gap: 1.25rem;
 }
 
 .navlinks .nav-link {
-    font-weight: 550;
-    font-size: 0.9rem;
+    font-weight: 700;
+    font-size: 1.15rem;
     text-transform: uppercase;
 }
 
@@ -49,9 +54,7 @@
     justify-content: center;
 }
 
-.badge-container .badge-default {
-    background-color: var(--dark-theme-bg-color);
-    color: var(--light-theme-bg-color);
+.badge-container .badge-primary {
     font-size: 0.75rem;
     width: 0.875;
     height: 0.875;
