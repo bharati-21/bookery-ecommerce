@@ -36,7 +36,7 @@ export const addItemToCartHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
   try {
     if (!userId) {
-      new Response(
+      return new Response(
         404,
         {},
         {
