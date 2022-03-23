@@ -5,3 +5,4 @@ export { filterByRatings } from './filterByRatings';
 export { filterByBookTypes } from './filterByBookTypes';
 export { sortBooks } from './sortBooks';
 export { compose } from './compose';
+export { initiateLogin } from './initiateLogin';
