@@ -10,7 +10,7 @@ const LandingPage = () => {
     return (
         <>
             <Header  />
-            <main className="main-home my-2 mx-auto py-2 px-5">
+            <main className="main-home mb-2 mx-auto px-5">
                 <h3 className="hero-sub-head text-center mt-1 mb-2">
                     Now, get your books delivered within 24 hours to your doorstep!
                 </h3>
