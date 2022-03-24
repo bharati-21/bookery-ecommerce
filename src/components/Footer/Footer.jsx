@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom';
 
 import './footer.css';
 
@@ -24,9 +24,9 @@ const Footer = () => {
             </div>
             <div className="secondary-footer px-5 py-2 grid grid-4">
                 <ul className="footer-item list list-stacked list-style-none grid-item">
-                    <p className="list-head text-sm p-0-5 mb-1">
+                    <li className="list-head text-sm p-0-5 mb-1">
                         Customer Center
-                    </p>
+                    </li>
                     <li className="list-item flex-row px-0-5">
                         <span className="icon">
                             <i className="fas fa-phone-alt mr-0-5"></i>
@@ -52,9 +52,9 @@ const Footer = () => {
                     </li>  
                 </ul>
                 <ul className="footer-item list list-stacked list-style-none grid-item">
-                    <p className="list-head text-sm p-0-5 mb-1">
+                    <li className="list-head text-sm p-0-5 mb-1">
                         Service Hub and Store
-                    </p>
+                    </li>
                     <li className="list-item flex-row px-0-5">
                         <address>
                             Royal Industrial Estate, <br />
@@ -65,33 +65,35 @@ const Footer = () => {
                     </li>
                 </ul>
                 <ul className="footer-item list list-stacked list-style-none grid-item">
-                    <p className="list-head text-sm p-0-5 mb-1">
+                    <li className="list-head text-sm p-0-5 mb-1">
                         Quick Links
-                    </p>
+                    </li>
                     <li className="list-item px-0-5">
-                        <a href="/" className="btn btn-link btn-light text-sm pb-0-25 brand logo">bookery</a>
+                        <Link to="/" className="btn btn-link btn-light text-sm pb-0-25 brand logo">
+                            Bookery
+                        </Link>
                     </li>
                     <li className="list-item px-0-5 text-xs">
                         <ul className="list list-inline list-style-none">
                             <li className="list-item pr-0-25">
-                                <a href="#" className="btn-link">About Us</a> 
+                                <Link to="/" className="btn-link">About Us</Link>
                             </li>
                             <li className="list-item px-0-25">
-                                <a href="#" className="btn-link">Products</a>
+                                <Link to="/products" className="btn-link">Shop</Link>
                             </li>
                             <li className="list-item px-0-25">
-                                <a href="#" className="btn-link">My orders</a>
+                                <Link to="/cart" className="btn-link">My Cart</Link>
                             </li>
                             <li className="list-item pl-0-25">
-                                <a href="#" className="btn-link">Cart</a>
+                                <Link to="/wishlist" className="btn-link">My Wishlist</Link>
                             </li>
                         </ul>
                     </li>
                 </ul>
                 <ul className="footer-item list list-stacked list-style-none grid-item">
-                    <p className="list-head text-sm p-0-5 mb-1">
+                    <li className="list-head text-sm p-0-5 mb-1">
                         Social Media
-                    </p>
+                    </li>
                     <li className="list-item">
                         <div className="social-links flex-row">
                             <a href="#" className="btn btn-link btn-light">

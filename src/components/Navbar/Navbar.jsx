@@ -3,6 +3,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
+import { Link } from 'react-router-dom'; 
 
 import './navbar.css';
 
@@ -10,17 +11,11 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <ul className="navlinks navlinks-left list list-inline">
-                <li className="nav-link">
-                    <a href="/">Home</a>
-                </li>
-                <li className="nav-link">
-                    <a href="/">Shop</a>
-                </li>
+                <Link to="/" className="nav-link flex-col flex-align-center flex-justify-center">Home</Link>
+                <Link to="/products" className="nav-link">Shop</Link>
             </ul>
-            <h5 className="logo nav-link">     
-                <a href="#" className="nav-link"> 
-                    Bookery
-                </a>
+            <h5 className="logo nav-link">   
+                <Link to="/" className="nav-link">Bookery</Link> 
             </h5>
 
             <div className="search-container">

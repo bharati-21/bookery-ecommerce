@@ -1,6 +1,7 @@
 import { Header } from 'components/Header/Header';
 import { landingPageImages } from 'assets/LandingPage/';
 import './landing-page.css';
+import { Link } from 'react-router-dom';
  
 
 const LandingPage = () => {
@@ -63,12 +64,12 @@ const LandingPage = () => {
                         </div>
                         
                     </article>
-                    <a href="/pages/products/" className="btn text-center mx-auto mt-3 py-0-5 px-0-75">
+                    <Link to="/products" className="btn text-center mx-auto mt-3 py-0-5 px-0-75">
                         Discover more genres! 
                         <span className="icon">
                             <i className="fas fa-chevron-right"></i>
                         </span>
-                    </a>
+                    </Link>
                 </section>
                 <section className="section-top-picks my-3 pt-2 pb-3 text-center" id="top-picks">
                     <h2 className="section__head">
@@ -81,7 +82,7 @@ const LandingPage = () => {
                         <section className="product-catalog">
                             <article className="products-container grid grid-autofit">
                                 <div className="product-card card card-vertical">
-                                    <a href="/pages/products/">
+                                    <Link to="/products">
                                         <div className="card-header p-1">
                                             <img src={atomicHabits} alt="Atomic habits by James Clear" />
                                         </div>
@@ -91,10 +92,10 @@ const LandingPage = () => {
                                                 <p className="text-xs card-subtitle">James Clear</p>
                                             </div>            
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div className="product-card card card-vertical">
-                                    <a href="/pages/products/">
+                                    <Link to="/products">
                                         <div className="card-header p-1">
                                             <img src={aManCalledOve} alt="Man Called Ove by Fredrick Backman" />
                                         </div>
@@ -104,31 +105,33 @@ const LandingPage = () => {
                                                 <p className="text-xs card-subtitle">Fredrick Backman</p>
                                             </div>            
                                         </div>
-                                    </a>        
+                                    </Link>        
                                 </div>
                             
                                 <div className="product-card card card-vertical">
-                                    <div className="card-header p-1">
-                                        <img src={shadowAndBone} alt="Shadow and Bone by Leigh Bardugo" />
-                                    </div>
-                                    <div className="card-body px-0-75">
-                                        <div className="card-description my-0-25">
-                                            <h6 className="text-reg card-title">Shadow and Bone</h6>
-                                            <p className="text-xs card-subtitle">Leigh Bardugo</p>
-                                        </div>          
-                                    </div>
+                                    <Link to="/products">
+                                        <div className="card-header p-1">
+                                            <img src={shadowAndBone} alt="Shadow and Bone by Leigh Bardugo" />
+                                        </div>
+                                        <div className="card-body px-0-75">
+                                            <div className="card-description my-0-25">
+                                                <h6 className="text-reg card-title">Shadow and Bone</h6>
+                                                <p className="text-xs card-subtitle">Leigh Bardugo</p>
+                                            </div>          
+                                        </div>
+                                    </Link>
                                 </div>
                                 
                             </article>
                         </section>
                         
                     </article>
-                    <a href="/pages/products/" className="btn text-center mx-auto mt-3 py-0-5 px-0-75">
+                    <Link to="/products" className="btn text-center mx-auto mt-3 py-0-5 px-0-75">
                         Discover more books! 
                         <span className="icon">
                             <i className="fas fa-chevron-right"></i>
                         </span>
-                    </a>
+                    </Link>
                 </section>
             </main>
         </>
