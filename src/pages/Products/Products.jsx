@@ -5,7 +5,7 @@ import './products.css';
 const Products = () => {
     const { productState: { products, loading, error} } = useProduct();
     return (
-        <main className="products-main my-2 mx-auto py-2 px-3 grid grid-2">
+        <main className="main products-main my-2 mx-auto py-2 px-3 grid grid-2">
             {
                 loading ? <h1 className="loading text success-color my-2 text-center">Loading Books...</h1>
                 :
