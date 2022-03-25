@@ -8,7 +8,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import './auth.css';
 import { initiateLogin } from 'utils/';
 import { useToast } from 'custom-hooks/useToast';
-import { useAuth } from 'contexts/'
+import { useAuth, useCart } from 'contexts/'
 
 const Login = () => {
     const initialFormData = {
@@ -20,7 +20,8 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const { setAuthState } = useAuth();
+    const { setAuthState, authState } = useAuth();
+    const { cartDispatch } = useCart();
     const { showToast } = useToast();
 
     const handleFormDataChange = event => {
@@ -36,12 +37,15 @@ const Login = () => {
 
         if(isLoginSuccessful) {
             showToast('Login Successful. Please wait...', 'success');
-            const { encodedToken, foundUser } = isLoginSuccessful; 
+            const { encodedToken, foundUser : {cart, wishlist, ...otherUserDetails} } = isLoginSuccessful; 
             setAuthState({ 
                 isAuth: true,
                 token: encodedToken,
-                user: {...foundUser}
+                user: {...otherUserDetails}
             });
+            
+            cartDispatch({type: 'INIT_CART_ITEMS', payload: cart});
+
             localStorage.setItem('bookery-token', encodedToken);
             const timeoutId = setTimeout(() => {
                 setFormData(initialFormData);
