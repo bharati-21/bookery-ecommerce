@@ -20,7 +20,7 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const { setAuthState, authState } = useAuth();
+    const { setAuthState } = useAuth();
     const { cartDispatch } = useCart();
     const { showToast } = useToast();
 
@@ -37,14 +37,14 @@ const Login = () => {
 
         if(isLoginSuccessful) {
             showToast('Login Successful. Please wait...', 'success');
-            const { encodedToken, foundUser : {cart, wishlist, ...otherUserDetails} } = isLoginSuccessful; 
+            const { encodedToken, foundUser : {cartItems, wishlist, ...otherUserDetails} } = isLoginSuccessful; 
             setAuthState({ 
                 isAuth: true,
                 token: encodedToken,
                 user: {...otherUserDetails}
             });
             
-            cartDispatch({type: 'INIT_CART_ITEMS', payload: cart});
+            cartDispatch({type: 'INIT_CART_ITEMS', payload: { cartItems }});
 
             localStorage.setItem('bookery-token', encodedToken);
             const timeoutId = setTimeout(() => {

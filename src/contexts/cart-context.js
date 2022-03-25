@@ -5,7 +5,7 @@ import { useAuth } from './';
 import { cartReducerFunction } from 'reducers/';
 
 const initialCartState = {
-    cart: [],
+    cartItems: [],
     loading: true,
     error: null
 }

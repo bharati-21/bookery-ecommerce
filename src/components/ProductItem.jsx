@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ProductItem = ({book}) => {
 
-    const { cartState: { cart }, cartDispatch } = useCart();
+    const { cartState: { cartItems }, cartDispatch } = useCart();
     const { authState: { token } } = useAuth();
     const { showToast } = useToast();
     const [ bookInCart, setBookInCart ] = useState(false);
@@ -31,7 +31,7 @@ const ProductItem = ({book}) => {
     } = book;
 
     useEffect(() => {
-        const isBookInCart = cart.includes(cartItem => cartItem.id === id)
+        const isBookInCart = cartItems.includes(cartItem => cartItem.id === id)
         if(isBookInCart) {
             setBookInCart(true);
         }
@@ -72,7 +72,7 @@ const ProductItem = ({book}) => {
     
         if(productPostedToCart) {   
             showToast('Book added to the cart', 'success');
-            cartDispatch({type: 'ADD_TO_CART', payload: {cart: [...cart, book], error:false, loading: false}});
+            cartDispatch({type: 'ADD_TO_CART', payload: {cartItem: book, error:false, loading: false}});
             setBookInCart(true);
         }
         else {

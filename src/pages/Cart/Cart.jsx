@@ -1,11 +1,11 @@
 import { CartList, CartSummary } from 'components';
-import { useCart, useAuth } from 'contexts/';
+import { useCart } from 'contexts/';
 import './Cart.css';
 import { Link } from 'react-router-dom'
 
 
 const Cart = () => {
-    const { cartState: { cart, loading, error } } = useCart();
+    const { cartState: { cartItems, loading, error } } = useCart();
 
     return (
         <main className="main cart-main my-2 mx-auto px-3 py-2">
@@ -16,7 +16,7 @@ const Cart = () => {
             :
             <>
                 { 
-                    cart.length  ?
+                    cartItems.length  ?
                     
                     <>
                         <h2 className="main-head mb-2 py-0-25 text-center">
@@ -24,7 +24,7 @@ const Cart = () => {
                         </h2>
                         <section className="cart-wrapper mx-auto">
                             <CartList />
-                            <CartSummary totalNumItems={cart.length} />
+                            <CartSummary totalNumItems={cartItems.length} />
                         </section>
                     </>
                     :
