@@ -34,8 +34,8 @@ const CartListItem = ({ cartItem }) => {
                         </p>    
                     </div>
                     <div className="card-quantity flex-row flex-align-center flex-justify-start">
-                        <button className="btn btn-quantity btn-decrease-quantity">-</button>
-                        <input type="number" name="cart-item-quantity" className="input-text input-quantity px-0-75 py-0-25 text-center" id="cart-item-quantity" min="1" />
+                        <button className="btn btn-quantity btn-decrease-quantity flex-col">-</button>
+                        <input type="number" name="cart-item-quantity" className="input-text input-quantity px-0-75 py-0-25 text-center flex-col" id="cart-item-quantity" min="1" />
                         <button className="btn btn-quantity btn-increase-quantity">+</button> 
                     </div>
                 </div>
