@@ -9,3 +9,5 @@ export { sortBooks } from './sortBooks';
 export { compose } from './compose';
 export { initiateLogin } from './initiateLogin';
 export { initiateSignup } from './initiateSignup';
+export { getCartItemsTotalPrice, getCartItemTotalSavingPrice, getCartItemsTotalOriginalPrice } from './getCartItemsTotalPrice';
+export { getCartItemsData } from './getCartItemsData';
