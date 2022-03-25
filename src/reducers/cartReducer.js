@@ -1,23 +1,23 @@
 const cartActionTypes = {
-    INIT_CART_SUCCESS: 'INIT_CART_SUCCESS',
-    INIT_CART_FAILURE: 'INIT_CART_FAILURE',
+    INIT_CART_ITEMS: 'INIT_CART_ITEMS',
+    ADD_TO_CART_FAILURE: 'ADD_TO_CART_FAILURE',
     ADD_TO_CART: 'ADD_TO_CART',
 };
 
-const cartReducerFunction = (prevCartState, {type, payload: {cart, error, loading}}) => {
+const cartReducerFunction = (prevCartState, {type, payload: {cartItems, cartItem, error, loading}}) => {
     switch(type) {
-        case cartActionTypes.INIT_CART_SUCCESS :
-            return {...prevCartState, cart, error, loading};
 
-        case cartActionTypes.INIT_CART_FAILURE :
+        case cartActionTypes.INIT_CART_ITEMS :
+            return {...prevCartState, cartItems, error, loading};
+
+        case cartActionTypes.ADD_TO_CART_FAILURE :
             return {
-                ...prevCartState, cart: [],  error, loading
+                ...prevCartState, cartItems: [],  error, loading
             }
 
         case cartActionTypes.ADD_TO_CART: 
-        console.log(cart);
             return {
-                ...prevCartState, cart, error, loading
+                ...prevCartState, cartItems: [...prevCartState.cartItems, cartItem], error, loading
             }
 
         default: 

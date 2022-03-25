@@ -8,9 +8,9 @@ export const fetchCartItems = async (cartDispatch, token) => {
 
         if(status >= 200 && status < 300) {
             cartDispatch({
-                type: 'INIT_CART_SUCCESS', 
+                type: 'INIT_CART_ITEMS', 
                 payload: {
-                    cart,
+                    cartItems: cart,
                     error: null,
                     loading: false
                 }
@@ -18,9 +18,9 @@ export const fetchCartItems = async (cartDispatch, token) => {
             return;
         }
         cartDispatch({
-            type: 'INIT_CART_FAILURE', 
+            type: 'ADD_TO_CART_FAILURE', 
             payload: {
-                cart: [],
+                cartItems: [],
                 error: 'Cart items could not be fetched. Try again after sometime',
                 loading: false
             }
@@ -28,9 +28,9 @@ export const fetchCartItems = async (cartDispatch, token) => {
     }
     catch(error) {
         cartDispatch({
-            type: 'INIT_CART_FAILURE', 
+            type: 'ADD_TO_CART_FAILURE', 
             payload: {
-                cart: [],
+                cartItems: [],
                 error: 'Cart items could not be fetched. Try again after sometime',
                 loading: false
             }
