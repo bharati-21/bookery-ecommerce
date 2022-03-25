@@ -24,7 +24,7 @@ const Cart = () => {
                         </h2>
                         <section className="cart-wrapper mx-auto">
                             <CartList />
-                            <CartSummary totalNumItems={cartItems.length} />
+                            <CartSummary cartItems={cartItems} />
                         </section>
                     </>
                     :
