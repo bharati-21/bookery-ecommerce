@@ -1,4 +1,6 @@
 export { fetchProducts } from "./fetchProducts";
+export { fetchCartItems } from "./fetchCartItems";
+export { postToCart } from './postToCart';
 export { filterByGenres } from './filterByGenres';
 export { filterByPrice } from './filterByPrice';
 export { filterByRatings } from './filterByRatings';
