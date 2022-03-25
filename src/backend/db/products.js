@@ -34,7 +34,7 @@ export const products = [
         sellingPrice: 228.00,
         originalPrice: 295.00,
         discountPercent: 23,
-        discountPrice: 292.00,
+        discountPrice: 67.00,
         totalRatings: 372,
         totalStars: 4.5,
         genres: ['Non-Fiction', 'Spirituality', 'Self Help', 'Philosophy', 'Psychology'],
