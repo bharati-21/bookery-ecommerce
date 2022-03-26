@@ -4,7 +4,7 @@ const cartActionTypes = {
     ADD_TO_CART: 'ADD_TO_CART',
 };
 
-const cartReducerFunction = (prevCartState, {type, payload: {cartItems, cartItem, error, loading}}) => {
+const cartReducerFunction = (prevCartState, {type, payload: {cartItems, error, loading}}) => {
     switch(type) {
 
         case cartActionTypes.INIT_CART_ITEMS :
@@ -17,7 +17,7 @@ const cartReducerFunction = (prevCartState, {type, payload: {cartItems, cartItem
 
         case cartActionTypes.ADD_TO_CART: 
             return {
-                ...prevCartState, cartItems: [...prevCartState.cartItems, cartItem], error, loading
+                ...prevCartState, cartItems, error, loading
             }
 
         default: 
