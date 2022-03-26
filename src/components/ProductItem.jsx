@@ -136,11 +136,12 @@ const ProductItem = ({book}) => {
             </div>
             <div className="card-footer mt-1 mb-0-75  px-0-75">
                 <button className="btn btn-primary btn-text-icon btn-full-width p-0-25" 
-                    onClick={e => isAuth ? bookInCart ? navigate('/cart') : handleAddToCart()
-                            :
-                            navigate('/login')
-                    }
-                >
+                    onClick={e => isAuth ?
+                        bookInCart ? 
+                            navigate('/cart') : handleAddToCart()
+                        :
+                        navigate('/login')
+                }>
                     { bookInCart ? <span>Go to Cart</span>: <span>Add to Cart</span> } 
                     <span className="icon">
                         <ShoppingCartIcon />
