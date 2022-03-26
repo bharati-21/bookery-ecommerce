@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const ProductItem = ({book}) => {
 
     const { cartState: { cartItems }, cartDispatch } = useCart();
-    const { authState: { token } } = useAuth();
+    const { authState: { token, isAuth } } = useAuth();
     const { showToast } = useToast();
     const [ bookInCart, setBookInCart ] = useState(false);
     const navigate = useNavigate();
@@ -136,17 +136,12 @@ const ProductItem = ({book}) => {
             </div>
             <div className="card-footer mt-1 mb-0-75  px-0-75">
                 <button className="btn btn-primary btn-text-icon btn-full-width p-0-25" 
-                    onClick={e => 
-                        bookInCart 
-                        ? 
-                            navigate('/cart') 
-                            : 
-                            handleAddToCart()
+                    onClick={e => isAuth ? bookInCart ? navigate('/cart') : handleAddToCart()
+                            :
+                            navigate('/login')
                     }
                 >
-                    {
-                        bookInCart ? <span>Go to Cart</span>: <span>Add to Cart</span>
-                    } 
+                    { bookInCart ? <span>Go to Cart</span>: <span>Add to Cart</span> } 
                     <span className="icon">
                         <ShoppingCartIcon />
                     </span> 
