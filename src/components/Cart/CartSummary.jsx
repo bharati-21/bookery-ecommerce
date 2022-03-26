@@ -1,12 +1,14 @@
+import { useCart } from "contexts/";
 import { getCartItemsData } from "utils/";
 
-const CartSummary = ({ cartItems }) => {
+const CartSummary = () => {
 
-    const { cartItemsTotalPrice, cartItemsTotalSavingPrice, cartItemsTotalOriginalPrice } = getCartItemsData(cartItems);
+    const { cartState: { cartItems } } = useCart();
 
-    const numCartItems = cartItems.length;
+    const { cartItemsTotalPrice, cartItemsTotalSavingPrice, cartItemsTotalOriginalPrice, deliveryChargesApplicable, numCartItemsTotal } = getCartItemsData(cartItems);
 
-    const deliveryCharges = cartItemsTotalPrice < 500 ? (
+
+    const deliveryCharges = deliveryChargesApplicable ? (
         <p className="text-reg item-content">₹ 49</p>
     ) : (
         <p className="text-reg item-content">FREE</p>
@@ -17,7 +19,7 @@ const CartSummary = ({ cartItems }) => {
             <h4 className="section-head pb-1 text-center">
                 Price Details 
                 <p className="text-reg">
-                ({numCartItems} items)
+                ({numCartItemsTotal} items)
                 </p>
             </h4>
             <article className="payment-details">
