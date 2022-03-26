@@ -72,7 +72,7 @@ const ProductItem = ({book}) => {
     
         if(productPostedToCart) {   
             showToast('Book added to the cart', 'success');
-            cartDispatch({type: 'ADD_TO_CART', payload: {cartItem: book, error:false, loading: false}});
+            cartDispatch({type: 'ADD_TO_CART', payload: {cartItems: productPostedToCart, error:false, loading: false}});
             setBookInCart(true);
         }
         else {
