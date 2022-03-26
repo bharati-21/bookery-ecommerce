@@ -1,13 +1,18 @@
-import { getCartItemsTotalPrice, getCartItemTotalSavingPrice, getCartItemsTotalOriginalPrice } from './';
+import { getCartItemsTotal } from './';
 
 const getCartItemsData = (cartItems) => {
-    let cartItemsTotalPrice = getCartItemsTotalPrice(cartItems);
-    const cartItemsTotalSavingPrice = getCartItemTotalSavingPrice(cartItems);
-    const cartItemsTotalOriginalPrice = getCartItemsTotalOriginalPrice(cartItems);
+    let cartItemsTotalPrice = getCartItemsTotal(cartItems, 'TOTAL_SELLING_PRICE');
+    const cartItemsTotalOriginalPrice = getCartItemsTotal(cartItems, 'TOTAL_COST_PRICE');
+    const cartItemsTotalSavingPrice = getCartItemsTotal(cartItems, 'TOTAL_DISCOUNT_PRICE');
+    const numCartItemsTotal = getCartItemsTotal(cartItems, 'TOTAL_ITEMS');
 
-    cartItemsTotalPrice += cartItemsTotalPrice < 500 ? 49 : 0;
+    let deliveryChargesApplicable = false;
+    if(cartItemsTotalPrice < 500) {
+        cartItemsTotalPrice += 49;
+        deliveryChargesApplicable = true;
+    }
 
-    return { cartItemsTotalPrice, cartItemsTotalSavingPrice, cartItemsTotalOriginalPrice };
+    return { cartItemsTotalPrice, cartItemsTotalSavingPrice, cartItemsTotalOriginalPrice, deliveryChargesApplicable, numCartItemsTotal };
 }
 
 export { getCartItemsData };
