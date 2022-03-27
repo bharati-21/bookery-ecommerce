@@ -13,3 +13,4 @@ export { getCartItemsTotal } from './getCartItemsTotal';
 export { getCartItemsData } from './getCartItemsData';
 export { updateProductInCart } from './updateProductInCart';
 export { deleteProductInCart } from './deleteProductInCart';
+export { fetchWishListItems } from './fetchWishListItems';
