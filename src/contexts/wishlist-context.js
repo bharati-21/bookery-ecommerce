@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useReducer } from 'react';
 
 import { fetchWishListItems } from 'utils/';
 import { useAuth } from './';
-import { wishlistReducerFunction } from 'reducers/';
+import { wishListReducerFunction } from 'reducers/';
 
 const initialWishListState = {
     wishListItems: [],
@@ -19,11 +19,11 @@ const WishListProvider = ({ children }) => {
     
     useEffect(() => {
         if(isAuth) {
-            fetchWishListItems(cartDispatch, token);
+            fetchWishListItems(wishListDispatch, token);
         }
     }, [isAuth]);
 
-    const [wishListState, wishListDispatch] = useReducer(wishlistReducerFunction, initialWishListState);
+    const [wishListState, wishListDispatch] = useReducer(wishListReducerFunction, initialWishListState);
 
     return (
         <Provider value={{wishListState, wishListDispatch}}>
@@ -32,6 +32,6 @@ const WishListProvider = ({ children }) => {
     );
 }
 
-const useWishlist = () => useContext(WishListContext);
+const useWishList = () => useContext(WishListContext);
 
-export { useWishlist, WishListProvider };
+export { useWishList, WishListProvider };
