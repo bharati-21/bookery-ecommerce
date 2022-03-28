@@ -43,9 +43,11 @@ const Navbar = () => {
                     </li>                    
                 <div className="badge-container">
                     <li className="nav-link badge-icon">
-                        <span className="icon mui-icon">
-                            <ShoppingCartIcon  />
-                        </span>
+                        <Link to="/cart">
+                            <span className="icon mui-icon">
+                                <ShoppingCartIcon  />
+                            </span>
+                        </Link>
                     </li>
                     <span className="badge-status badge-primary badge-notification p-0-25">
                         0
@@ -53,9 +55,11 @@ const Navbar = () => {
                 </div>
                 <div className="badge-container">
                     <li className="nav-link badge-icon">
-                        <span className="icon mui-icon">
-                            <FavoriteBorderIcon  />
-                        </span>
+                        <Link to="/wishlist">
+                            <span className="icon mui-icon">
+                                <FavoriteBorderIcon  />
+                            </span>
+                        </Link>
                     </li>
                     <span className="badge-status badge-primary badge-notification p-0-25">
                         0
