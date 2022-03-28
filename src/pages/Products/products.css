@@ -120,7 +120,7 @@ li.list-head:hover {
 
 .btn.btn-card-wishlist  {
     display: flex;
-    color: var(--text-color);
+    color: var(--error-color);
     border-radius: var(--br-50);
     -webkit-border-radius: var(--br-50);
     -moz-border-radius: var(--br-50);
@@ -147,8 +147,7 @@ li.list-head:hover {
 }
 
 .product-card .btn-card-wishlist:hover {
-    opacity: 0.7;
-    color: inherit
+    color: var(--wishlist-bg);
 }
 
 .rating-container {
