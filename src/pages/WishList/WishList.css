@@ -1,0 +1,6 @@
+.products-container {
+    gap: var(--space-2);
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
