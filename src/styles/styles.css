@@ -59,3 +59,7 @@ body::-webkit-scrollbar-thumb {
 .badge-error {
     background-color: var(--error-color)
 }
+
+.w-100 {
+    width: 100%;
+}
