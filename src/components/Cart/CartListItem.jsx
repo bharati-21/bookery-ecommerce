@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useAuth, useCart } from "contexts/";
-import { updateProductInCart, deleteProductInCart } from 'utils/'
-import { useToast } from "custom-hooks/useToast";
+import { useAuth, useCart, useWishList } from "contexts/";
+import { deleteProductInCart, postToWishList } from 'utils/'
+import { useToast, useUpdateCart } from "custom-hooks/";
 
 const CartListItem = ({ cartItem }) => {
     const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false); 
@@ -21,7 +21,8 @@ const CartListItem = ({ cartItem }) => {
     const { authState: { token } } = useAuth();
     const { showToast } = useToast();
     const { cartDispatch } = useCart();
-
+    const { callUpdateProductInCart } = useUpdateCart();
+    const { wishListState: { wishListItems }, wishListDispatch } = useWishList();
     const handleCartQuantityButtonClick = async event => {
         const { value } = event.target;
         let operation = '';
@@ -37,43 +38,55 @@ const CartListItem = ({ cartItem }) => {
                 break;
         }
 
-        if(qty >= 3 && operation === 'increment') {
-            showToast('We are sorry! Only 3 units allowed in each order!', 'error');
-            return;
-        }
-
-        try {
-            setIsOngoingNetworkCall(true);
-            const productUpdatedInCart = await updateProductInCart(_id, token, operation);
-
-            if(productUpdatedInCart) {
-                showToast('Quantity updated successfully!', 'success');
-                cartDispatch({type: 'ADD_TO_CART', payload: {cartItems: productUpdatedInCart, error: false, loading: false}});
-            }
-            else {
-                showToast('Failed to update quantity. Please try again later.', 'error');
-            }
-            setIsOngoingNetworkCall(false);
-        }
-        catch(error) {
-            console.log('Something went really wrong!');
-            setIsOngoingNetworkCall(false);
-        }        
+        setIsOngoingNetworkCall(true);
+        const isUpdatedProductInCart = await callUpdateProductInCart(_id, operation);
+        setIsOngoingNetworkCall(false);
     }
 
-    const handleRemoveFromCart = async () => {
+    const handleRemoveFromCart = async (showToastAfterRemovingItem=true) => {
         try {
             const productDeletedInCart = await deleteProductInCart(_id, token);
             if(productDeletedInCart) {
-                showToast('Product deleted successfully!', 'success');
+                if(showToastAfterRemovingItem) showToast('Item removed from cart!', 'success');
                 cartDispatch({type: 'ADD_TO_CART', payload: {cartItems: productDeletedInCart, error: false, loading: false}});
             }
             else {
-                showToast('Failed to delete product. Please try again later.', 'error');
+                if(showToastAfterRemovingItem) showToast('Failed to remove item from cart. Please try again later.', 'error');
             }
         }
         catch(error) {
             console.log('Something went really wrong!');
+        }
+    }
+
+    const isItemInWishList = wishListItems.find(wishListItem => wishListItem._id === _id);
+
+    const handleMoveItemToWishList = async () => {
+        if(isItemInWishList) {
+            showToast('Item already in wishlist!', 'info');
+        }
+        else {
+            setIsOngoingNetworkCall(true);
+
+            try {
+                const itemPostedToWishList = await postToWishList(cartItem, token);
+                if(itemPostedToWishList) {   
+                    showToast('Item added to wishlist', 'success');
+                    wishListDispatch({type: 'ADD_TO_WISHLIST', payload: {wishListItems: itemPostedToWishList, error:false, loading: false}});
+
+                    handleRemoveFromCart(false);
+                }
+                else {
+                    showToast('Failed to add item to wishlist. Please try again later.', 'error');
+                }
+            }
+            catch(error) {
+                console.log(error.message);
+                console.log('Something went really wrong!');
+            }
+    
+            
+            setIsOngoingNetworkCall(false);
         }
     }
 
@@ -127,10 +140,10 @@ const CartListItem = ({ cartItem }) => {
                 </div>
             </div>
             <div className="card-footer flex-row flex-align-center flex-justify-content flex-wrap">
-                    <button className={`btn btn-primary px-0-75 py-0-25 btn-full-width text-reg ${isOngoingNetworkCall ? 'btn-disabled' : ''}`}>
+                    <button className={`btn btn-primary px-0-75 py-0-25 btn-full-width text-reg ${isOngoingNetworkCall ? 'btn-disabled' : ''}`} onClick={handleMoveItemToWishList}>
                         Move to wishlist
                     </button>
-                    <button className={`btn btn-primary btn-outline px-0-75 py-0-25 btn-full-width text-reg ${isOngoingNetworkCall ? 'btn-disabled' : ''}`} onClick={handleRemoveFromCart}>
+                    <button className={`btn btn-primary btn-outline px-0-75 py-0-25 btn-full-width text-reg ${isOngoingNetworkCall ? 'btn-disabled' : ''}`} onClick={() => handleRemoveFromCart()}>
                         Remove from cart
                     </button>
                 </div>
