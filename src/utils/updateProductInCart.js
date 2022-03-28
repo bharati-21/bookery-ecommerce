@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const updateProductInCart = async (productId, token, type) => {
     try {
-            const { status, data: { cart } } = await axios.post(`/api/user/cart/${productId}`, 
+        const { status, data: { cart } } = await axios.post(`/api/user/cart/${productId}`, 
             { action: { type } }, 
             { headers : { authorization: token } }
         );
@@ -12,6 +12,7 @@ const updateProductInCart = async (productId, token, type) => {
         throw new Error('Could not updat product in cart');
     }
     catch(error) {
+        console.log(error.message);
         return false;
     }
 }
