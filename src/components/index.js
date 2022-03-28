@@ -19,3 +19,5 @@ export { PriceFilters } from './FilterOptions/PriceFilters/PriceFilters';
 export { ClearFilters } from './FilterOptions/ClearFilters';
 export { CartList }  from './Cart/CartList';
 export { CartSummary } from './Cart/CartSummary';
+
+export { WishListItem } from './WishList/WishListItem';
