@@ -1,24 +1,44 @@
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import StarIcon from '@mui/icons-material/Star';
+import { useCart, useAuth } from 'contexts';
+import { postToCart } from 'utils/';
+import { useToast } from 'custom-hooks/useToast'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ProductItem = ({ book: 
-        {
-            author,
-            bookType,
-            coverImg,
-            discountPercent,
-            genres,
-            _id,
-            offers,
-            originalPrice,
-            sellingPrice,
-            title,
-            totalRatings,
-            totalStars
-        } 
-    }) => {
+const ProductItem = ({book}) => {
 
+    const { cartState: { cartItems }, cartDispatch } = useCart();
+    const { authState: { token, isAuth } } = useAuth();
+    const { showToast } = useToast();
+    const [ bookInCart, setBookInCart ] = useState(false);
+    const navigate = useNavigate();
+
+    const {
+        author,
+        bookType,
+        coverImg,
+        discountPercent,
+        genres,
+        _id,
+        offers,
+        originalPrice,
+        sellingPrice,
+        title,
+        totalRatings,
+        totalStars
+    } = book;
+
+    useEffect(() => {
+        const isBookInCart = cartItems.includes(cartItem => cartItem.id === id)
+        if(isBookInCart) {
+            setBookInCart(true);
+        }
+        else {
+            setBookInCart(false);
+        }
+    }, [])
     
     const localeOriginalPrice = originalPrice.toLocaleString("en-IN", {minimumFractionDigits: 2, maximumFractionDigits: 2});
     const localeSellingPrice = sellingPrice.toLocaleString("en-IN", {minimumFractionDigits: 2, maximumFractionDigits: 2});
@@ -46,6 +66,19 @@ const ProductItem = ({ book:
                 New Arrival
             </span>:
     null;
+
+    const handleAddToCart = async () => {
+        const productPostedToCart = await postToCart(book, token);
+    
+        if(productPostedToCart) {   
+            showToast('Book added to the cart', 'success');
+            cartDispatch({type: 'ADD_TO_CART', payload: {cartItems: productPostedToCart, error:false, loading: false}});
+            setBookInCart(true);
+        }
+        else {
+            showToast('Failed to add book to cart. Please try again later.', 'error');
+        }
+    }
         
     return (
         <div className="product-card card card-vertical card-wt-dismiss card-wt-badge" id={_id}>
@@ -102,11 +135,16 @@ const ProductItem = ({ book:
                 </div>            
             </div>
             <div className="card-footer mt-1 mb-0-75  px-0-75">
-                <button className="btn btn-primary btn-text-icon btn-full-width p-0-25">
-                    Add to cart
+                <button className="btn btn-primary btn-text-icon btn-full-width p-0-25" 
+                    onClick={e => isAuth ? bookInCart ? navigate('/cart') : handleAddToCart()
+                            :
+                            navigate('/login')
+                    }
+                >
+                    { bookInCart ? <span>Go to Cart</span>: <span>Add to Cart</span> } 
                     <span className="icon">
                         <ShoppingCartIcon />
-                    </span>
+                    </span> 
                 </button>
             </div>
         </div>

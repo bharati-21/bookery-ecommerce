@@ -10,7 +10,20 @@ const AuthContext = createContext(initialAuthState);
 const { Provider } = AuthContext;
 
 const AuthProvider = ({ children }) => {
-    const [authState, setAuthState] = useState(initialAuthState);
+
+    const setInitialState = () => {
+        const bookeryToken = localStorage.getItem('bookery-token');
+        if(bookeryToken) {
+            return {
+                token: bookeryToken,
+                isAuth: true,
+            }        
+        }
+        return initialAuthState;
+    }
+
+    const [authState, setAuthState] = useState(setInitialState());
+
 
     return (
         <Provider value={{authState, setAuthState}}>

@@ -16,4 +16,6 @@ export { GenreFilterOption } from './FilterOptions/GenreFilters/GenreFilterOptio
 export { GenreFilters } from './FilterOptions/GenreFilters/GenreFilters';
 
 export { PriceFilters } from './FilterOptions/PriceFilters/PriceFilters';
-export { ClearFilters } from './FilterOptions/ClearFilters'
+export { ClearFilters } from './FilterOptions/ClearFilters';
+export { CartList }  from './Cart/CartList';
+export { CartSummary } from './Cart/CartSummary';

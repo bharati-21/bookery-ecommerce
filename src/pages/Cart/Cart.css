@@ -132,4 +132,8 @@
         flex-direction: row;
         justify-content:space-evenly
     }
+    
+    .cart-wrapper .card-footer {
+        flex-direction: column;
+    }
 }

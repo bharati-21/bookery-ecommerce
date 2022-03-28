@@ -52,7 +52,7 @@ body::-webkit-scrollbar-thumb {
     text-decoration: underline;
 }
 
-.products-main {
+.main {
     min-height: 100vh;
 }
 
