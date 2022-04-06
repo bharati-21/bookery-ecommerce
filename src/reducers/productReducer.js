@@ -13,7 +13,6 @@ const productReducerFunction = (
 			products,
 			categories,
 			productsMessages,
-			categories,
 			categoriesMessages,
 		},
 	}
