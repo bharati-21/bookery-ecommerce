@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Mockman from 'mockman-js';
 
 /* Page imports */
-import { LandingPage, Products, Cart, WishList, Signup, Login } from 'pages/';
+import { LandingPage, Products, Cart, WishList, Signup, Login, ProductPageItem } from 'pages/';
 import { ProtectedRoutes } from './ProtectedRoutes';
 
 const WebsiteRoutes = () => {
@@ -12,6 +12,7 @@ const WebsiteRoutes = () => {
             <Route path="/" element={<LandingPage />} /> 
             <Route path="/home" element={<LandingPage />} /> 
             <Route path="/products" element={<Products />} />
+            <Route path="/products/:productId" element={<ProductPageItem />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/mockman" element={<Mockman />} /> 
