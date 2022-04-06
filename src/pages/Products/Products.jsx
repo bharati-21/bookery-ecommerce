@@ -3,7 +3,7 @@ import { Filters, ProductList, SortingOptions } from 'components/';
 import './products.css';
 
 const Products = () => {
-    const { productState: { products, loading, error} } = useProduct();
+    const {  products, productsMessage: { loading, error } } = useProduct();
     return (
         <main className="main products-main my-2 mx-auto py-2 px-3 grid grid-2">
             {
