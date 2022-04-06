@@ -89,6 +89,19 @@ li.list-head:hover {
     justify-content: space-between;
 }
 
+.product-card.card-horizontal {
+    flex-direction: row;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+}
+
+.card-horizontal .card-header {
+    flex: unset;
+    width: 20rem;
+}
+
 .product-card:hover {
     box-shadow: 0px 0px 5px 2px var(--overlay-text-color);
 }
@@ -222,6 +235,10 @@ li.list-head:hover {
 @media screen and (max-width: 480px) {
     .product-filters {
         width: 150px;
+    }
+
+    .product-card.card-horizontal {
+        flex-direction: column;
     }
 }
 
