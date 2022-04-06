@@ -56,7 +56,6 @@ const CartListItem = ({ cartItem }) => {
             setIsOngoingNetworkCall(false);
         }
         catch(error) {
-            console.log('Something went really wrong!');
             setIsOngoingNetworkCall(false);
         }        
     }
@@ -73,7 +72,6 @@ const CartListItem = ({ cartItem }) => {
             }
         }
         catch(error) {
-            console.log('Something went really wrong!');
         }
     }
 

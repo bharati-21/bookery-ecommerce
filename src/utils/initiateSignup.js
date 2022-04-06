@@ -16,7 +16,6 @@ const initiateSignup = async ({firstName, lastName, email, password}) => {
         }
     }
     catch(error) {
-        console.log(error.message);
         return false;
     }
 }
