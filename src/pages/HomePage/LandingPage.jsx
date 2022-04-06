@@ -1,13 +1,26 @@
 import { Header } from 'components/Header/Header';
-import { landingPageImages } from 'assets/LandingPage/';
 import './landing-page.css';
 import { Link } from 'react-router-dom';
+import { useProduct } from 'contexts';
  
 
 const LandingPage = () => {
-    const { genres: {fiction, fantasy, romance, thriller, mystery, nonFiction, poem, classics }} = landingPageImages;
-    const {topPicks: {aManCalledOve, atomicHabits, shadowAndBone} } = landingPageImages;
+    const { products, productsMessages: { productLoading, productError }, categories, categoriesMessages: { loading, error } } = useProduct();
 
+    const categoryMapping = categories.map(({ categoryImage, categoryName, _id }) =>
+        <Link to="/products" state={categoryName} key={_id} className="category-product-link">
+            <div className="category card card-wt-badge">
+                <img src={categoryImage} alt={`${categoryName} Image`} className="category-img img-responsive" />
+                {categoryName === 'Non-Fiction' ? <span className="badge badge-primary py-0-5 my-0-75 mx-0-25 px-0-75">Hot Sale</span> : null}
+                <div className="card-content">
+                    <h3 className="card-heading mb-1">{categoryName}</h3>
+                </div>
+            </div>
+        </Link>
+    );
+
+    const sampleProducts = products.slice(0,3);
+    console.log(sampleProducts);
     return (
         <>
             <Header  />
@@ -22,47 +35,18 @@ const LandingPage = () => {
                     <p className="section__lead my-2">
                         Check out the popular genres we have to offer!
                     </p>
-                    <article className="category-container">
-                        <div className="category card card-wt-badge">
-                            <img src={nonFiction} alt="Non-Fiction Book Stacked" className="category-img img-responsive" />
-                            <span className="badge badge-primary py-0-5 my-0-75 mx-0-25 px-0-75">
-                                Hot Sale
-                            </span>
-                            <div className="card-content">
-                                <h3 className="card-heading mb-1">Non Fiction</h3>
-                            </div>
-                        </div>
-                        <div className="category card">
-                            <img src={fiction} alt="Fiction Book" className="category-img img-responsive" />
-                            <div className="card-content">
-                                <h3 className="card-heading mb-1">Fiction</h3>
-                            </div>
-                        </div>
-                        <div className="category card">
-                            <img src={classics} alt="Classic - Pride and Prejudice" className="category-img img-responsive" />
-                            <div className="card-content">
-                                <h3 className="card-heading mb-1">Classics</h3>
-                            </div>
-                        </div>
-                        <div className="category card card-wt-badge">
-                            <img src={mystery} alt="Thriller Books" className="category-img img-responsive" />
-                            <div className="card-content">
-                                <h3 className="card-heading mb-1">Mystery</h3>
-                            </div>
-                        </div>
-                        <div className="category card card-wt-badge">
-                            <img src={fantasy} alt="Fantasy - A court of mist and fury" className="category-img img-responsive" />
-                            <div className="card-content">
-                                <h3 className="card-heading mb-1">Fantasy</h3>
-                            </div>
-                        </div>
-                        <div className="category card card-wt-badge">
-                            <img src={romance} alt="Romance Books" className="category-img img-responsive" />
-                            <div className="card-content">
-                                <h3 className="card-heading mb-1">Romance</h3>
-                            </div>
-                        </div>
-                        
+                    <article className="category-container flex-row flex-wrap">
+                        {
+                            loading ? <h3 className="success-color text-center my-2 mx-auto">
+                                Loading Categories...
+                            </h3>
+                            :
+                            error ? <h3 className="error-color text-center my-2 mx-auto">
+                                {error}
+                            </h3>
+                            :
+                            categoryMapping
+                        }                      
                     </article>
                     <Link to="/products" className="btn text-center mx-auto mt-3 py-0-5 px-0-75">
                         Discover more genres! 
@@ -79,52 +63,24 @@ const LandingPage = () => {
                         Find out what books are loved by all!
                     </p>
                     <article className="top-picks-container">
-                        <section className="product-catalog">
-                            <article className="products-container grid grid-autofit">
-                                <div className="product-card card card-vertical">
-                                    <Link to="/products">
+                        <div className="products-container grid grid-autofit mx-auto">
+                            {
+                                sampleProducts.map(({ _id, title, author, coverImg }) => <div className="product-card card card-vertical" key={_id}>
+                                    <Link to={`/products/${_id}`}>
                                         <div className="card-header p-1">
-                                            <img src={atomicHabits} alt="Atomic habits by James Clear" />
+                                            <img src={coverImg} alt={`${title} book cover`} />
                                         </div>
                                         <div className="card-body px-0-75 pb-0-75">
                                             <div className="card-description my-0-25">
-                                                <p className="card-title text-reg">Atomic Habits</p>
-                                                <p className="text-xs card-subtitle">James Clear</p>
-                                            </div>            
+                                                <p className="card-title text-reg">{title}</p>
+                                                <p className="text-xs card-subtitle">{author}</p>
+                                            </div>
                                         </div>
                                     </Link>
                                 </div>
-                                <div className="product-card card card-vertical">
-                                    <Link to="/products">
-                                        <div className="card-header p-1">
-                                            <img src={aManCalledOve} alt="Man Called Ove by Fredrick Backman" />
-                                        </div>
-                                        <div className="card-body px-0-75">
-                                            <div className="card-description my-0-25">
-                                                <p className="card-title text-reg">A Man Called Ove</p>
-                                                <p className="text-xs card-subtitle">Fredrick Backman</p>
-                                            </div>            
-                                        </div>
-                                    </Link>        
-                                </div>
-                            
-                                <div className="product-card card card-vertical">
-                                    <Link to="/products">
-                                        <div className="card-header p-1">
-                                            <img src={shadowAndBone} alt="Shadow and Bone by Leigh Bardugo" />
-                                        </div>
-                                        <div className="card-body px-0-75">
-                                            <div className="card-description my-0-25">
-                                                <h6 className="text-reg card-title">Shadow and Bone</h6>
-                                                <p className="text-xs card-subtitle">Leigh Bardugo</p>
-                                            </div>          
-                                        </div>
-                                    </Link>
-                                </div>
-                                
-                            </article>
-                        </section>
-                        
+                                )
+                            }
+                        </div>
                     </article>
                     <Link to="/products" className="btn text-center mx-auto mt-3 py-0-5 px-0-75">
                         Discover more books! 
