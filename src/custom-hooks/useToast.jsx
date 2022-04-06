@@ -5,8 +5,7 @@ const useToast = () => {
     const showToast = (toastText, toastTheme) => {
         const notify = () => {
             toast[toastTheme](toastText, {
-                position: toast.POSITION.BOTTOM_LEFT,
-                position: "bottom-left",
+                position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,

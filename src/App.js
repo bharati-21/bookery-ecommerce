@@ -11,14 +11,15 @@ import { ToastContainer } from 'react-toastify';
 function App() {
     return (
         <div className="App">
-            <ToastContainer 
+            <ToastContainer
                 theme="colored"
-                position="bottom-left"
+                position="top-right"
                 autoClose={2000}
                 hideProgressBar={false}
-                newestOnTop={false}
+                newestOnTop
                 closeOnClick
                 rtl={false}
+                pauseOnFocusLoss
                 draggable
                 pauseOnHover
             />
