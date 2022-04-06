@@ -12,7 +12,7 @@ const wishListReducerFunction = (prevWishListState, {type, payload: {wishListIte
 
         case wishListActionTypes.ADD_TO_WISHLIST_FAILURE :
             return {
-                ...prevWishListState, wishListItems: [],  error, loading
+                ...prevWishListState,  error, loading
             }
 
         case wishListActionTypes.ADD_TO_WISHLIST: 
