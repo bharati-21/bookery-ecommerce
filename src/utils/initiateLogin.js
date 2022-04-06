@@ -13,7 +13,6 @@ const initiateLogin = async (formData) => {
         }
     }
     catch(error) {
-        console.log(error.message);
         return false;
     }
 }
