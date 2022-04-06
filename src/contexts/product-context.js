@@ -1,31 +1,37 @@
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import { createContext, useContext, useEffect, useReducer } from "react";
 
-import { fetchProducts } from 'utils/';
-import { productReducerFunction } from 'reducers/';
+import { fetchProducts, fetchCategories } from "utils/";
+import { productReducerFunction } from "reducers/";
 
 const initalProductState = {
-    products: [],
-    loading: true,
-    error: null
-}
+	products: [],
+	categories: [],
+	productsMessages: { loading: true, error: null },
+	categoriesMessages: { loading: true, error: null },
+	isOngoingNetworkCall: false,
+};
 
 const ProductContext = createContext(initalProductState);
 const { Provider } = ProductContext;
 
 const ProductProvider = ({ children }) => {
 
-    useEffect(() => {
-        fetchProducts(productDispatch);
-    }, []);
+	useEffect(() => {
+		fetchProducts(productDispatch);
+		fetchCategories(productDispatch);
+	}, []);
 
-    const [productState, productDispatch] = useReducer( productReducerFunction, initalProductState);
+	const [productState, productDispatch] = useReducer(
+		productReducerFunction,
+		initalProductState
+	);
 
-    return (
-        <Provider value={{productDispatch, productState}}>
-            {children}
-        </Provider>
-    );
-}
+	return (
+		<Provider value={{ productDispatch, ...productState }}>
+			{children}
+		</Provider>
+	);
+};
 
 const useProduct = () => useContext(ProductContext);
 
