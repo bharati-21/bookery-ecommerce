@@ -20,7 +20,6 @@ const LandingPage = () => {
     );
 
     const sampleProducts = products.slice(0,3);
-    console.log(sampleProducts);
     return (
         <>
             <Header  />
