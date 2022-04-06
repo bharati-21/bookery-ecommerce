@@ -37,7 +37,6 @@ const ProductPageItem = () => {
         title,
         totalRatings,
         totalStars,
-        description
     } = book;
 
     useEffect(() => {
@@ -56,9 +55,11 @@ const ProductPageItem = () => {
         else {
             setBookInWishList(false);
         }
-    }, [])
-    
-    
+    }, []);
+
+    const outOfStock = !offers.inStock;
+
+
     const localeOriginalPrice = originalPrice.toLocaleString("en-IN", {minimumFractionDigits: 2, maximumFractionDigits: 2});
     const localeSellingPrice = sellingPrice.toLocaleString("en-IN", {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
@@ -87,6 +88,7 @@ const ProductPageItem = () => {
     null;
 
     const handleAddToCart = async () => {
+        if(outOfStock) return;
         setIsOngoingNetworkCall(true);
         if(isAuth) {
             if(bookInCart) {
@@ -112,6 +114,7 @@ const ProductPageItem = () => {
     }
 
     const handleAddToWishList = async () => {
+        if(outOfStock) return;
         setIsOngoingNetworkCall(true);
         if(isAuth) {
             if(bookInWishList) {
@@ -149,7 +152,7 @@ const ProductPageItem = () => {
         <main className="main product-page-main flex-col flex-align-center flex-justify-center">
             <div className="product-card card card-horizontal card-wt-dismiss card-wt-badge" id={_id}>
             {productBadge ?? productBadge}
-                <button className={`btn btn-primary btn-icon btn-dismiss btn-card-wishlist m-0-5 flex--col flex-align-center flex-justify-center ${isOngoingNetworkCall ? 'btn-disabled' : ''}`} onClick={handleAddToWishList} disabled={isOngoingNetworkCall}>
+                <button className={`btn btn-primary btn-icon btn-dismiss btn-card-wishlist m-0-5 flex--col flex-align-center flex-justify-center ${isOngoingNetworkCall || outOfStock ? 'btn-disabled' : ''}`} onClick={handleAddToWishList} disabled={isOngoingNetworkCall}>
                     <span className="icon">
                         { bookInWishList ?  <FavoriteIcon /> : <FavoriteBorderIcon  /> }
                     </span>
@@ -200,7 +203,7 @@ const ProductPageItem = () => {
                         </div>
                     </div> 
                     <div className="card-footer mt-1 mb-0-75">
-                        <button className={`btn btn-primary btn-text-icon btn-full-width p-0-25 ${isOngoingNetworkCall ? 'btn-disabled' : ''}`} disabled={isOngoingNetworkCall}
+                        <button className={`btn btn-primary btn-text-icon btn-full-width p-0-25 ${isOngoingNetworkCall || outOfStock ? 'btn-disabled' : ''}`} disabled={isOngoingNetworkCall}
                             onClick={handleAddToCart}>
                             { bookInCart ? <span>Go to Cart</span>: <span>Add to Cart</span> } 
                             <span className="icon">
