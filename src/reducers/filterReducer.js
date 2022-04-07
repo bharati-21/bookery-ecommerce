@@ -5,7 +5,8 @@ const filterActions = {
 	FILTER_BY_BOOK_TYPE: "FILTER_BY_BOOK_TYPE",
 	SORT_BY: "SORT_BY",
 	CLEAR_FILTERS: "CLEAR_FILTERS",
-    SET_CATEGORIES: "SET_CATEGORIES"
+    SET_CATEGORIES: "SET_CATEGORIES",
+    SET_SEARCH_TEXT: "SET_SEARCH_TEXT",
 };
 
 const initialFilterState = {
@@ -25,6 +26,7 @@ const initialFilterState = {
 		Paperback: false,
 		Hardcover: false,
 	},
+    searchText: '',
 };
 
 const filterReducerFunction = (
@@ -64,6 +66,9 @@ const filterReducerFunction = (
 
 		case filterActions.CLEAR_FILTERS:
 			return { ...initialFilterState };
+
+        case filterActions.SET_SEARCH_TEXT:
+            return { ...prevFilterState, searchText: filterPayload };
 	}
 };
 

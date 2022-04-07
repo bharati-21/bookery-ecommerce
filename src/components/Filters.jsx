@@ -1,9 +1,9 @@
 import { GenreFilters, BookTypeFilters, RatingFilters, PriceFilters, ClearFilters } from "./";
 
-const Filters = () => {
+const Filters = ({ showCloseIcon, handleChangeShowFilterDrawer }) => {
     return (
         <aside className="sidebar product-filters py-1-5 px-1">
-            <ClearFilters />       
+            <ClearFilters showCloseIcon={showCloseIcon} handleChangeShowFilterDrawer={handleChangeShowFilterDrawer} />       
             <GenreFilters />
             <PriceFilters />
             <RatingFilters />

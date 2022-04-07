@@ -17,3 +17,4 @@ export { fetchWishListItems } from './fetchWishListItems';
 export { postToWishList } from './postToWishList';
 export { deleteProductInWishList } from './deleteProductInWishList';
 export { fetchCategories } from './fetchCategories';
+export { filterBySearchText } from './filterBySearchText';
