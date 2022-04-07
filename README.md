@@ -89,9 +89,11 @@ UI consists of -
 
 ## **Technology/ Languages Used**
 
-- HTML
 - CSS
-- ReactJs
+- <a href="https://elixir-ui.netlify.app/">Elixir UI - Component Library</a>
+- ReactJS
+- React Router v6
+- MockBee
 
 <br />
 <br />
