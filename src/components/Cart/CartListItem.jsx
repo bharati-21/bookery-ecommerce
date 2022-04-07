@@ -80,7 +80,10 @@ const CartListItem = ({ cartItem }) => {
 			}
 			setIsOngoingNetworkCall(false);
 		} catch (error) {
-			console.log("Something went really wrong!");
+			showToast(
+                "Failed to update quantity. Please try again later.",
+                "error"
+            );
 			setIsOngoingNetworkCall(false);
 		}
 	};
@@ -100,7 +103,9 @@ const CartListItem = ({ cartItem }) => {
 						loading: false,
 					},
 				});
+                setIsOngoingNetworkCall(true);
 			} else {
+                setIsOngoingNetworkCall(true);
 				if (showToastAfterRemovingItem)
 					showToast(
 						"Failed to remove item from cart. Please try again later.",
@@ -108,9 +113,12 @@ const CartListItem = ({ cartItem }) => {
 					);
 			}
 		} catch (error) {
-			console.log("Something went really wrong!");
+            setIsOngoingNetworkCall(true);
+			showToast(
+                "Failed to remove item from cart. Please try again later.",
+                "error"
+            );
 		}
-        setIsOngoingNetworkCall(true);
 	};
 
 	const isItemInWishList = wishListItems.find(
@@ -147,8 +155,10 @@ const CartListItem = ({ cartItem }) => {
 					);
 				}
 			} catch (error) {
-				console.log(error.message);
-				console.log("Something went really wrong!");
+                showToast(
+                    "Failed to add item to wishlist. Please try again later.",
+                    "error"
+                );
 			}
 			setIsOngoingNetworkCall(false);
 		}

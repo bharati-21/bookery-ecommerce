@@ -43,8 +43,7 @@ const WishListItem = ({ wishListItem }) => {
             }
         }
         catch(error){
-            console.log(error);
-            console.log('Something went really wrong!');
+            if(showToastAfterRemovingItem) showToast('Failed to remove item from wishlist. Please try again later.', 'error');
         }
     }
 
@@ -76,8 +75,7 @@ const WishListItem = ({ wishListItem }) => {
                 }
             }
             catch(error) {
-                console.log(error.message);
-                console.log('Something went really wrong!');
+                showToast('Failed to move item to cart. Please try again later.', 'error');
             }                
         } 
         setIsOngoingNetworkCall(false);      

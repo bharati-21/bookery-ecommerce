@@ -12,7 +12,6 @@ const updateProductInCart = async (productId, token, type) => {
         throw new Error('Could not updat product in cart');
     }
     catch(error) {
-        console.log(error.message);
         return false;
     }
 }

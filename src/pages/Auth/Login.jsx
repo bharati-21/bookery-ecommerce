@@ -62,7 +62,6 @@ const Login = () => {
             navigate('/');
         }
         catch(error) {
-            console.log(error)
             showToast('Login Failed. Please try again later', 'error');
             setIsOngoingNetworkCall(false);
         }

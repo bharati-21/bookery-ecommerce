@@ -22,8 +22,7 @@ const useUpdateCart = () => {
             }
         }
         catch(error) {
-            console.log(error.message);
-            return false;
+            if(showToastAfterCall) ('Failed to update item quantity in cart. Please try again later.', 'error');
         }
     }
 
