@@ -11,6 +11,8 @@ const SortingOptions = () => {
         filterDispatch({filterType: 'SORT_BY', filterPayload: value});
     }
 
+    const handleClearSortingOptions = () => filterDispatch({ filterType: 'CLEAR_SORTING_OPTIONS' });
+
     const sortingOptionList = [
         {
             id: uuid(),
@@ -45,7 +47,7 @@ const SortingOptions = () => {
                 { sortingOptionsMapping }
             </ul>
             <div className="flex-row flex-align-center flex-justify-start clear-sort-container mt-1 border-bottom">
-                <button className="btn btn-clear-sort btn-link">Clear Sorting Filters</button>
+                <button className="btn btn-clear-sort btn-link" onClick={handleClearSortingOptions}>Clear Sorting Filters</button>
             </div>
         </aside>
     )

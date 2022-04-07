@@ -7,6 +7,7 @@ const filterActions = {
 	CLEAR_FILTERS: "CLEAR_FILTERS",
     SET_CATEGORIES: "SET_CATEGORIES",
     SET_SEARCH_TEXT: "SET_SEARCH_TEXT",
+    CLEAR_SORTING_OPTIONS: "CLEAR_SORTING_OPTIONS"
 };
 
 const initialFilterState = {
@@ -65,10 +66,13 @@ const filterReducerFunction = (
             return { ...prevFilterState, genres: { ...prevFilterState.genres, [filterPayload]: true } };
 
 		case filterActions.CLEAR_FILTERS:
-			return { ...initialFilterState };
+			return { ...initialFilterState, sortBy: prevFilterState.sortBy };
 
         case filterActions.SET_SEARCH_TEXT:
             return { ...prevFilterState, searchText: filterPayload };
+        
+        case filterActions.CLEAR_SORTING_OPTIONS:
+            return { ...prevFilterState, sortBy: '' };
 	}
 };
 
