@@ -1,0 +1,8 @@
+.not-found-img {
+    object-position: center center;
+    height: 60vh;
+}
+
+.not-found-main {
+    gap: var(--space-1);
+}

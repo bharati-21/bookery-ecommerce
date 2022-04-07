@@ -5,6 +5,7 @@ import Mockman from 'mockman-js';
 /* Page imports */
 import { LandingPage, Products, Cart, WishList, Signup, Login, ProductPageItem } from 'pages/';
 import { ProtectedRoutes } from './ProtectedRoutes';
+import { NotFound } from 'components';
 
 const WebsiteRoutes = () => {
     return (
@@ -17,6 +18,7 @@ const WebsiteRoutes = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/mockman" element={<Mockman />} /> 
             <Route path="/" element={<LandingPage />} /> 
+            <Route path="*" element={<NotFound />} />
             <Route path="/" element={<ProtectedRoutes />}>
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/wishlist" element={<WishList />} />
