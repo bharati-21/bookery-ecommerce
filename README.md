@@ -50,6 +50,14 @@ Visit <a href="https://bookery.netlify.app/">bookery</a> and buy your favorite b
 
 ## **FEATURES**
 
+Features include-
+- Users can see a list of top categories and genres of books. When user clicks any of them, they are redirected to the product listing page where the products are filtered based on the selected category.
+- Users can see the top book picks on the landing page
+- Users can go to the product listing page, and filter/ sort based on any categories.
+- Users can click on a product to view information about it.
+- Users can also add books to the cart or wishlist.
+- Users can additionally search for books from the search bar on the navigation bar which navigates them to the product listing page. The books are filtered based on the entered search text matching either the title or author.
+
 UI consists of -
 - Home page
   - Popular genre categories
