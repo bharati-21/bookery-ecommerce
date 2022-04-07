@@ -34,6 +34,7 @@ const ProductItem = ({ book }) => {
 		discountPercent,
 		genres,
 		_id,
+        id,
 		offers,
 		originalPrice,
 		sellingPrice,
@@ -190,7 +191,7 @@ const ProductItem = ({ book }) => {
 
 	return (
 		<Link
-			to={`/products/${_id}`}
+			to={`/products/${id}`}
 			className={`product-card card card-vertical card-wt-dismiss card-wt-badge ${
 				outOfStock ? "out-of-stock" : "in-stock"
 			}`}

@@ -12,7 +12,7 @@ import { deleteProductInWishList } from 'utils';
 const ProductPageItem = () => {
 
     const { productId } = useParams();
-    const { products } = useProduct();
+    const { products, productsMessages: { loading, error } } = useProduct();
     const { cartState: { cartItems }, cartDispatch } = useCart();
     const { wishListState: { wishListItems }, wishListDispatch } = useWishList();
     const { authState: { token, isAuth } } = useAuth();
@@ -22,7 +22,40 @@ const ProductPageItem = () => {
     const navigate = useNavigate();
     const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);
 
-    const book = products.find(product => product._id === productId);
+    
+    const book = products?.find(product => product.id === productId);
+
+    useEffect(() => {
+        if(book) {
+            const isBookInCart = cartItems.find(cartItem => cartItem._id === _id)
+            const isBookInWishList = wishListItems.find(wishListItem => wishListItem._id === _id)
+            if(isBookInCart) {
+                setBookInCart(true);
+            }
+            else {
+                setBookInCart(false);
+            }
+
+            if(isBookInWishList) {
+                setBookInWishList(true);
+            }
+            else {
+                setBookInWishList(false);
+            }
+        }
+        
+    }, [book]);
+
+    if(loading) {
+        return <main className="main product-page-main flex-col flex-align-center flex-justify-center">
+            <h2 className="text-center loading-message success-color">Loading...</h2>
+        </main>
+    }
+    if(error) {
+        return <main className="main product-page-main flex-col flex-align-center flex-justify-center">
+        <h2 className="text-center loading-message error-color">{error}</h2>
+        </main>
+    }
 
     const {
         author,
@@ -31,6 +64,7 @@ const ProductPageItem = () => {
         discountPercent,
         genres,
         _id,
+        id,
         offers,
         originalPrice,
         sellingPrice,
@@ -38,24 +72,6 @@ const ProductPageItem = () => {
         totalRatings,
         totalStars,
     } = book;
-
-    useEffect(() => {
-        const isBookInCart = cartItems.find(cartItem => cartItem._id === _id)
-        const isBookInWishList = wishListItems.find(wishListItem => wishListItem._id === _id)
-        if(isBookInCart) {
-            setBookInCart(true);
-        }
-        else {
-            setBookInCart(false);
-        }
-
-        if(isBookInWishList) {
-            setBookInWishList(true);
-        }
-        else {
-            setBookInWishList(false);
-        }
-    }, []);
 
     const outOfStock = !offers.inStock;
 
@@ -210,7 +226,8 @@ const ProductPageItem = () => {
                                 <ShoppingCartIcon />
                             </span> 
                         </button>
-                    </div>           
+                    </div>  
+                    { outOfStock ? <div className="btn p-0-5 mt-2 mx-auto">Out of stock</div> : null }         
                 </div>
             </div>
         </main>
