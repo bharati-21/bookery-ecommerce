@@ -50,13 +50,9 @@ const CartListItem = ({ cartItem }) => {
 				break;
 		}
 
-		if (qty >= 3 && operation === "increment") {
-			showToast(
-				"We are sorry! Only 3 units allowed in each order!",
-				"error"
-			);
-			return;
-		}
+        if(operation === "decrement" && qty === 1) {
+            return handleRemoveFromCart();
+        }
 
 		try {
 			setIsOngoingNetworkCall(true);
@@ -90,6 +86,7 @@ const CartListItem = ({ cartItem }) => {
 	};
 
 	const handleRemoveFromCart = async (showToastAfterRemovingItem = true) => {
+        setIsOngoingNetworkCall(true);
 		try {
 			const productDeletedInCart = await deleteProductInCart(_id, token);
 			if (productDeletedInCart) {
@@ -113,6 +110,7 @@ const CartListItem = ({ cartItem }) => {
 		} catch (error) {
 			console.log("Something went really wrong!");
 		}
+        setIsOngoingNetworkCall(true);
 	};
 
 	const isItemInWishList = wishListItems.find(
@@ -188,12 +186,12 @@ const CartListItem = ({ cartItem }) => {
 					<div className="card-quantity flex-row flex-align-center flex-justify-start">
 						<button
 							className={`btn btn-quantity btn-decrease-quantity flex-col ${
-								qty <= 1 || isOngoingNetworkCall
+								isOngoingNetworkCall
 									? "btn-disabled"
 									: ""
 							}`}
 							value="DECREASE_QUANTITY"
-							disabled={qty <= 1 || isOngoingNetworkCall}
+							disabled={isOngoingNetworkCall}
 							onClick={handleCartQuantityButtonClick}
 						>
 							-
