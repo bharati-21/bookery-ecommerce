@@ -1,6 +1,6 @@
 <h1 align="center">
   <br />
-  <a href="https://elixir-stores.netlify.app/">
+  <a href="https://bookery.netlify.app/">
       <img src="https://github.com/bharati-21/elixir-ui/blob/9e0021ca0eb8952f6bf408d9f2a119439ac359a2/logo-assets/elixir-logo.png" alt="Elixir UI" width="200"></a>
   <br />
   <br />
@@ -15,7 +15,7 @@
 <div align="center">
 <img src="https://img.shields.io/badge/version-v1-green" align="center"/>
 <img src="https://img.shields.io/badge/label-open--source-blue" align="center"/>
-    <a href="https://app.netlify.com/sites/elixir-stores/deploys" align="center">
+    <a href="https://app.netlify.com/sites/bookery/deploys" align="center">
         <img src="https://api.netlify.com/api/v1/badges/8b083945-912e-4f2d-90fd-9f8bcf06aeee/deploy-status" align="center"/>
     </a>
 </div>
