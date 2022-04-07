@@ -94,6 +94,7 @@ const CartListItem = ({ cartItem }) => {
 			const productDeletedInCart = await deleteProductInCart(_id, token);
 			if (productDeletedInCart) {
 				if (showToastAfterRemovingItem)
+                    setIsOngoingNetworkCall(false);
 					showToast("Item removed from cart!", "success");
 				cartDispatch({
 					type: "ADD_TO_CART",
@@ -103,9 +104,8 @@ const CartListItem = ({ cartItem }) => {
 						loading: false,
 					},
 				});
-                setIsOngoingNetworkCall(true);
 			} else {
-                setIsOngoingNetworkCall(true);
+                setIsOngoingNetworkCall(false);
 				if (showToastAfterRemovingItem)
 					showToast(
 						"Failed to remove item from cart. Please try again later.",
@@ -113,7 +113,7 @@ const CartListItem = ({ cartItem }) => {
 					);
 			}
 		} catch (error) {
-            setIsOngoingNetworkCall(true);
+            setIsOngoingNetworkCall(false);
 			showToast(
                 "Failed to remove item from cart. Please try again later.",
                 "error"
