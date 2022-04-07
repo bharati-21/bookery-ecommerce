@@ -40,11 +40,11 @@ const Login = () => {
 
     const handleFormSubmit = async event => {
         event.preventDefault();
-        const isLoginSuccessful = await initiateLogin(formData);
+        const { data } = await initiateLogin(formData);
 
-        if(isLoginSuccessful) {
-            showToast('Login Successful. Please wait...', 'success');
-            const { encodedToken, foundUser : {cartItems, wishlist, ...otherUserDetails} } = isLoginSuccessful; 
+        if(data) {
+            showToast('Login Successful!', 'success');
+            const { encodedToken, foundUser : {cartItems, wishlist, ...otherUserDetails} } = data; 
             setAuthState({ 
                 isAuth: true,
                 token: encodedToken,
@@ -54,13 +54,11 @@ const Login = () => {
             cartDispatch({type: 'INIT_CART_ITEMS', payload: { cartItems }});
 
             localStorage.setItem('bookery-token', encodedToken);
-            const timeoutId = setTimeout(() => {
-                setFormData(initialFormData);
-                navigate('/');
-            }, 2000);
+            setFormData(initialFormData);
+            navigate('/');
         }
         else {
-            showToast('Login Failed', 'error');
+            showToast('Login Failed. Please try again later', 'error');
         }
     }
 
