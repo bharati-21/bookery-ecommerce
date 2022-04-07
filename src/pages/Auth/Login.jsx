@@ -17,6 +17,7 @@ const Login = () => {
     }
     const [formData, setFormData] = useState(initialFormData);
     const [showPassword, setShowPassword] = useState(false);
+    const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);
 
     const navigate = useNavigate();
     const { state } = useLocation();
@@ -40,9 +41,11 @@ const Login = () => {
 
     const handleFormSubmit = async event => {
         event.preventDefault();
-        const { data } = await initiateLogin(formData);
 
-        if(data) {
+        setIsOngoingNetworkCall(true);
+
+        try {
+            const { data } = await initiateLogin(formData);
             showToast('Login Successful!', 'success');
             const { encodedToken, foundUser : {cartItems, wishlist, ...otherUserDetails} } = data; 
             setAuthState({ 
@@ -55,10 +58,13 @@ const Login = () => {
 
             localStorage.setItem('bookery-token', encodedToken);
             setFormData(initialFormData);
+            setIsOngoingNetworkCall(false);
             navigate('/');
         }
-        else {
+        catch(error) {
+            console.log(error)
             showToast('Login Failed. Please try again later', 'error');
+            setIsOngoingNetworkCall(false);
         }
     }
 
@@ -92,7 +98,7 @@ const Login = () => {
                             Password
                             <span className="password-input-toggler">
                                 <input type={`${showPassword ? "text": "password"}`} id="input-login-psd" className="input-text px-0-75 py-0-5 mt-0-25 text-sm" placeholder="********" name="password" value={password} onChange={handleFormDataChange} autoComplete="off" required />
-                                <button type="button" className="btn btn-icon icon-show-psd" onClick={handleChangePasswordVisibility}>
+                                <button type="button" className={`btn btn-icon icon-show-psd ${isOngoingNetworkCall && 'btn-disabled'}`} disabled={isOngoingNetworkCall} onClick={handleChangePasswordVisibility}>
                                     <span className="icon mui-icon">
                                         {showPasswordIcon}
                                     </span>
@@ -112,10 +118,10 @@ const Login = () => {
                         </div>
                         <div className="auth-button-container mt-1 flex-col flex-align-center">
                             <div className="login-button-container flex-col flex-align-center flex-justify-center">
-                                <input type="submit" className="btn btn-primary btn-full-width px-0-75 py-0-25 btn-full-width text-reg" value="Login"/>
-                                <input type="submit" className="btn btn-primary btn-outline btn-full-width px-0-75 py-0-25 btn-full-width text-reg" value="Login with Test Credentials" onClick={handleLoginWithTestCredentials} />
+                                <input type="submit" className={`btn btn-primary btn-full-width px-0-75 py-0-25 btn-full-width text-reg ${isOngoingNetworkCall && 'btn-disabled'}`} value="Login" disabled={isOngoingNetworkCall} />
+                                <input type="submit" className={`btn btn-primary btn-outline btn-full-width px-0-75 py-0-25 btn-full-width text-reg ${isOngoingNetworkCall && 'btn-disabled'}`} value="Login with Test Credentials" disabled={isOngoingNetworkCall} onClick={handleLoginWithTestCredentials} />
                             </div>
-                            <Link to="/signup" className="btn btn-link btn-primary mt-0-75 flex-row flex-justify-center flex-align-center">
+                            <Link to="/signup" className={`btn btn-link btn-primary mt-0-75 flex-row flex-justify-center flex-align-center ${isOngoingNetworkCall && 'link-disabled'}`}>
                                 Create a new account 
                                 <span className="icon mui-icon icon-chevron-right">
                                     <ChevronRightIcon />
