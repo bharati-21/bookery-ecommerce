@@ -1,10 +1,10 @@
-export { Filters } from './Filters';
+export { Filters } from './Filters/Filters';
 export { Footer } from './Footer/Footer';
 export { Header } from './Header/Header';
 export { Navbar } from './Navbar/Navbar';
-export { ProductItem } from './ProductItem';
-export { ProductList } from './ProductList';
-export { SortingOptions } from './SortingOptions';
+export { ProductItem } from './ProdutList/ProductItem/ProductItem';
+export { ProductList } from './ProdutList/ProductList';
+export { SortingOptions } from './SortingOptions/SortingOptions';
 
 export { BookTypeFilterOption } from './FilterOptions/BookTypeFilters/BookTypeFilterOption'
 export { BookTypeFilters } from './FilterOptions/BookTypeFilters/BookTypeFilters';

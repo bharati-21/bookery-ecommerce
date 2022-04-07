@@ -1,5 +1,5 @@
 import { compose } from 'utils/';
-import { ProductItem } from './ProductItem';
+import { ProductItem } from './ProductItem/ProductItem';
 
 const ProductList = ({ products }) => {
     const sortedFilteredBooks = compose(products);  

@@ -1,4 +1,4 @@
-import { GenreFilters, BookTypeFilters, RatingFilters, PriceFilters, ClearFilters } from "./";
+import { GenreFilters, BookTypeFilters, RatingFilters, PriceFilters, ClearFilters } from "../";
 
 const Filters = ({ showCloseIcon, handleChangeShowFilterDrawer }) => {
     return (
