@@ -15,4 +15,5 @@ export { updateProductInCart } from './updateProductInCart';
 export { deleteProductInCart } from './deleteProductInCart';
 export { fetchWishListItems } from './fetchWishListItems';
 export { postToWishList } from './postToWishList';
-export { deleteProductInWishList } from './deleteProductInWishList'
+export { deleteProductInWishList } from './deleteProductInWishList';
+export { fetchCategories } from './fetchCategories';

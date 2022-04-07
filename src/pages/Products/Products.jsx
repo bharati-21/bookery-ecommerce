@@ -1,9 +1,22 @@
-import { useProduct } from 'contexts/';
+import { useProduct, useFilter } from 'contexts/';
 import { Filters, ProductList, SortingOptions } from 'components/';
 import './products.css';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Products = () => {
-    const { productState: { products, loading, error} } = useProduct();
+    const {  products, productsMessages: { loading, error } } = useProduct();
+    const location = useLocation();
+    const { filterDispatch } = useFilter();
+
+    useEffect(() => {
+		const categoryName = location?.state;
+		categoryName && filterDispatch({
+			filterType: "SET_CATEGORIES",
+			filterPayload: categoryName,
+		});
+	}, [location?.state]);
+
     return (
         <main className="main products-main my-2 mx-auto py-2 px-3 grid grid-2">
             {
