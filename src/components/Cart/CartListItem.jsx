@@ -1,6 +1,10 @@
 import { useState } from "react";
-import { useAuth, useCart } from "contexts/";
-import { updateProductInCart, deleteProductInCart } from "utils/";
+import { useAuth, useCart, useWishList } from "contexts/";
+import {
+	updateProductInCart,
+	deleteProductInCart,
+	postToWishList,
+} from "utils/";
 import { useToast } from "custom-hooks/useToast";
 
 const CartListItem = ({ cartItem }) => {
@@ -26,6 +30,10 @@ const CartListItem = ({ cartItem }) => {
 	} = useAuth();
 	const { showToast } = useToast();
 	const { cartDispatch } = useCart();
+	const {
+		wishListState: { wishListItems },
+		wishListDispatch,
+	} = useWishList();
 
 	const handleCartQuantityButtonClick = async (event) => {
 		const { value } = event.target;
@@ -81,11 +89,12 @@ const CartListItem = ({ cartItem }) => {
 		}
 	};
 
-	const handleRemoveFromCart = async () => {
+	const handleRemoveFromCart = async (showToastAfterRemovingItem = true) => {
 		try {
 			const productDeletedInCart = await deleteProductInCart(_id, token);
 			if (productDeletedInCart) {
-				showToast("Product deleted successfully!", "success");
+				if (showToastAfterRemovingItem)
+					showToast("Item removed from cart!", "success");
 				cartDispatch({
 					type: "ADD_TO_CART",
 					payload: {
@@ -95,13 +104,55 @@ const CartListItem = ({ cartItem }) => {
 					},
 				});
 			} else {
-				showToast(
-					"Failed to delete product. Please try again later.",
-					"error"
-				);
+				if (showToastAfterRemovingItem)
+					showToast(
+						"Failed to remove item from cart. Please try again later.",
+						"error"
+					);
 			}
 		} catch (error) {
 			console.log("Something went really wrong!");
+		}
+	};
+
+	const isItemInWishList = wishListItems.find(
+		(wishListItem) => wishListItem._id === _id
+	);
+
+	const handleMoveItemToWishList = async () => {
+		if (isItemInWishList) {
+			showToast("Item added to wishlist!", "success");
+			handleRemoveFromCart(false);
+		} else {
+			setIsOngoingNetworkCall(true);
+
+			try {
+				const itemPostedToWishList = await postToWishList(
+					cartItem,
+					token
+				);
+				if (itemPostedToWishList) {
+					showToast("Item added to wishlist", "success");
+					wishListDispatch({
+						type: "ADD_TO_WISHLIST",
+						payload: {
+							wishListItems: itemPostedToWishList,
+							error: false,
+							loading: false,
+						},
+					});
+					handleRemoveFromCart(false);
+				} else {
+					showToast(
+						"Failed to add item to wishlist. Please try again later.",
+						"error"
+					);
+				}
+			} catch (error) {
+				console.log(error.message);
+				console.log("Something went really wrong!");
+			}
+			setIsOngoingNetworkCall(false);
 		}
 	};
 
@@ -174,6 +225,7 @@ const CartListItem = ({ cartItem }) => {
 					className={`btn btn-primary px-0-75 py-0-25 btn-full-width text-reg ${
 						isOngoingNetworkCall ? "btn-disabled" : ""
 					}`}
+					onClick={handleMoveItemToWishList}
 				>
 					Move to wishlist
 				</button>
