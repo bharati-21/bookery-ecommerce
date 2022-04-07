@@ -63,3 +63,7 @@ body::-webkit-scrollbar-thumb {
 .w-100 {
     width: 100%;
 }
+
+.link-disabled {
+    pointer-events: none;
+}
