@@ -100,6 +100,7 @@ const ProductItem = ({ book }) => {
 	const handleAddToCart = async (e) => {
 		if (outOfStock) return;
 		e.preventDefault();
+        e.stopPropagation();
 		setIsOngoingNetworkCall(true);
 		if (isAuth) {
 			if (bookInCart) {
@@ -134,6 +135,7 @@ const ProductItem = ({ book }) => {
 	const handleAddToWishList = async (e) => {
 		if (outOfStock) return;
 		e.preventDefault();
+        e.stopPropagation();
 		setIsOngoingNetworkCall(true);
 		if (isAuth) {
 			if (bookInWishList) {
