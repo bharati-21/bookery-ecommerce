@@ -64,8 +64,8 @@ const LandingPage = () => {
                     <article className="top-picks-container">
                         <div className="products-container grid grid-autofit mx-auto">
                             {
-                                sampleProducts.map(({ _id, title, author, coverImg }) => <div className="product-card card card-vertical" key={_id}>
-                                    <Link to={`/products/${_id}`}>
+                                sampleProducts.map(({ _id, id, title, author, coverImg }) => <div className="product-card card card-vertical" key={_id}>
+                                    <Link to={`/products/${id}`}>
                                         <div className="card-header p-1">
                                             <img src={coverImg} alt={`${title} book cover`} />
                                         </div>
