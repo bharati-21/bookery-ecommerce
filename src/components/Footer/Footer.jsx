@@ -96,24 +96,24 @@ const Footer = () => {
                     </li>
                     <li className="list-item">
                         <div className="social-links flex-row">
-                            <a href="#" className="btn btn-link btn-light">
+                            <a href="https://twitter.com/_bhaaratii" className="btn btn-link btn-light">
                                 <span className="icon">
                                     <i className="fab fa-twitter"></i>
                                 </span>
                             </a>
-                            <a href="#" className="btn btn-link btn-light">
+                            <a href="https://github.com/bharati-21" className="btn btn-link btn-light">
                                 <span className="icon">
-                                    <i className="fab fa-instagram"></i>
+                                    <i className="fab fa-github"></i>
                                 </span>
                             </a>
-                            <a href="#" className="btn btn-link btn-light">
+                            <a href="https://www.linkedin.com/in/bharati-subramanian-29734b152/" className="btn btn-link btn-light">
                                 <span className="icon">
-                                    <i className="fab fa-facebook"></i>
+                                    <i className="fab fa-linkedin"></i>
                                 </span>
                             </a>
-                            <a href="#" className="btn btn-link btn-light">
+                            <a href="mailto:bharatisharada@gmail.com" className="btn btn-link btn-light">
                                 <span className="icon">
-                                    <i className="fab fa-youtube"></i>
+                                    <i className="fas fa-envelope"></i>
                                 </span>
                             </a>
                         </div>

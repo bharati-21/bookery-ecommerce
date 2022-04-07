@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-
 import { useProduct, useFilter } from "contexts/";
 import { Filters, ProductList, SortingOptions } from "components/";
 import "./products.css";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+
 
 const Products = () => {
 	const {
@@ -14,7 +14,7 @@ const Products = () => {
 	const location = useLocation();
 	const { filterDispatch } = useFilter();
 
-    const [showFilterDrawer, setShowFilterDrawer] = useState(false);
+  const [showFilterDrawer, setShowFilterDrawer] = useState(false);
 
 	useEffect(() => {
 		const categoryName = location?.state;
@@ -82,9 +82,9 @@ const Products = () => {
 					<div className="filter-sidebar-desktop">
 						<Filters />
 					</div>
-                    <div className={`product-list-wrapper`}>
-                        <ProductList products={products} />
-                    </div>
+          <div className={`product-list-wrapper`}>
+             <ProductList products={products} />
+          </div>
 				</>
 			)}
 		</main>

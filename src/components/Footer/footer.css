@@ -92,3 +92,9 @@
         text-align: center;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .primary-footer, .secondary-footer {
+        padding: var(--space-2);
+    }
+}

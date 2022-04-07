@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -19,10 +19,17 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
+    const { state } = useLocation();
 
-    const { setAuthState } = useAuth();
+    const { setAuthState, authState: { isAuth } } = useAuth();
     const { cartDispatch } = useCart();
     const { showToast } = useToast();
+
+    useEffect(() => {
+        if(isAuth) {
+            navigate(state?.from ? state.from : "/");        
+        }
+    }, []);
 
     const handleFormDataChange = event => {
         const { name, value } = event.target;
