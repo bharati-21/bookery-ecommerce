@@ -44,8 +44,8 @@ const SortingOptions = () => {
                 </li>
                 { sortingOptionsMapping }
             </ul>
-            <div class="flex-row flex-align-center flex-justify-start clear-sort-container mt-1 border-bottom">
-                <button class="btn btn-clear-sort btn-link">Clear Sorting Filters</button>
+            <div className="flex-row flex-align-center flex-justify-start clear-sort-container mt-1 border-bottom">
+                <button className="btn btn-clear-sort btn-link">Clear Sorting Filters</button>
             </div>
         </aside>
     )
