@@ -129,7 +129,7 @@ li.list-head:hover {
 
 .product-page-main  .card-horizontal .card-header {
     flex: unset;
-    width: 20rem;
+    max-width: 17rem;
 }
 
 .product-card:hover {
@@ -339,7 +339,8 @@ li.list-head:hover {
         width: 150px;
     }
 
-    .product-card.card-horizontal {
+    .product-card.card-horizontal,
+    .product-page-main .product-card.card-horizontal {
         flex-direction: column;
     }
 }

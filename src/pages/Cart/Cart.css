@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 60% 40%;
     gap: var(--space-1);
-    max-width: 70%;
+    max-width: 80%;
     place-items: start center;
 }
 
@@ -17,6 +17,7 @@
 
 .cart-list {
     gap: var(--space-1);
+    width: 100%;
 }
 
 .cart-item .card-body {
