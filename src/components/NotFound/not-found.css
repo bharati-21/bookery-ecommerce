@@ -1,6 +1,7 @@
 .not-found-img {
     object-position: center center;
     height: 60vh;
+    object-fit:contain;
 }
 
 .not-found-main {
