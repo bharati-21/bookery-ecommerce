@@ -35,14 +35,17 @@ const WishListItem = ({ wishListItem }) => {
         try {
             const prodcutDeletedFromWishList = await deleteProductInWishList(_id, token);
             if(prodcutDeletedFromWishList) {   
+                setIsOngoingNetworkCall(false);
                 if(showToastAfterRemovingItem) showToast('Item removed from wishlist', 'success');
                 wishListDispatch({type: 'ADD_TO_WISHLIST', payload: {wishListItems: prodcutDeletedFromWishList, error:false, loading: false}});
             }
             else {
+                setIsOngoingNetworkCall(false);
                 if(showToastAfterRemovingItem) showToast('Failed to remove item from wishlist. Please try again later.', 'error');
             }
         }
         catch(error){
+            setIsOngoingNetworkCall(false);
             if(showToastAfterRemovingItem) showToast('Failed to remove item from wishlist. Please try again later.', 'error');
         }
     }
