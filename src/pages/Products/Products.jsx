@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-
 import { useProduct, useFilter } from "contexts/";
 import { Filters, ProductList, SortingOptions } from "components/";
 import "./products.css";
+
 
 const Products = () => {
 	const {
@@ -23,7 +23,7 @@ const Products = () => {
 
 	return (
 		<main className="main products-main my-2 mx-auto py-2 px-3 grid grid-2">
-			{
+			  {
                 loading ? (
                     <h1 className="loading text success-color my-2 text-center">
                         Loading Books...
@@ -44,7 +44,7 @@ const Products = () => {
                         <ProductList products={products} />
                     </>
                 )
-            }
+        }
 		</main>
 	);
 };
