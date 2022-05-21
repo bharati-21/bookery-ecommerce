@@ -1,21 +1,21 @@
 <h1 align="center">
   <br />
-  <a href="https://bookery.netlify.app/">
-      <img src="https://github.com/bharati-21/elixir-ui/blob/9e0021ca0eb8952f6bf408d9f2a119439ac359a2/logo-assets/elixir-logo.png" alt="Elixir UI" width="200"></a>
+  <a href="https://stream-tunes.netlify.app/">
+      <img src="https://user-images.githubusercontent.com/51514137/169649223-e2dcffa1-a7b5-4cd3-b94e-5cbe257fecee.png" width="200" />
+  </a>
   <br />
-  <br />
-  Bookery 
+  Stream Tunes 
 </h1>
 <p align="center">by elixir designs</p>
 <br />
 <h3 align="center">
-    One stop shop for all your book needs and moods.
+    Stream and jam to your favorite tunes!
 </h3>
 
 <div align="center">
 <img src="https://img.shields.io/badge/version-v1-green" align="center"/>
 <img src="https://img.shields.io/badge/label-open--source-blue" align="center"/>
-    <a href="https://app.netlify.com/sites/bookery/deploys" align="center">
+    <a href="https://app.netlify.com/sites/stream-tunes/deploys" align="center">
         <img src="https://api.netlify.com/api/v1/badges/8b083945-912e-4f2d-90fd-9f8bcf06aeee/deploy-status" align="center"/>
     </a>
 </div>
@@ -39,10 +39,10 @@
 <!-- Project Introduction -->
 ## **Introduction**
 <p>
-    Bookery is an e-commerce store that satisfies your bookish needs and moods. 
+    Stream Tunes is an video library app that has various music videos across different genres. 
 </p>
 <br />
-Visit <a href="https://bookery.netlify.app/">bookery</a> and buy your favorite books today! We serve all your book needs with simple, well strcutured website that offers books across various genres. Check out the popular genres, hot picks of the month and get great deals with books delivered within 24 hours! Grab the best deal for your book. 
+Visit <a href="https://stream-tunes.netlify.app/">Stream Tunes</a> and jam to your favorite tunes!
 
 <br />
 <br />
@@ -51,37 +51,22 @@ Visit <a href="https://bookery.netlify.app/">bookery</a> and buy your favorite b
 ## **FEATURES**
 
 Features include-
-- Users can see a list of top categories and genres of books. When user clicks any of them, they are redirected to the product listing page where the products are filtered based on the selected category.
-- Users can see the top book picks on the landing page
-- Users can go to the product listing page, and filter/ sort based on any categories.
-- Users can click on a product to view information about it.
-- Users can also add books to the cart or wishlist.
-- Users can additionally search for books from the search bar on the navigation bar which navigates them to the product listing page. The books are filtered based on the entered search text matching either the title or author.
+- Users can see a list of categories of music videos. When user clicks any of them, they are redirected to the explore page where the music videos are filtered based on the selected category.
+- Users can go to the explore page, and filter based on genres and sort based on upload date.
+- Users can click on a video to view information about it.
+- Users can also add videos to their liked videos, watch later or an existing or new playlist.
+- Users can additionally search for videos from the search bar on the navigation bar which navigates them to the explore page. The videso are filtered based on the entered search text matching the video title.
+- Users can also view their watched videos on the history page.
 
 UI consists of -
 - Home page
-  - Popular genre categories
-  - Top picks
-    - Screenshot - ![Home page screenshot](https://user-images.githubusercontent.com/51514137/162260696-92795832-5188-4098-8d5c-0bb7262dbc6a.png)
-   
-- Product catalog
-  - Filter sidebar
-  - Product cards
-    - Screenshot - ![Product catalog screenshot](https://user-images.githubusercontent.com/51514137/162260781-4945b7bf-12b4-4dd7-ad59-01ec6f2a90b2.png)
-  - Single Product Item Page
-    - Screenshot - ![Single product item screenshot](https://user-images.githubusercontent.com/51514137/162261412-d59fe97c-cfe9-4d82-a9e5-1ee16af32348.png)
-   
-- Wishlist Page
-    - Screenshot - ![Wishlist page screenshot](https://user-images.githubusercontent.com/51514137/162260948-182a6617-7ebb-44b3-9ad2-185a6db17058.png)
-    
-- My Shelf/ Cart Page
-    - Screenshot -  ![Cart page screenshot](https://user-images.githubusercontent.com/51514137/162261164-86edad75-b6cf-4ef4-b941-9357ec4e5d22.png)
-   
+- Explore page
+- Watch later Page    
+- History Page
+- Playlist Page
 - Authentication
   - Login Page
-    - Screenshot - ![Login page screenshot](https://user-images.githubusercontent.com/51514137/162261528-da586f0b-b79b-4235-94ba-c130ae6a1ca9.png)
   - Sign up Page
-    - Screenshot - ![Sign up page screenshot](https://user-images.githubusercontent.com/51514137/162261883-d382a5ce-ba12-4aa5-a6e1-b86a9e7c2802.png)
 
 <br />
 <br />
@@ -103,7 +88,7 @@ UI consists of -
 - To run this project locally, use the following command in your CLI:
 
 ```bash
-  git clone https://github.com/bharati-21/bookery-ecommerce.git
+  git clone https://github.com/bharati-21/stream-tunes.git
 ```
 - Open your favorite code editor and run locally!
 
