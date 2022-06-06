@@ -1,130 +1,130 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import './footer.css';
+import "./footer.css";
 
 const Footer = () => {
-    return (
-        <footer className="footer home-footer" id="footer">
-            <div className="primary-footer grid grid-5 py-2-5 px-5">
-                <span className="icon">
-                    <i className="fab fa-cc-visa"></i>
-                </span>
-                <span className="icon">
-                    <i className="fab fa-cc-mastercard"></i>
-                </span>
-                <span className="icon">
-                    <i className="fab fa-paypal"></i>
-                </span>
-                <span className="icon">
-                    <i className="fab fa-amazon-pay"></i>
-                </span>
-                <span className="icon">
-                    <i className="fab fa-google-pay"></i>
-                </span>  
-            </div>
-            <div className="secondary-footer px-5 py-2 grid grid-4">
-                <ul className="footer-item list list-stacked list-style-none grid-item">
-                    <li className="list-head text-sm p-0-5 mb-1">
-                        Customer Center
-                    </li>
-                    <li className="list-item flex-row px-0-5">
-                        <span className="icon">
-                            <i className="fas fa-phone-alt mr-0-5"></i>
-                        </span> 
-                        Support Helpline
-                    </li>
-                    <li className="list-item text-sm px-0-5">
-                        <a href="mailto:bookery@elixir.com" className="btn btn-link btn-light mr-0-5">
-                            <span className="icon">
-                                <i className="fas fa-envelope"></i>
-                            </span>
-                            Email Us
-                        </a>
-                    </li>
-                    <li className="list-item text-sm px-0-5">
-                        Weekdays 09:30 - 18:00
-                    </li>
-                    <li className="list-item text-sm px-0-5">
-                        Weekends 11:00 - 16:00
-                    </li>
-                    <li className="list-item text-sm px-0-5">
-                        Holdays: Sat, Sun, National Holidays
-                    </li>  
-                </ul>
-                <ul className="footer-item list list-stacked list-style-none grid-item">
-                    <li className="list-head text-sm p-0-5 mb-1">
-                        Service Hub and Store
-                    </li>
-                    <li className="list-item flex-row px-0-5">
-                        <address>
-                            Royal Industrial Estate, <br />
-                            Opposite Robin & Co., <br />
-                            Lokhandwala, Andheri(W), <br />
-                            Mumbai, India - 4000053
-                        </address>
-                    </li>
-                </ul>
-                <ul className="footer-item list list-stacked list-style-none grid-item">
-                    <li className="list-head text-sm p-0-5 mb-1">
-                        Quick Links
-                    </li>
-                    <li className="list-item px-0-5">
-                        <Link to="/" className="btn btn-link btn-light text-sm pb-0-25 brand logo">
-                            Bookery
-                        </Link>
-                    </li>
-                    <li className="list-item px-0-5 text-xs">
-                        <ul className="list list-inline list-style-none">
-                            <li className="list-item pr-0-25">
-                                <Link to="/" className="btn-link">About Us</Link>
-                            </li>
-                            <li className="list-item px-0-25">
-                                <Link to="/products" className="btn-link">Shop</Link>
-                            </li>
-                            <li className="list-item px-0-25">
-                                <Link to="/cart" className="btn-link">My Cart</Link>
-                            </li>
-                            <li className="list-item pl-0-25">
-                                <Link to="/wishlist" className="btn-link">My Wishlist</Link>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul className="footer-item list list-stacked list-style-none grid-item">
-                    <li className="list-head text-sm p-0-5 mb-1">
-                        Social Media
-                    </li>
-                    <li className="list-item">
-                        <div className="social-links flex-row">
-                            <a href="https://twitter.com/_bhaaratii" className="btn btn-link btn-light">
-                                <span className="icon">
-                                    <i className="fab fa-twitter"></i>
-                                </span>
-                            </a>
-                            <a href="https://github.com/bharati-21" className="btn btn-link btn-light">
-                                <span className="icon">
-                                    <i className="fab fa-github"></i>
-                                </span>
-                            </a>
-                            <a href="https://www.linkedin.com/in/bharati-subramanian-29734b152/" className="btn btn-link btn-light">
-                                <span className="icon">
-                                    <i className="fab fa-linkedin"></i>
-                                </span>
-                            </a>
-                            <a href="mailto:bharatisharada@gmail.com" className="btn btn-link btn-light">
-                                <span className="icon">
-                                    <i className="fas fa-envelope"></i>
-                                </span>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-                <div className="mt-1 pt-2 gray-color copyright-section span-cols text-sm text-center">
-                    &copy; elixir designs 2022
-                </div>
-            </div>                       
-        </footer>
-    )
-}
+	return (
+		<footer
+			className="footer px-3 py-2 flex-row flex-align-center flex-justify-center"
+			id="footer"
+		>
+			<div className="footer-wrapper grid mx-auto">
+				<div className="app-author-info flex-col flex-justify-center flex-align-center grid-item text-center">
+					<div className="app-info flex-col flex-justify-center flex-align-center text-center">
+						<Link
+							to="/"
+							className="btn btn-link btn-light text-lg brand-logo"
+						>
+							Bookery
+						</Link>
+						<p className="text-sm mt-0-5">
+							One stop shop for all your book needs and moods!
+						</p>
+					</div>
 
-export {Footer};
+					<div className="social-links flex-row flex-align-center flex-justify-center text-center">
+						<a
+							href="https://twitter.com/_bhaaratii"
+							className="btn btn-link btn-light"
+						>
+							<span className="icon">
+								<i className="fab fa-twitter text-lg"></i>
+							</span>
+						</a>
+						<a
+							href="https://github.com/bharati-21"
+							className="btn btn-link btn-light"
+						>
+							<span className="icon">
+								<i className="fab fa-github text-lg"></i>
+							</span>
+						</a>
+						<a
+							href="https://www.linkedin.com/in/bharati-subramanian-29734b152/"
+							className="btn btn-link btn-light"
+						>
+							<span className="icon">
+								<i className="fab fa-linkedin text-lg"></i>
+							</span>
+						</a>
+						<a
+							href="mailto:bharatisharada@gmail.com"
+							className="btn btn-link btn-light"
+						>
+							<span className="icon">
+								<i className="fas fa-envelope text-lg"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+				<ul className="footer-item list list-stacked list-style-none grid-item footer-quick-links text-center flex-align-center flex-justify-center">
+					<li className="list-head text-lg">Quick Links</li>
+
+					<li className="list-item">
+						<ul className="list list-stacked list-style-none">
+							<li className="list-item">
+								<Link to="/" className="btn-link text-sm">
+									About Us
+								</Link>
+							</li>
+							<li className="list-item">
+								<Link
+									to="/products"
+									className="btn-link text-sm"
+								>
+									Shop
+								</Link>
+							</li>
+							<li className="list-item">
+								<Link to="/cart" className="btn-link text-sm">
+									My Cart
+								</Link>
+							</li>
+							<li className="list-item">
+								<Link
+									to="/wishlist"
+									className="btn-link text-sm"
+								>
+									My Wishlist
+								</Link>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul className="footer-item list list-stacked list-style-none grid-item footer-contact text-center flex-align-center flex-justify-center">
+					<li className="list-head text-lg">Contact</li>
+					<li className="list-item flex-row">
+						<address className="text-sm">
+							Royal Industrial Estate, <br />
+							Lokhandwala, Andheri(W), <br />
+							Mumbai, India - 4000053
+						</address>
+					</li>
+					<li className="list-item text-sm flex-row mt-1">
+						<span className="icon">
+							<i className="fa-solid fa-phone text-sm flex-align-center"></i>
+						</span>
+						<span className="text-sm ml-0-25">+91 1234567890</span>
+					</li>
+				</ul>
+
+				<div className="mt-1 pt-2 gray-color copyright-section span-cols flex-col flex-align-center flex-justify-center text-sm text-center">
+					<div className="copy-right">&copy; elixir designs 2022</div>
+					<p className="text-sm author-portfolio-link">
+						<span className="flex-row flex-align-center flex-justify-center text-sm">
+							&lt;/&gt; by
+							<a
+								href="http://bharati-21.github.io/"
+								className="ml-0-25"
+							>
+								Bharati Subramanian
+							</a>
+						</span>
+					</p>
+				</div>
+			</div>
+		</footer>
+	);
+};
+
+export { Footer };
