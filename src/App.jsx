@@ -23,23 +23,11 @@ function App() {
 
 	return (
 		<div className="App">
-			<button class="btn btn-floating" onClick={handleScrollToTop}>
-				<span class="icon">
-					<i class="fas fa-arrow-up fa-icon"></i>
+			<button className="btn btn-floating" onClick={handleScrollToTop}>
+				<span className="icon">
+					<i className="fas fa-arrow-up fa-icon"></i>
 				</span>
 			</button>
-			<ToastContainer
-				theme="colored"
-				position="top-right"
-				autoClose={2000}
-				hideProgressBar={false}
-				newestOnTop
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-			/>
 			<Navbar />
 			<Routes />
 			<Footer />
