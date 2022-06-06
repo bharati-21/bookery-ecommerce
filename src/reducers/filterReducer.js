@@ -5,9 +5,8 @@ const filterActions = {
 	FILTER_BY_BOOK_TYPE: "FILTER_BY_BOOK_TYPE",
 	SORT_BY: "SORT_BY",
 	CLEAR_FILTERS: "CLEAR_FILTERS",
-    SET_CATEGORIES: "SET_CATEGORIES",
-    SET_SEARCH_TEXT: "SET_SEARCH_TEXT",
-    CLEAR_SORTING_OPTIONS: "CLEAR_SORTING_OPTIONS"
+	SET_CATEGORIES: "SET_CATEGORIES",
+	SET_SEARCH_TEXT: "SET_SEARCH_TEXT",
 };
 
 const initialFilterState = {
@@ -27,7 +26,7 @@ const initialFilterState = {
 		Paperback: false,
 		Hardcover: false,
 	},
-    searchText: '',
+	searchText: "",
 };
 
 const filterReducerFunction = (
@@ -62,17 +61,17 @@ const filterReducerFunction = (
 		case filterActions.SORT_BY:
 			return { ...prevFilterState, sortBy: filterPayload };
 
-        case filterActions.SET_CATEGORIES:
-            return { ...prevFilterState, genres: { ...prevFilterState.genres, [filterPayload]: true } };
+		case filterActions.SET_CATEGORIES:
+			return {
+				...prevFilterState,
+				genres: { ...prevFilterState.genres, [filterPayload]: true },
+			};
 
 		case filterActions.CLEAR_FILTERS:
-			return { ...initialFilterState, sortBy: prevFilterState.sortBy };
+			return { ...initialFilterState };
 
-        case filterActions.SET_SEARCH_TEXT:
-            return { ...prevFilterState, searchText: filterPayload };
-        
-        case filterActions.CLEAR_SORTING_OPTIONS:
-            return { ...prevFilterState, sortBy: '' };
+		case filterActions.SET_SEARCH_TEXT:
+			return { ...prevFilterState, searchText: filterPayload };
 	}
 };
 
