@@ -1,13 +1,9 @@
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import StarIcon from "@mui/icons-material/Star";
-import { useCart, useAuth, useWishList } from "contexts";
-import { postToCart, postToWishList } from "utils/";
-import { useToast } from "custom-hooks/useToast";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { deleteProductInWishList } from "utils";
+
+import { useCart, useAuth, useWishList } from "contexts";
+import { postToCart, postToWishList, deleteProductInWishList } from "utils/";
+import { useToast } from "custom-hooks/useToast";
 
 const ProductItem = ({ book }) => {
 	const {
@@ -34,7 +30,7 @@ const ProductItem = ({ book }) => {
 		discountPercent,
 		genres,
 		_id,
-        id,
+		id,
 		offers,
 		originalPrice,
 		sellingPrice,
@@ -77,7 +73,7 @@ const ProductItem = ({ book }) => {
 	const genreMapping = genres.map((genre) => (
 		<li
 			key={`${_id}-${genre}`}
-			className="badge text-xs badge-secondary p-0-25 px-0-5 genre-item"
+			className="badge text-xs badge-secondary text-xs p-0-25 px-0-5 genre-item"
 		>
 			{genre}
 		</li>
@@ -85,15 +81,15 @@ const ProductItem = ({ book }) => {
 
 	const productBadge =
 		bookType === "Hardcover" ? (
-			<span className="badge badge-secondary mx-0-25 my-0-75 text-reg px-0-5">
+			<span className="badge badge-secondary my-0-5 text-sm px-0-5">
 				{bookType}
 			</span>
 		) : offers.bestSeller ? (
-			<span className="badge badge-secondary mx-0-25 my-0-75 text-reg  px-0-75">
+			<span className="badge badge-secondary my-0-5 text-sm px-0-75">
 				Best Seller
 			</span>
 		) : offers.newArrival ? (
-			<span className="badge badge-error mx-0-25 my-0-75 text-reg  px-0-75">
+			<span className="badge badge-error my-0-5 text-sm px-0-75">
 				New Arrival
 			</span>
 		) : null;
@@ -101,7 +97,7 @@ const ProductItem = ({ book }) => {
 	const handleAddToCart = async (e) => {
 		if (outOfStock) return;
 		e.preventDefault();
-        e.stopPropagation();
+		e.stopPropagation();
 		setIsOngoingNetworkCall(true);
 		if (isAuth) {
 			if (bookInCart) {
@@ -136,7 +132,7 @@ const ProductItem = ({ book }) => {
 	const handleAddToWishList = async (e) => {
 		if (outOfStock) return;
 		e.preventDefault();
-        e.stopPropagation();
+		e.stopPropagation();
 		setIsOngoingNetworkCall(true);
 		if (isAuth) {
 			if (bookInWishList) {
@@ -205,23 +201,27 @@ const ProductItem = ({ book }) => {
 				onClick={handleAddToWishList}
 				disabled={isOngoingNetworkCall}
 			>
-				<span className="icon">
-					{bookInWishList ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+				<span className="icon flex-col flex-align-center flex-justify-center">
+					{bookInWishList ? (
+						<i className="fa-solid fa-heart text-reg"></i>
+					) : (
+						<i className="fa-regular fa-heart text-reg"></i>
+					)}
 				</span>
 			</button>
 
 			{outOfStock ? (
-				<div className="container-out-of-stock p-0-5 text-center text-lg">
+				<div className="container-out-of-stock py-0-25 px-0-5 text-center text-sm">
 					Out of Stock
 				</div>
 			) : null}
 
-			<div className="card-header p-1">
+			<div className="card-header p-0-75">
 				<img src={coverImg} alt={title} />
 				<div className="rating-container rating-badge m-1 px-0-75">
-					<span className="rating-value flex-row flex-align-center flex-justify-center">
+					<span className="rating-value flex-row flex-align-center flex-justify-center text-xs">
 						{totalStars}
-						<StarIcon className="star-icon ml-0-25 mr-0-5 success-color" />
+						<i className="fa-solid fa-star star-icon ml-0-25 mr-0-5 success-color flex-col flex-justify-center flex-align-center"></i>
 						|
 						<span className="ml-0-5 rating-count">
 							{localeTotalRatings}
@@ -231,21 +231,21 @@ const ProductItem = ({ book }) => {
 			</div>
 			<div className="card-body px-0-75">
 				<div className="card-description my-0-25">
-					<h6 className="text-lg card-title">{title}</h6>
-					<p className="mt-0-25 text-sm card-subtitle">{author}</p>
+					<h6 className="text-reg card-title">{title}</h6>
+					<p className="mt-0-25 text-xs card-subtitle">{author}</p>
 				</div>
 				<div className="card-content my-1">
 					<div className="card-price flex-row flex-align-start flex-justify-between">
 						<div className="discounted-price flex-col">
-							<p className="price-discounted">
+							<p className="price-discounted text-sm">
 								₹ {localeSellingPrice}
 							</p>
-							<span className="success-color percentage-discount">
+							<span className="success-color percentage-discount text-sm">
 								{discountPercent} %
 							</span>
 						</div>
 						<p className="price-original">
-							<span className="text-linethrough error-color">
+							<span className="text-linethrough error-color text-sm">
 								₹ {localeOriginalPrice}
 							</span>
 						</p>
@@ -257,7 +257,7 @@ const ProductItem = ({ book }) => {
 					</div>
 				</div>
 			</div>
-			<div className="card-footer mt-1 mb-0-75  px-0-75">
+			<div className="card-footer mt-1 mb-0-75 text-sm py-0-25 px-0-75">
 				<button
 					className={`btn btn-primary btn-text-icon btn-full-width p-0-25 ${
 						isOngoingNetworkCall || outOfStock ? "btn-disabled" : ""
@@ -271,7 +271,7 @@ const ProductItem = ({ book }) => {
 						<span>Add to Cart</span>
 					)}
 					<span className="icon">
-						<ShoppingCartIcon />
+						<i className="fa-solid fa-cart-shopping"></i>
 					</span>
 				</button>
 			</div>

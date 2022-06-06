@@ -1,14 +1,14 @@
 import { useFilter } from "contexts/";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
-const ClearFilters = ({ showCloseIcon, handleChangeShowFilterDrawer }) => {
-    const { filterDispatch } = useFilter();
+const ClearFilters = ({ handleChangeShowFilterDrawer }) => {
+	const { filterDispatch } = useFilter();
 
-    const handleClearFilters = event => {
-        filterDispatch({filterType: 'CLEAR_FILTERS'});
-    }
+	const handleClearFilters = (event) => {
+		filterDispatch({ filterType: "CLEAR_FILTERS" });
+	};
 
-    return (
+	return (
 		<div className="product-filters-head flex-row flex-align-end flex-justify-between mb-1-5 text-underline">
 			<h5 className="sidebar-head">Filters</h5>
 			<div className="flex-row flex-align-center flex-justify-center clear-filters-button-container">
@@ -18,17 +18,15 @@ const ClearFilters = ({ showCloseIcon, handleChangeShowFilterDrawer }) => {
 				>
 					Clear Filters
 				</button>
-				{
-                    showCloseIcon ? (
-					    <button className="btn btn-icon" onClick={() => handleChangeShowFilterDrawer(false)}>
-						    <CloseIcon fontSize="large" />
-					    </button>
-				    ) : 
-                    null
-                }
+				<button
+					className="btn btn-icon btn-close-filters"
+					onClick={() => handleChangeShowFilterDrawer(false)}
+				>
+					<CloseIcon />
+				</button>
 			</div>
 		</div>
 	);
-}
+};
 
 export { ClearFilters };
