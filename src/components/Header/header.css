@@ -1,78 +1,80 @@
 .parallax-image {
-    background: url('assets/images/library-img.jpg') no-repeat center center/ cover; 
-    background-attachment: fixed;
-    height: 70vh;
-    top: -12vh;
-    position: relative;
-    width: 100%;
+	background: url("assets/images/library-img.jpg") no-repeat center center/
+		cover;
+	background-attachment: fixed;
+	height: 60vh;
+	width: 100%;
+	position: relative;
 }
 
 .parallax-image::before {
-    position: absolute;
-    content: '';
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--overlay-bg-color);
-    z-index: 2;
+	position: absolute;
+	content: "";
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--overlay-bg-color);
+	z-index: 2;
 }
 
 .parallax-image > * {
-    position: relative; 
-    z-index: 3;
-}
-
-.hero-container {
-    height: 70vh;
-    width: 100%;
+	position: relative;
+	z-index: 3;
 }
 
 .hero-content {
-    top: 60%;
-    transform: translateY(-50%);
-    position: absolute;
-    z-index: 0;
-    color: var(--light-theme-bg-color);
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
+	color: var(--light-theme-bg-color);
+	height: 100%;
 }
 
-.hero-content h1 {
-    line-height:1.1;
+.hero-content h2 {
+	line-height: 1.1;
+	font-size: var(--h2);
 }
 
 .hero-cta {
-    width: max-content;
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -moz-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -ms-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -o-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	width: max-content;
+	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-moz-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-ms-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-o-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .hero-cta:hover {
-    transform: translateY(-5px);
-    -webkit-transform: translateY(-5px);
-    -moz-transform: translateY(-5px);
-    -ms-transform: translateY(-5px);
-    -o-transform: translateY(-5px);
+	transform: translateY(-5px);
+	-webkit-transform: translateY(-5px);
+	-moz-transform: translateY(-5px);
+	-ms-transform: translateY(-5px);
+	-o-transform: translateY(-5px);
 }
 
 .hero-cta .icon {
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -moz-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -ms-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -o-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-webkit-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-moz-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-ms-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-o-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .hero-cta:hover .icon {
-    transform: translateX(5px);
-    -webkit-transform: translateX(5px);
-    -moz-transform: translateX(5px);
-    -ms-transform: translateX(5px);
-    -o-transform: translateX(5px);
+	transform: translateX(5px);
+	-webkit-transform: translateX(5px);
+	-moz-transform: translateX(5px);
+	-ms-transform: translateX(5px);
+	-o-transform: translateX(5px);
+}
+
+@media screen and (max-width: 640px) {
+	.hero-content {
+		padding: var(--space-1);
+	}
+}
+
+@media screen and (max-width: 300px) {
+	.hero-content h2 {
+		font-size: var(--h3);
+	}
 }
