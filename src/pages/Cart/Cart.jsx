@@ -1,13 +1,22 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import { CartList, CartSummary } from "components";
 import { useCart } from "contexts/";
 import "./Cart.css";
-import { Link } from "react-router-dom";
 import loadingImage from "assets/images/loading.svg";
+import { useDocumentTitle } from "custom-hooks";
 
 const Cart = () => {
 	const {
 		cartState: { cartItems, loading, error },
 	} = useCart();
+
+	const { setDocumentTitle } = useDocumentTitle();
+
+	useEffect(() => {
+		setDocumentTitle("Bookery | Cart");
+	}, []);
 
 	return (
 		<main className="main cart-main my-2 mx-auto px-3 py-2">

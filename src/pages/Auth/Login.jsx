@@ -9,6 +9,7 @@ import "./auth.css";
 import { initiateLogin } from "utils/";
 import { useToast } from "custom-hooks/useToast";
 import { useAuth, useCart, useWishList } from "contexts/";
+import { useDocumentTitle } from "custom-hooks";
 
 const Login = () => {
 	const initialFormData = {
@@ -30,11 +31,13 @@ const Login = () => {
 	const { cartDispatch } = useCart();
 	const { wishListDispatch } = useWishList();
 	const { showToast } = useToast();
+	const { setDocumentTitle } = useDocumentTitle();
 
 	useEffect(() => {
 		if (isAuth) {
 			navigate(state?.from ?? -1, { replace: true });
 		}
+		setDocumentTitle("Bookery | Login");
 	}, []);
 
 	const handleFormDataChange = (event) => {

@@ -6,7 +6,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 import { initiateSignup } from "utils/";
-import { useToast } from "custom-hooks/useToast";
+import { useToast, useDocumentTitle } from "custom-hooks";
 import { useAuth } from "contexts/";
 import "./auth.css";
 
@@ -33,10 +33,13 @@ const Signup = () => {
 		authState: { isAuth },
 	} = useAuth();
 
+	const { setDocumentTitle } = useDocumentTitle();
+
 	useEffect(() => {
 		if (isAuth) {
 			navigate(state?.from ? state.from : "/");
 		}
+		setDocumentTitle("Bookery | Signup");
 	}, []);
 
 	const handleFormDataChange = (event) => {

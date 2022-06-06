@@ -1,7 +1,10 @@
+import React, { useEffect } from "react";
+
 import { Header } from "components/Header/Header";
 import "./landing-page.css";
 import { Link } from "react-router-dom";
 import { useProduct } from "contexts";
+import { useDocumentTitle } from "custom-hooks";
 
 const LandingPage = () => {
 	const {
@@ -10,6 +13,12 @@ const LandingPage = () => {
 		categories,
 		categoriesMessages: { loading, error },
 	} = useProduct();
+
+	const { setDocumentTitle } = useDocumentTitle();
+
+	useEffect(() => {
+		setDocumentTitle("Bookery | Home");
+	}, []);
 
 	const categoryMapping = categories.map(
 		({ categoryImage, categoryName, _id }) => (

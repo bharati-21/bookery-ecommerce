@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useProduct, useFilter } from "contexts/";
 import { Filters, ProductList } from "components/";
 import "./products.css";
-import { useMedia } from "custom-hooks";
+import { useDocumentTitle, useMedia } from "custom-hooks";
 
 const Products = () => {
 	const {
@@ -15,6 +15,12 @@ const Products = () => {
 
 	const [showFilterDrawer, setShowFilterDrawer] = useState(false);
 	const doesMediaQueryMatches = useMedia("(min-width: 641px)");
+
+	const { setDocumentTitle } = useDocumentTitle();
+
+	useEffect(() => {
+		setDocumentTitle("Bookery | Products");
+	}, []);
 
 	useEffect(() => {
 		const categoryName = location?.state;
