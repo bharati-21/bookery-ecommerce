@@ -5,6 +5,7 @@ import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
 import { StateProvider } from "./StateProvider";
 import ToastPortal from "ToastPortal";
+import ModalPortal from "ModalPortal";
 
 // Call make Server
 makeServer();
@@ -14,6 +15,7 @@ ReactDOM.render(
 		<Router>
 			<StateProvider>
 				<ToastPortal />
+				<ModalPortal />
 				<App />
 			</StateProvider>
 		</Router>
