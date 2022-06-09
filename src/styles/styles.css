@@ -84,6 +84,22 @@ body::-webkit-scrollbar-thumb {
 	right: var(--space-0-75);
 }
 
+.modal-wrapper {
+    position: fixed;
+    background-color: var(--overlay-bg-color);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    height: 100%;
+}
+
+button:disabled, input[type="submit"]:disabled {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
 @media screen and (max-width: 768px) {
 	.btn.btn-floating {
 		bottom: var(--space-4);

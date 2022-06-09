@@ -58,3 +58,7 @@ i {
 .rating-badge:hover {
 	background-color: var(--primary-bg-color);
 }
+
+.text-message {
+    display: inline-block;
+}
