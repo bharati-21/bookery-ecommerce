@@ -4,4 +4,7 @@ export { Cart } from "./Cart/Cart";
 export { WishList } from "./WishList/WishList";
 export { Signup } from "./Auth/Signup";
 export { Login } from "./Auth/Login";
-export { ProductPageItem } from './ProductPage/ProductPageItem';
+export { ProductPageItem } from "./ProductPage/ProductPageItem";
+export { Profile } from "./Profile/Profile";
+export { ProfileDetails } from "./Profile/ProfileDetails";
+export { Address } from "./Profile/Address";
