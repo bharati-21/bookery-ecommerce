@@ -23,3 +23,5 @@ export { CartSummary } from "./Cart/CartSummary";
 export { WishListItem } from "./WishList/WishListItem";
 
 export { NotFound } from "./NotFound/NotFound";
+
+export { AddressForm } from "./AddressForm";
