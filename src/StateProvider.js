@@ -1,19 +1,26 @@
-import { ProductProvider, FilterProvider, AuthProvider, CartProvider, WishListProvider } from "contexts/";
+import {
+	ProductProvider,
+	FilterProvider,
+	AuthProvider,
+	CartProvider,
+	WishListProvider,
+	AddressProvider,
+} from "contexts/";
 
 const StateProvider = ({ children }) => {
-    return (
-        <AuthProvider>
-            <WishListProvider>
-                <CartProvider>
-                    <FilterProvider>
-                        <ProductProvider>
-                            {children}
-                        </ProductProvider>
-                    </FilterProvider>
-                </CartProvider>
-            </WishListProvider>
-        </AuthProvider>
-    )
-}
+	return (
+		<AuthProvider>
+			<AddressProvider>
+				<WishListProvider>
+					<CartProvider>
+						<FilterProvider>
+							<ProductProvider>{children}</ProductProvider>
+						</FilterProvider>
+					</CartProvider>
+				</WishListProvider>
+			</AddressProvider>
+		</AuthProvider>
+	);
+};
 
 export { StateProvider };
