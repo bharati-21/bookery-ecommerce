@@ -8,3 +8,5 @@ export { ProductPageItem } from "./ProductPage/ProductPageItem";
 export { Profile } from "./Profile/Profile";
 export { ProfileDetails } from "./Profile/ProfileDetails";
 export { Address } from "./Profile/Address";
+export { Checkout } from "./Checkout/";
+export { AddressItem } from "./Profile/Address/AddressItem";
