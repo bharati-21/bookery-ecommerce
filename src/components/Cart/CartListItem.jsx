@@ -4,6 +4,7 @@ import {
 	updateProductInCart,
 	deleteProductInCart,
 	postToWishList,
+	getSellingPrice,
 } from "utils/";
 import { useToast } from "custom-hooks/useToast";
 
@@ -14,11 +15,13 @@ const CartListItem = ({ cartItem }) => {
 		bookType,
 		coverImg,
 		discountPercent,
+		originalPrice,
 		_id,
-		sellingPrice,
 		title,
 		qty,
 	} = cartItem;
+
+	const sellingPrice = getSellingPrice(originalPrice, discountPercent);
 
 	const localeSellingPrice = sellingPrice.toLocaleString("en-IN", {
 		minimumFractionDigits: 2,
@@ -50,9 +53,9 @@ const CartListItem = ({ cartItem }) => {
 				break;
 		}
 
-        if(operation === "decrement" && qty === 1) {
-            return handleRemoveFromCart();
-        }
+		if (operation === "decrement" && qty === 1) {
+			return handleRemoveFromCart();
+		}
 
 		try {
 			setIsOngoingNetworkCall(true);
@@ -81,21 +84,20 @@ const CartListItem = ({ cartItem }) => {
 			setIsOngoingNetworkCall(false);
 		} catch (error) {
 			showToast(
-                "Failed to update quantity. Please try again later.",
-                "error"
-            );
+				"Failed to update quantity. Please try again later.",
+				"error"
+			);
 			setIsOngoingNetworkCall(false);
 		}
 	};
 
 	const handleRemoveFromCart = async (showToastAfterRemovingItem = true) => {
-        setIsOngoingNetworkCall(true);
+		setIsOngoingNetworkCall(true);
 		try {
 			const productDeletedInCart = await deleteProductInCart(_id, token);
 			if (productDeletedInCart) {
-				if (showToastAfterRemovingItem)
-                    setIsOngoingNetworkCall(false);
-					showToast("Item removed from cart!", "success");
+				if (showToastAfterRemovingItem) setIsOngoingNetworkCall(false);
+				showToast("Item removed from cart!", "success");
 				cartDispatch({
 					type: "ADD_TO_CART",
 					payload: {
@@ -105,7 +107,7 @@ const CartListItem = ({ cartItem }) => {
 					},
 				});
 			} else {
-                setIsOngoingNetworkCall(false);
+				setIsOngoingNetworkCall(false);
 				if (showToastAfterRemovingItem)
 					showToast(
 						"Failed to remove item from cart. Please try again later.",
@@ -113,11 +115,11 @@ const CartListItem = ({ cartItem }) => {
 					);
 			}
 		} catch (error) {
-            setIsOngoingNetworkCall(false);
+			setIsOngoingNetworkCall(false);
 			showToast(
-                "Failed to remove item from cart. Please try again later.",
-                "error"
-            );
+				"Failed to remove item from cart. Please try again later.",
+				"error"
+			);
 		}
 	};
 
@@ -155,34 +157,33 @@ const CartListItem = ({ cartItem }) => {
 					);
 				}
 			} catch (error) {
-                showToast(
-                    "Failed to add item to wishlist. Please try again later.",
-                    "error"
-                );
+				showToast(
+					"Failed to add item to wishlist. Please try again later.",
+					"error"
+				);
 			}
 			setIsOngoingNetworkCall(false);
 		}
 	};
 
 	return (
-		<article
-			className="card card-horizontal product-card cart-item flex-row flex-align-center flex-justify-center p-1"
-			id={_id}
-		>
-			<div className="card-header">
+		<article className="card card-wt-badge cart-item p-1" id={_id}>
+			<span className="badge badge-secondary mx-0-25 my-0-75 text-reg px-0-5">
+				{bookType}
+			</span>
+			<div className="card-header flex-col flex-justify-center">
 				<img
 					src={coverImg}
 					alt={title}
 					className="card-img cart-item-img"
 				/>
 			</div>
-			<div className="card-body">
+			<div className="card-body flex-col flex-justify-centery">
 				<div className="card-main flex-col flex-justify-center">
 					<h6 className="card-title">{title}</h6>
 					<p className="text-sm card-subtitle color-gray mt-0-5">
 						{author}
 					</p>
-					<p className="text-sm text-uppercase mt-0-5">{bookType}</p>
 				</div>
 				<div className="card-content flex-col flex-align-start flex-justify-center">
 					<div className="card-price flex-col">
@@ -196,9 +197,7 @@ const CartListItem = ({ cartItem }) => {
 					<div className="card-quantity flex-row flex-align-center flex-justify-start">
 						<button
 							className={`btn btn-quantity btn-decrease-quantity flex-col ${
-								isOngoingNetworkCall
-									? "btn-disabled"
-									: ""
+								isOngoingNetworkCall ? "btn-disabled" : ""
 							}`}
 							value="DECREASE_QUANTITY"
 							disabled={isOngoingNetworkCall}
@@ -227,24 +226,24 @@ const CartListItem = ({ cartItem }) => {
 						</button>
 					</div>
 				</div>
-			</div>
-			<div className="card-footer flex-row flex-align-center flex-justify-content flex-wrap">
-				<button
-					className={`btn btn-primary px-0-75 py-0-25 btn-full-width text-reg ${
-						isOngoingNetworkCall ? "btn-disabled" : ""
-					}`}
-					onClick={handleMoveItemToWishList}
-				>
-					Move to wishlist
-				</button>
-				<button
-					className={`btn btn-primary btn-outline px-0-75 py-0-25 btn-full-width text-reg ${
-						isOngoingNetworkCall ? "btn-disabled" : ""
-					}`}
-					onClick={handleRemoveFromCart}
-				>
-					Remove from cart
-				</button>
+				<div className="card-footer flex-col flex-align-start flex-justify-content flex-wrap">
+					<button
+						className={`btn btn-primary px-0-75 py-0-25 btn-full-width text-sm ${
+							isOngoingNetworkCall ? "btn-disabled" : ""
+						}`}
+						onClick={handleMoveItemToWishList}
+					>
+						Move to wishlist
+					</button>
+					<button
+						className={`btn btn-primary btn-outline px-0-75 py-0-25 btn-full-width text-sm ${
+							isOngoingNetworkCall ? "btn-disabled" : ""
+						}`}
+						onClick={handleRemoveFromCart}
+					>
+						Remove from cart
+					</button>
+				</div>
 			</div>
 		</article>
 	);

@@ -2,8 +2,13 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import { useCart, useAuth, useWishList } from "contexts";
-import { postToCart, postToWishList, deleteProductInWishList } from "utils/";
-import { useToast } from "custom-hooks/useToast";
+import {
+	postToCart,
+	postToWishList,
+	deleteProductInWishList,
+	getSellingPrice,
+} from "utils/";
+import { useToast } from "custom-hooks";
 
 const ProductItem = ({ book }) => {
 	const {
@@ -33,11 +38,12 @@ const ProductItem = ({ book }) => {
 		id,
 		offers,
 		originalPrice,
-		sellingPrice,
 		title,
 		totalRatings,
 		totalStars,
 	} = book;
+
+	const sellingPrice = getSellingPrice(originalPrice, discountPercent);
 
 	useEffect(() => {
 		const isBookInCart = cartItems.find((cartItem) => cartItem._id === _id);

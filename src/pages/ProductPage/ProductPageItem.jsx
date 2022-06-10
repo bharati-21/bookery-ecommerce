@@ -6,7 +6,12 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StarIcon from "@mui/icons-material/Star";
 
 import { useCart, useAuth, useWishList, useProduct } from "contexts";
-import { postToCart, postToWishList, deleteProductInWishList } from "utils/";
+import {
+	postToCart,
+	postToWishList,
+	deleteProductInWishList,
+	getSellingPrice,
+} from "utils/";
 import { useDocumentTitle, useToast } from "custom-hooks";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -91,11 +96,12 @@ const ProductPageItem = () => {
 		id,
 		offers,
 		originalPrice,
-		sellingPrice,
 		title,
 		totalRatings,
 		totalStars,
 	} = book;
+
+	const sellingPrice = getSellingPrice(originalPrice, discountPercent);
 
 	const outOfStock = !offers.inStock;
 
