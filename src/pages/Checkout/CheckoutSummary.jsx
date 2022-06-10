@@ -1,6 +1,7 @@
 import { useCart } from "contexts";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import ProfileCSS from "pages/Profile/Profile.module.css";
 
 const CheckoutSummary = () => {
 	const {
@@ -9,6 +10,8 @@ const CheckoutSummary = () => {
 	} = useCart();
 
 	const navigate = useNavigate();
+
+	const { addressCityState, addressItem } = ProfileCSS;
 
 	const handlePlaceOrder = () => {
 		alert("Placed order successfully! Payment Integration coming soon...");
@@ -54,7 +57,28 @@ const CheckoutSummary = () => {
 					Delivery Details
 				</h6>
 				<div className="flex-row order-items-head flex-justify-between flex-align-center pt-0-75 pb-0-25">
-					{!checkoutData?.address && "Delivery details not selected"}
+					{!checkoutData?.address ? (
+						<h6 className="item-head">
+							Delivery details not selected
+						</h6>
+					) : (
+						<div
+							className={`${addressItem} flex-col flex-align-start flex-justify-center text-left`}
+						>
+							<h6 className="item-head">
+								{checkoutData?.address.name}
+							</h6>
+							<span>{checkoutData?.address.addressLine}</span>
+							<div
+								className={`${addressCityState} flex-row flex-justify-start flex-align-center`}
+							>
+								<span>{checkoutData?.address.city},</span>
+								<span>{checkoutData?.address.state},</span>
+								<span>{checkoutData?.address.pincode}</span>
+							</div>
+							<span>{checkoutData?.address.phoneNumber}</span>{" "}
+						</div>
+					)}
 				</div>
 			</div>
 			<button
