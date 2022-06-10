@@ -24,7 +24,7 @@ const Address = () => {
 			<div
 				className={`${addressHeader} flex-row flex-justify-between flex-align-center pb-1`}
 			>
-				<h5>My Addresses</h5>
+				<h4>My Addresses</h4>
 				<button
 					className="btn btn-primary py-0-25 px-0-75"
 					onClick={handleChangeAddressModalVisibility}
@@ -36,7 +36,7 @@ const Address = () => {
 				className={`${addressList} mt-2 flex-col flex-align-start flex-justify-center list list-style-none`}
 			>
 				{!addresses?.length ? (
-					<h4>No addresses to show!</h4>
+					<h5>No addresses to show!</h5>
 				) : (
 					addresses.map((address) => (
 						<AddressItem address={address} key={address._id} />
