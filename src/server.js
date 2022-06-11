@@ -11,6 +11,7 @@ import {
 } from "./backend/controllers/AuthController";
 import {
 	addItemToCartHandler,
+	clearCart,
 	getCartItemsHandler,
 	removeItemFromCartHandler,
 	updateCartItemHandler,
@@ -94,6 +95,7 @@ export function makeServer({ environment = "development" } = {}) {
 				"/user/cart/:productId",
 				removeItemFromCartHandler.bind(this)
 			);
+			this.get("/user/cart/clear", clearCart.bind(this));
 
 			// wishlist routes (private)
 			this.get("/user/wishlist", getWishlistItemsHandler.bind(this));
