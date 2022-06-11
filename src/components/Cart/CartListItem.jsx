@@ -68,10 +68,10 @@ const CartListItem = ({ cartItem }) => {
 			if (productUpdatedInCart) {
 				showToast("Quantity updated successfully!", "success");
 				cartDispatch({
-					type: "ADD_TO_CART",
+					type: "SET_CART_ITEMS",
 					payload: {
 						cartItems: productUpdatedInCart,
-						error: false,
+						error: null,
 						loading: false,
 					},
 				});
@@ -99,10 +99,10 @@ const CartListItem = ({ cartItem }) => {
 				if (showToastAfterRemovingItem) setIsOngoingNetworkCall(false);
 				showToast("Item removed from cart!", "success");
 				cartDispatch({
-					type: "ADD_TO_CART",
+					type: "SET_CART_ITEMS",
 					payload: {
 						cartItems: productDeletedInCart,
-						error: false,
+						error: null,
 						loading: false,
 					},
 				});

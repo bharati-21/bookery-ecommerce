@@ -100,10 +100,10 @@ const WishListItem = ({ wishListItem }) => {
 				if (productPostedToCart) {
 					showToast("Item moved to cart", "success");
 					cartDispatch({
-						type: "ADD_TO_CART",
+						type: "SET_CART_ITEMS",
 						payload: {
 							cartItems: productPostedToCart,
-							error: false,
+							error: null,
 							loading: false,
 						},
 					});
