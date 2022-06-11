@@ -23,8 +23,8 @@ const ProductItem = ({ book }) => {
 		authState: { token, isAuth },
 	} = useAuth();
 	const { showToast } = useToast();
-	const [bookInCart, setBookInCart] = useState(false);
-	const [bookInWishList, setBookInWishList] = useState(false);
+	const bookInCart = cartItems?.find(item => item._id === book._id);
+	const bookInWishList = wishListItems?.find(item => item._id === book._id);
 	const navigate = useNavigate();
 	const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);
 
@@ -44,24 +44,6 @@ const ProductItem = ({ book }) => {
 	} = book;
 
 	const sellingPrice = getSellingPrice(originalPrice, discountPercent);
-
-	useEffect(() => {
-		const isBookInCart = cartItems.find((cartItem) => cartItem._id === _id);
-		const isBookInWishList = wishListItems.find(
-			(wishListItem) => wishListItem._id === _id
-		);
-		if (isBookInCart) {
-			setBookInCart(true);
-		} else {
-			setBookInCart(false);
-		}
-
-		if (isBookInWishList) {
-			setBookInWishList(true);
-		} else {
-			setBookInWishList(false);
-		}
-	}, []);
 
 	const outOfStock = !offers.inStock;
 
@@ -114,14 +96,13 @@ const ProductItem = ({ book }) => {
 				if (productPostedToCart) {
 					showToast("Item added to cart", "success");
 					cartDispatch({
-						type: "ADD_TO_CART",
+						type: "SET_CART_ITEMS",
 						payload: {
 							cartItems: productPostedToCart,
-							error: false,
+							error: null,
 							loading: false,
 						},
 					});
-					setBookInCart(true);
 				} else {
 					showToast(
 						"Failed to add item to cart. Please try again later.",
@@ -154,7 +135,6 @@ const ProductItem = ({ book }) => {
 							loading: false,
 						},
 					});
-					setBookInWishList(false);
 				} else {
 					showToast(
 						"Failed to remove item from wishlist. Please try again later.",
@@ -177,7 +157,6 @@ const ProductItem = ({ book }) => {
 							loading: false,
 						},
 					});
-					setBookInWishList(true);
 				} else {
 					showToast(
 						"Failed to add item to wishlist. Please try again later.",
