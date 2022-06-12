@@ -25,3 +25,5 @@ export { editAddress } from "./address-utils/editAddress";
 export { deleteAddress } from "./address-utils/deleteAddress";
 export { getSellingPrice } from "./getSellingPrice";
 export { clearCartItems } from './clearCartItems'
+export { getAllOrders } from './orders-utils/getAllOrders';
+export { postNewOrder } from './orders-utils/postNewOrder';
