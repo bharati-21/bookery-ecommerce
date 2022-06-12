@@ -1,9 +1,26 @@
-import { useAuth, useCart } from "contexts";
+import { useAuth, useCart, useOrders } from "contexts";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import ProfileCSS from "pages/Profile/Profile.module.css";
-import { clearCartItems } from "utils";
+import { clearCartItems, postNewOrder } from "utils";
+import bookeryIcon from "assets/images/bookery-icon.png";
 import { useToast } from "custom-hooks";
+
+const RAZORPAY_URL = "https://checkout.razorpay.com/v1/checkout.js";
+
+const handleLoadScript = (src) => {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.onload = () => {
+      resolve(true);
+    };
+    script.onerror = () => {
+      reject(false);
+    };
+    document.body.appendChild(script);
+  });
+};
 
 const CheckoutSummary = () => {
   const {
@@ -13,26 +30,82 @@ const CheckoutSummary = () => {
 
   const navigate = useNavigate();
   const {
-    authState: { token },
+    authState: { token, user },
   } = useAuth();
 
+  const { ordersDispatch } = useOrders();
   const { addressCityState, addressItem } = ProfileCSS;
   const { showToast } = useToast();
 
-  const handlePlaceOrder = async () => {
+  const placeOrder = async (order) => {
+    const orderId = uuid();
     try {
       const {
-        data: { cart },
+        data: { orders },
+      } = await postNewOrder(token, { order, orderId });
+      showToast("Placed order successfully!", "success");
+
+      const {
+        data: { cart }
       } = await clearCartItems(token);
+
       cartDispatch({
         type: "INIT_CART_ITEMS",
-        payload: { cartItems: cart, error: null, loading: false },
+        payload: {
+          carItems: cart,
+          loading: false,
+          error: null,
+        },
       });
-      alert("Placed order successfully! Payment Integration coming soon...");
-      navigate("/products");
+
+      ordersDispatch({
+        type: "SET_ORDERS",
+        payload: { orders }
+      })
+      navigate(`/order-summary/${orderId}`)
+
     } catch (error) {
-      showToast("Could not place order. Please try again later.", "error");
+      showToast("Failed to place order. Please try again later.");
     }
+  };
+
+  const handleShowRazorPay = async () => {
+    const response = await handleLoadScript(RAZORPAY_URL);
+
+    if (!response) {
+      showToast(
+        "Could not load razorpay payment options. Please try again later.",
+        "error"
+      );
+      return;
+    }
+
+    var options = {
+      key: process.env.REACT_APP_RAZORPAY_KEY,
+      amount: checkoutData?.price * 100,
+      currency: "INR",
+      name: "Bookery -  Elixir Designs",
+      description: "Thank you for fulfilling your bookish needs with us!",
+      image: bookeryIcon,
+
+      handler: async function (response) {
+        const { razorpay_payment_id } = await response;
+        const order = {
+          razorpayPaymentId: razorpay_payment_id,
+          ...checkoutData,
+        };
+        placeOrder(order);
+      },
+      prefill: {
+        name: checkoutData?.address?.name,
+        email: user?.email,
+        contact: checkoutData?.address?.phoneNumber,
+      },
+      theme: { color: "#3399cc" },
+    };
+
+    const paymentObject = new Razorpay(options);
+    paymentObject.open();
   };
 
   return (
@@ -86,7 +159,7 @@ const CheckoutSummary = () => {
       <button
         className="btn btn-full-width mt-1  py-0-25 px-0-5 text-reg"
         disabled={checkoutData?.address ? false : true}
-        onClick={handlePlaceOrder}
+        onClick={handleShowRazorPay}
       >
         Place Order
       </button>
