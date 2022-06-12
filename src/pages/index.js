@@ -10,3 +10,4 @@ export { ProfileDetails } from "./Profile/ProfileDetails";
 export { Address } from "./Profile/Address";
 export { Checkout } from "./Checkout/";
 export { AddressItem } from "./Profile/Address/AddressItem";
+export { OrderSummary } from './OrderSummary';
