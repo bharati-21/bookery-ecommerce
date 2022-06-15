@@ -44,33 +44,36 @@ const AddressList = () => {
 	return (
 		<div className="checkout-address-list flex-col flex-align-start flex-justify-center">
 			{addresses?.length ? (
-				addresses.map((address) => (
-					<label
-						className="flex-row flex-align-start flex-justify-center"
-						key={address._id}
-					>
-						<input
-							type="radio"
-							className="mt-0-25"
-							value={address._id}
-							name="address"
-							onChange={(e) =>
-								handleChangeSelectedAddress(address)
-							}
-							checked={address._id === selectedAddress?._id}
-						/>
-						<AddressItem
-							address={address}
+				<>
+					<h4>Select shipping address</h4>
+					{addresses.map((address) => (
+						<label
+							className="flex-row flex-align-start flex-justify-center"
 							key={address._id}
-							page={"checkout"}
-						/>
-					</label>
-				))
+						>
+							<input
+								type="radio"
+								className="mt-0-25"
+								value={address._id}
+								name="address"
+								onChange={(e) =>
+									handleChangeSelectedAddress(address)
+								}
+								checked={address._id === selectedAddress?._id}
+							/>
+							<AddressItem
+								address={address}
+								key={address._id}
+								page={"checkout"}
+							/>
+						</label>
+					))}
+				</>
 			) : (
 				<h4>No addresses to show!</h4>
 			)}
 			<button
-				className="btn btn-primary py-0-25 px-0-75 mt-2"
+				className="btn btn-primary py-0-25 px-0-75 my-2"
 				onClick={handleChangeAddressModalVisibility}
 			>
 				Add New Address
