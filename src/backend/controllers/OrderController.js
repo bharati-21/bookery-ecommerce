@@ -23,7 +23,7 @@ export const getAllOrdersHandler = function (schema, request) {
     );
   }
   const userOrders = schema.users.findBy({ _id: userId }).orders;
-  return new Response(200, {}, { orders: orders });
+  return new Response(200, {}, { orders: userOrders });
 };
 
 /**
@@ -33,6 +33,7 @@ export const getAllOrdersHandler = function (schema, request) {
  * */
 
 export const addItemToOrdersHandler = function (schema, request) {
+  console.log(request)
   const userId = requiresAuth.call(this, request);
   try {
     if (!userId) {
@@ -45,9 +46,9 @@ export const addItemToOrdersHandler = function (schema, request) {
       );
     }
     const userOrders = schema.users.findBy({ _id: userId }).orders;
-    const { order } = JSON.parse(request.requestBody);
+    const order = JSON.parse(request.requestBody);
+    console.log(order)
     userOrders.push({
-      orderId: uuid(),
       ...order,
       createdAt: formatDate(),
       updatedAt: formatDate(),
@@ -55,6 +56,7 @@ export const addItemToOrdersHandler = function (schema, request) {
     this.db.users.update({ _id: userId }, { orders: userOrders });
     return new Response(201, {}, { orders: userOrders });
   } catch (error) {
+    console.log(error)
     return new Response(
       500,
       {},
