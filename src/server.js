@@ -55,7 +55,6 @@ export function makeServer({ environment = "development" } = {}) {
 			products.forEach((item) => {
 				server.create("product", { ...item });
 			});
-
 			users.forEach((item) =>
 				server.create("user", {
 					...item,

@@ -65,6 +65,7 @@ const AddressItem = ({ address, page }) => {
 			</div>
 			<span>{address.phoneNumber}</span>
 			{(page === "checkout" || page === "orderSummary") ? null : (
+
 				<div
 					className={`${buttonsContainer} mt-1 flex-row flex-align-center flex-justify-start`}
 				>
