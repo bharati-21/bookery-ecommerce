@@ -1,6 +1,7 @@
 .order-wrapper {
 	max-width: 1280px;
 	margin: auto;
+    width: 100%;
 }
 
 .order-summary-main .order-details {
@@ -42,9 +43,12 @@
 	gap: var(--space-1);
 }
 
+.order-summary-main a.card-horizontal {
+    height: unset;
+}
+
 .order-summary-main .card-horizontal .card-header {
 	max-height: 12rem;
-	height: 100%;
 	flex: unset;
 }
 
