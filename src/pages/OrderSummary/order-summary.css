@@ -43,14 +43,14 @@
 }
 
 .order-summary-main .card-horizontal .card-header {
-    max-height: 12rem;
-    height: 100%;
-    flex: unset;
+	max-height: 12rem;
+	height: 100%;
+	flex: unset;
 }
 
 .order-summary-main .card-horizontal .card-header img {
-    height: 100%;
-    object-fit: contain;
+	height: 100%;
+	object-fit: contain;
 }
 
 .order-wrapper .order-summary {
@@ -75,9 +75,8 @@
 	gap: var(--space-0-5);
 }
 
-
 .orders-list .border-bottom:last-child {
-    border-bottom: none;
+	border-bottom: none;
 }
 
 @media screen and (max-width: 960px) {
@@ -86,15 +85,13 @@
 		max-height: unset;
 	}
 
-    .order-summary-main .order-items {
-        max-height: unset;
-    }
+	.order-summary-main .order-items {
+		max-height: unset;
+	}
 
 	.order-summary-main .card-horizontal,
 	.order-wrapper .order-summary {
 		max-width: 30rem;
 		width: 100%;
 	}
-
-	
 }
