@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useProduct, useFilter } from "contexts/";
-import { Filters, ProductList, SortingOptions } from "components/";
+import { Filters, ProductList } from "components/";
 import "./products.css";
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-
+import { useDocumentTitle, useMedia } from "custom-hooks";
 
 const Products = () => {
 	const {
@@ -14,19 +13,38 @@ const Products = () => {
 	const location = useLocation();
 	const { filterDispatch } = useFilter();
 
-  const [showFilterDrawer, setShowFilterDrawer] = useState(false);
+	const [showFilterDrawer, setShowFilterDrawer] = useState(false);
+	const doesMediaQueryMatches = useMedia("(min-width: 641px)");
+
+	const { setDocumentTitle } = useDocumentTitle();
+
+	useEffect(() => {
+		setDocumentTitle("Bookery | Products");
+	}, []);
 
 	useEffect(() => {
 		const categoryName = location?.state;
-		categoryName && filterDispatch({
-			filterType: "SET_CATEGORIES",
-			filterPayload: categoryName,
-		});
+		categoryName &&
+			filterDispatch({
+				filterType: "SET_CATEGORIES",
+				filterPayload: categoryName,
+			});
 	}, [location?.state]);
 
-    const handleChangeShowFilterDrawer = isShown => {
-        setShowFilterDrawer(isShown);
-    }
+	useEffect(() => {
+		if (doesMediaQueryMatches && showFilterDrawer) {
+			document.body.style.overflowY = "scroll";
+			setShowFilterDrawer(false);
+		} else if (!doesMediaQueryMatches && showFilterDrawer) {
+			document.body.style.overflowY = "hidden";
+		} else if (!doesMediaQueryMatches && !showFilterDrawer) {
+			document.body.style.overflowY = "scroll";
+		}
+	}, [showFilterDrawer, doesMediaQueryMatches]);
+
+	const handleChangeShowFilterDrawer = (isShown) => {
+		setShowFilterDrawer(isShown);
+	};
 
 	return (
 		<main className="main products-main my-2 mx-auto py-2 px-3 grid grid-2">
@@ -40,51 +58,33 @@ const Products = () => {
 				</h1>
 			) : (
 				<>
-					<div className="grid-row-span">
-						<h2 className="main-head text-left mb-2 py-0-25">
-							All products
-						</h2>
-						<SortingOptions />
-					</div>
-					<div className="mobile-filters">
-						<div className="filter-sidebar-toggler flex-row flex-justify-between flex-align-center p-0-5 px-1">
-							<p className="text-lg">Filters</p>
-							<label>
-								<input
-									type="checkbox"
-									className="checkbox-filter"
-									id="checkbox-filter"
-									checked={showFilterDrawer}
-									onChange={() =>
-										handleChangeShowFilterDrawer(true)
-									}
-								/>
-								<span className="btn btn-icon">
-									<FilterAltIcon />
-								</span>
-							</label>
-						</div>
-						<div
-							className={`filter-sidebar-drawer ${
-								showFilterDrawer
-									? "filter-drawer-open"
-									: "filter-drawer-close"
-							}`}
-						>
-							<Filters
-								showCloseIcon={true}
-								handleChangeShowFilterDrawer={
-									handleChangeShowFilterDrawer
+					<div className="filters-wrapper py-1-5 px-1">
+						<Filters
+							handleChangeShowFilterDrawer={
+								handleChangeShowFilterDrawer
+							}
+							showFilterDrawer={showFilterDrawer}
+						/>
+						<div className="mobile-filters flex-row flex-align-center flex-justify-between py-0-75 px-1">
+							<h5>Filters</h5>
+							<button
+								className="btn btn-primary btn-icon"
+								onClick={() =>
+									handleChangeShowFilterDrawer(true)
 								}
-							/>
+							>
+								<i className="fa-solid fa-sliders fa-icon"></i>
+							</button>
 						</div>
 					</div>
-					<div className="filter-sidebar-desktop">
-						<Filters />
+					<div className={`product-list-wrapper`}>
+						<div className="grid-row-span">
+							<h3 className="main-head text-left py-0-25">
+								Products
+							</h3>
+						</div>
+						<ProductList products={products} />
 					</div>
-          <div className={`product-list-wrapper`}>
-             <ProductList products={products} />
-          </div>
 				</>
 			)}
 		</main>

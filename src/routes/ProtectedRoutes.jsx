@@ -1,9 +1,22 @@
-import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from 'contexts/';
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useAuth } from "contexts/";
 
 const ProtectedRoutes = () => {
-    const { authState: { isAuth } } = useAuth();
-    return (isAuth ? <Outlet /> : <Navigate to="/login" />)
-}
+	const {
+		authState: { isAuth },
+	} = useAuth();
 
-export {ProtectedRoutes};
+	const location = useLocation();
+
+	return isAuth ? (
+		<Outlet />
+	) : (
+		<Navigate
+			to="/login"
+			replace={true}
+			state={{ from: location?.pathname }}
+		/>
+	);
+};
+
+export { ProtectedRoutes };
