@@ -36,7 +36,7 @@
 	background-color: transparent;
 }
 
-.list-item.flex--row {
+.list-item.flex-row {
 	gap: var(--space-0-5) var(--space-0-75);
 }
 

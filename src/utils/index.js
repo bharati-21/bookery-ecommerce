@@ -23,3 +23,5 @@ export { validateAddressData } from "./address-utils/validateAddressData";
 export { postNewAddress } from "./address-utils/postNewAddress";
 export { editAddress } from "./address-utils/editAddress";
 export { deleteAddress } from "./address-utils/deleteAddress";
+export { getSellingPrice } from "./getSellingPrice";
+export { clearCartItems } from './clearCartItems'

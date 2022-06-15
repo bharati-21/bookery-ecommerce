@@ -45,7 +45,7 @@ export const addItemToCartHandler = function (schema, request) {
       );
     }
     const userCart = schema.users.findBy({ _id: userId }).cart;
-    const product  = JSON.parse(request.requestBody);
+    const product = JSON.parse(request.requestBody);
     userCart.push({
       ...product,
       createdAt: formatDate(),
@@ -136,6 +136,36 @@ export const updateCartItemHandler = function (schema, request) {
     }
     this.db.users.update({ _id: userId }, { cart: userCart });
     return new Response(200, {}, { cart: userCart });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
+
+/**
+ * This handler handles clearing user's cart.
+ * send POST Request at /api/user/cart/clear
+ * */
+export const clearCart = function (schema, request) {
+  const userId = requiresAuth.call(this, request);
+  try {
+    if (!userId) {
+      return new Response(
+        404,
+        {},
+        {
+          errors: ["The email you entered is not Registered. Not Found error"],
+        }
+      );
+    }
+    const userCart = [];
+    this.db.users.update({ _id: userId }, { cart: userCart });
+    return new Response(201, {}, { cart: userCart });
   } catch (error) {
     return new Response(
       500,

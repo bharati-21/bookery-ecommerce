@@ -13,7 +13,7 @@ const useUpdateCart = () => {
             const productUpdatedInCart = await updateProductInCart(_id, token, operation);
             if(productUpdatedInCart) {
                 if(showToastAfterCall) showToast('Item quantity updated in cart!', 'success');
-                cartDispatch({type: 'ADD_TO_CART', payload: {cartItems: productUpdatedInCart, error: false, loading: false}});
+                cartDispatch({type: 'SET_CART_ITEMS', payload: {cartItems: productUpdatedInCart, error: null, loading: false}});
                 return true;
             }
             else {

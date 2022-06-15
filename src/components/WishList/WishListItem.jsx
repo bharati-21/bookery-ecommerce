@@ -2,20 +2,15 @@ import { useAuth, useCart, useWishList } from "contexts";
 import { useToast, useUpdateCart } from "custom-hooks/";
 import { useState } from "react";
 import { ShoppingCart } from "@mui/icons-material";
-import { deleteProductInWishList, postToCart } from "utils";
+import { deleteProductInWishList, getSellingPrice, postToCart } from "utils";
 
 const WishListItem = ({ wishListItem }) => {
 	const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);
 
-	const {
-		_id,
-		author,
-		title,
-		coverImg,
-		discountPercent,
-		originalPrice,
-		sellingPrice,
-	} = wishListItem;
+	const { _id, author, title, coverImg, discountPercent, originalPrice } =
+		wishListItem;
+
+	const sellingPrice = getSellingPrice(originalPrice, discountPercent);
 
 	const localeSellingPrice = sellingPrice.toLocaleString("en-IN", {
 		minimumFractionDigits: 2,
@@ -105,10 +100,10 @@ const WishListItem = ({ wishListItem }) => {
 				if (productPostedToCart) {
 					showToast("Item moved to cart", "success");
 					cartDispatch({
-						type: "ADD_TO_CART",
+						type: "SET_CART_ITEMS",
 						payload: {
 							cartItems: productPostedToCart,
-							error: false,
+							error: null,
 							loading: false,
 						},
 					});

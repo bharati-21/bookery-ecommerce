@@ -1,5 +1,5 @@
 /* External imports */
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 
 /* Page imports */
@@ -14,6 +14,7 @@ import {
 	Profile,
 	ProfileDetails,
 	Address,
+	Checkout,
 } from "pages/";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 import { NotFound } from "components";
@@ -30,6 +31,7 @@ const WebsiteRoutes = () => {
 			<Route path="/mockman" element={<Mockman />} />
 			<Route path="/" element={<LandingPage />} />
 			<Route path="*" element={<NotFound />} />
+			<Route path="/checkout" element={<Checkout />} />
 			<Route path="/" element={<ProtectedRoutes />}>
 				<Route path="/cart" element={<Cart />} />
 				<Route path="/wishlist" element={<WishList />} />

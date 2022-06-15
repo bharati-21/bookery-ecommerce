@@ -18,9 +18,8 @@ export const fetchCartItems = async (cartDispatch, token) => {
             return;
         }
         cartDispatch({
-            type: 'ADD_TO_CART_FAILURE', 
+            type: 'INIT_CART_FAILURE', 
             payload: {
-                cartItems: [],
                 error: 'Cart items could not be fetched. Try again after sometime',
                 loading: false
             }
@@ -28,9 +27,8 @@ export const fetchCartItems = async (cartDispatch, token) => {
     }
     catch(error) {
         cartDispatch({
-            type: 'ADD_TO_CART_FAILURE', 
+            type: 'INIT_CART_FAILURE', 
             payload: {
-                cartItems: [],
                 error: 'Cart items could not be fetched. Try again after sometime',
                 loading: false
             }

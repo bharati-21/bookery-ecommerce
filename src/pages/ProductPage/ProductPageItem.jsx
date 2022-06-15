@@ -6,7 +6,13 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StarIcon from "@mui/icons-material/Star";
 
 import { useCart, useAuth, useWishList, useProduct } from "contexts";
-import { postToCart, postToWishList, deleteProductInWishList } from "utils/";
+import {
+	postToCart,
+	postToWishList,
+	deleteProductInWishList,
+	getSellingPrice,
+} from "utils/";
+
 import { useDocumentTitle, useToast } from "custom-hooks";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -28,39 +34,17 @@ const ProductPageItem = () => {
 		authState: { token, isAuth },
 	} = useAuth();
 	const { showToast } = useToast();
-	const [bookInCart, setBookInCart] = useState(false);
-	const [bookInWishList, setBookInWishList] = useState(false);
 	const navigate = useNavigate();
 	const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);
 	const { setDocumentTitle } = useDocumentTitle();
 
 	const book = products?.find((product) => product.id === productId);
+	const bookInCart = cartItems?.find(item => item.id === productId);
+	const bookInWishList = wishListItems?.find(item => item.id === productId);
 
 	useEffect(() => {
 		setDocumentTitle("Bookery | Book");
 	}, []);
-
-	useEffect(() => {
-		if (book) {
-			const isBookInCart = cartItems.find(
-				(cartItem) => cartItem._id === _id
-			);
-			const isBookInWishList = wishListItems.find(
-				(wishListItem) => wishListItem._id === _id
-			);
-			if (isBookInCart) {
-				setBookInCart(true);
-			} else {
-				setBookInCart(false);
-			}
-
-			if (isBookInWishList) {
-				setBookInWishList(true);
-			} else {
-				setBookInWishList(false);
-			}
-		}
-	}, [book]);
 
 	if (loading) {
 		return (
@@ -91,12 +75,12 @@ const ProductPageItem = () => {
 		id,
 		offers,
 		originalPrice,
-		sellingPrice,
 		title,
 		totalRatings,
 		totalStars,
 	} = book;
 
+	const sellingPrice = getSellingPrice(originalPrice, discountPercent);
 	const outOfStock = !offers.inStock;
 
 	const localeOriginalPrice = originalPrice.toLocaleString("en-IN", {
@@ -146,14 +130,13 @@ const ProductPageItem = () => {
 				if (productPostedToCart) {
 					showToast("Item added to cart", "success");
 					cartDispatch({
-						type: "ADD_TO_CART",
+						type: "SET_CART_ITEMS",
 						payload: {
 							cartItems: productPostedToCart,
-							error: false,
+							error: null,
 							loading: false,
 						},
 					});
-					setBookInCart(true);
 				} else {
 					showToast(
 						"Failed to add item to cart. Please try again later.",
@@ -184,7 +167,6 @@ const ProductPageItem = () => {
 							loading: false,
 						},
 					});
-					setBookInWishList(false);
 				} else {
 					showToast(
 						"Failed to remove item from wishlist. Please try again later.",
@@ -207,7 +189,6 @@ const ProductPageItem = () => {
 							loading: false,
 						},
 					});
-					setBookInWishList(true);
 				} else {
 					showToast(
 						"Failed to add item to wishlist. Please try again later.",
@@ -229,17 +210,16 @@ const ProductPageItem = () => {
 			>
 				{productBadge ?? productBadge}
 				<button
-					className={`btn btn-primary btn-icon btn-dismiss btn-card-wishlist m-0-5 flex--col flex-align-center flex-justify-center ${
-						isOngoingNetworkCall || outOfStock ? "btn-disabled" : ""
-					}`}
+					className={`btn btn-primary btn-icon btn-dismiss btn-card-wishlist m-0-5 flex--col flex-align-center flex-justify-center ${isOngoingNetworkCall || outOfStock ? "btn-disabled" : ""
+						}`}
 					onClick={handleAddToWishList}
 					disabled={isOngoingNetworkCall}
 				>
-					<span className="icon">
+					<span className="icon flex-col flex-align-center flex-justify-center">
 						{bookInWishList ? (
-							<FavoriteIcon />
+							<i className="fa-solid fa-heart text-reg"></i>
 						) : (
-							<FavoriteBorderIcon />
+							<i className="fa-regular fa-heart text-reg"></i>
 						)}
 					</span>
 				</button>
@@ -288,11 +268,10 @@ const ProductPageItem = () => {
 					</div>
 					<div className="card-footer mt-1 mb-0-75">
 						<button
-							className={`btn btn-primary btn-text-icon btn-full-width p-0-25 ${
-								isOngoingNetworkCall || outOfStock
-									? "btn-disabled"
-									: ""
-							}`}
+							className={`btn btn-primary btn-text-icon btn-full-width p-0-25 ${isOngoingNetworkCall || outOfStock
+								? "btn-disabled"
+								: ""
+								}`}
 							disabled={isOngoingNetworkCall}
 							onClick={handleAddToCart}
 						>

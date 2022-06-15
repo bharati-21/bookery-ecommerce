@@ -4,7 +4,7 @@ import ProfileCSS from "../Profile.module.css";
 import { deleteAddress } from "utils";
 import { useToast } from "custom-hooks";
 
-const AddressItem = ({ address }) => {
+const AddressItem = ({ address, page }) => {
 	const { addressCityState, addressItem, buttonsContainer } = ProfileCSS;
 	const { addressDispatch } = useAddress();
 	const { showToast } = useToast();
@@ -62,23 +62,25 @@ const AddressItem = ({ address }) => {
 				<span>{address.pincode}</span>
 			</div>
 			<span>{address.phoneNumber}</span>
-			<div
-				className={`${buttonsContainer} mt-1 flex-row flex-align-center flex-justify-start`}
-			>
-				<button
-					className="btn btn-primary p-0-25 text-reg"
-					onClick={handleAddressEdit}
+			{page === "checkout" ? null : (
+				<div
+					className={`${buttonsContainer} mt-1 flex-row flex-align-center flex-justify-start`}
 				>
-					Edit
-				</button>
-				<button
-					className="btn btn-primary btn-outline p-0-25 text-reg"
-					onClick={handleAddressDelete}
-					disabled={isOngoingNetworkCall}
-				>
-					Delete
-				</button>
-			</div>
+					<button
+						className="btn btn-primary p-0-25 text-reg"
+						onClick={handleAddressEdit}
+					>
+						Edit
+					</button>
+					<button
+						className="btn btn-primary btn-outline p-0-25 text-reg"
+						onClick={handleAddressDelete}
+						disabled={isOngoingNetworkCall}
+					>
+						Delete
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };
