@@ -18,11 +18,11 @@ const Profile = () => {
 			tabName: "Address",
 			linkTo: "/profile/address",
 		},
-		// {
-		// 	_id: uuid(),
-		// 	tabName: "Orders",
-		// 	linkTo: "/profile/orders",
-		// },
+		{
+			_id: uuid(),
+			tabName: "Orders",
+			linkTo: "/profile/orders",
+		},
 	];
 
 	const getActiveClass = ({ isActive }) =>
