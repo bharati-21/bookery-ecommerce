@@ -12,6 +12,7 @@ import {
 	deleteProductInWishList,
 	getSellingPrice,
 } from "utils/";
+
 import { useDocumentTitle, useToast } from "custom-hooks";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -44,7 +45,6 @@ const ProductPageItem = () => {
 	useEffect(() => {
 		setDocumentTitle("Bookery | Book");
 	}, []);
-
 
 	if (loading) {
 		return (
@@ -81,7 +81,6 @@ const ProductPageItem = () => {
 	} = book;
 
 	const sellingPrice = getSellingPrice(originalPrice, discountPercent);
-
 	const outOfStock = !offers.inStock;
 
 	const localeOriginalPrice = originalPrice.toLocaleString("en-IN", {
