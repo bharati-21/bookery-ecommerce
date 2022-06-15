@@ -39,7 +39,7 @@
 .order-summary-main .card-horizontal {
 	display: grid;
 	grid-template-columns: 1fr 0.5fr;
-	gap: var(--space-0-5);
+	gap: var(--space-1);
 }
 
 .order-summary-main .card-horizontal .card-header {
@@ -90,7 +90,8 @@
 	}
 
 	.order-summary-main .card-horizontal,
-	.order-wrapper .order-summary {
+	.order-wrapper .order-summary,
+	.order-summary-main .order-items {
 		max-width: 30rem;
 		width: 100%;
 	}
