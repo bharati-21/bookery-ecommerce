@@ -1,0 +1,56 @@
+import { useOrders } from "contexts";
+import loadingImage from "assets/images/loader.svg";
+import { Link, useParams } from "react-router-dom";
+import "./order-summary.css";
+import { OrderItem } from "components/";
+
+const OrderSummary = () => {
+	const { orders, ordersLoading, ordersError } = useOrders();
+	const { orderId } = useParams();
+	const order = orders?.find((order) => order.orderId === orderId);
+
+	return (
+		<main className="main order-summary-main my-2 mx-auto px-3 py-2">
+			{ordersLoading ? (
+				<img
+					src={loadingImage}
+					alt="Loading svg"
+					className="img img-responsive mx-auto"
+				/>
+			) : ordersError ? (
+				<h1 className="error text error-color my-2 text-center">
+					{ordersError}
+				</h1>
+			) : (
+				<section className="order-wrapper mx-auto">
+					<div className="text-center">
+						<h2 className="main-head mb-2">Order Summary</h2>
+					</div>
+
+					{order && Object.keys(order)?.length ? (
+						<OrderItem order={order} />
+					) : (
+						<div className="text-center mt-2">
+							<h4>Order not found!</h4>
+							<Link
+								to="/products"
+								className="btn btn-primary p-0-25 mx-auto mt-1"
+							>
+								Shop more!
+							</Link>
+						</div>
+					)}
+
+					<Link
+						to="/profile/orders"
+						className="btn btn-primary p-0-25 mx-auto mt-2"
+					>
+						View all orders
+					</Link>
+				</section>
+			)}
+		</main>
+	);
+};
+
+export { OrderSummary };

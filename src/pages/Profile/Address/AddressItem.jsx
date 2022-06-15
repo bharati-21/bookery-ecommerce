@@ -50,7 +50,9 @@ const AddressItem = ({ address, page }) => {
 
 	return (
 		<div
-			className={`${addressItem} py-2 flex-col flex-align-start flex-justify-center text-left`}
+			className={`${addressItem} ${
+				page === "orderSummary" ? "py-0" : "py-2"
+			} flex-col flex-align-start flex-justify-center text-left`}
 		>
 			<span>{address.name}</span>
 			<span>{address.addressLine}</span>
@@ -62,7 +64,8 @@ const AddressItem = ({ address, page }) => {
 				<span>{address.pincode}</span>
 			</div>
 			<span>{address.phoneNumber}</span>
-			{page === "checkout" ? null : (
+			{(page === "checkout" || page === "orderSummary") ? null : (
+
 				<div
 					className={`${buttonsContainer} mt-1 flex-row flex-align-center flex-justify-start`}
 				>

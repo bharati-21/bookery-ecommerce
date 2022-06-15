@@ -16,6 +16,17 @@ export const users = [
 		password: bcyrpt.hashSync("janeDoe!123", 5),
 		createdAt: formatDate(),
 		updatedAt: formatDate(),
+		address: [
+			{
+				_id: uuid(),
+				name: "Jane Doe",
+				addressLine: "National Highway 8, Rangpuri",
+				city: "Bengaluru",
+				state: "Karnataka",
+				pincode: "110037",
+				phoneNumber: "7598170706",
+			},
+		],
 	},
 	{
 		_id: uuid(),
@@ -25,6 +36,17 @@ export const users = [
 		password: bcyrpt.hashSync("DoeJohn_456", 5),
 		createdAt: formatDate(),
 		updatedAt: formatDate(),
+		address: [
+			{
+				_id: uuid(),
+				name: "John Doe",
+				addressLine: "5/5755, Dev Nagar, D B Gupta Road",
+				city: "Delhi",
+				state: "Delhi",
+				pincode: "110005",
+				phoneNumber: "9876521176",
+			},
+		],
 	},
 	{
 		_id: uuid(),
@@ -34,5 +56,17 @@ export const users = [
 		password: bcyrpt.hashSync("work@book2107", 5),
 		createdAt: formatDate(),
 		updatedAt: formatDate(),
+		address: [
+			{
+				_id: uuid(),
+				name: "Bharati Subramanian",
+				addressLine:
+					"F-1, Shop No 12, Sector 9, Near Shabari Hotel, Vashi, Navi Mumbai",
+				city: "Mumbai",
+				state: "Maharashtra",
+				pincode: "400073",
+				phoneNumber: "8987698765",
+			},
+		],
 	},
 ];

@@ -15,6 +15,8 @@ import {
 	ProfileDetails,
 	Address,
 	Checkout,
+	OrderSummary,
+	Orders,
 } from "pages/";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 import { NotFound } from "components";
@@ -38,8 +40,10 @@ const WebsiteRoutes = () => {
 				<Route path="/profile" element={<Profile />}>
 					<Route path="" element={<ProfileDetails />} />
 					<Route path="address" element={<Address />} />
+					<Route path="orders" element={<Orders />} />
 				</Route>
 			</Route>
+			<Route path="/order-summary/:orderId" element={<OrderSummary />} />
 		</Routes>
 	);
 };

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { CartList, CartSummary } from "components";
 import { useCart } from "contexts/";
 import "./Cart.css";
-import loadingImage from "assets/images/loading.svg";
+import loadingImage from "assets/images/loader.svg";
 import { useDocumentTitle } from "custom-hooks";
 
 const Cart = () => {

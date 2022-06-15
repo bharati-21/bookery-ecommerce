@@ -61,11 +61,7 @@ const CartSummary = () => {
 			type: "SET_CHECKOUT_DATA",
 			payload: {
 				checkoutData: {
-					items: cartItems.map((item) => ({
-						id: uuid(),
-						quantity: item.qty,
-						item: item.title,
-					})),
+					items: [...cartItems],
 					price: isAnyCouponSelected
 						? priceAfterCouponApplied
 						: cartItemsTotalPrice,

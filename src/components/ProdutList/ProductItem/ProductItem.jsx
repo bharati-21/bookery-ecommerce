@@ -10,7 +10,6 @@ import {
 } from "utils/";
 import { useToast } from "custom-hooks";
 
-
 const ProductItem = ({ book }) => {
 	const {
 		cartState: { cartItems },
