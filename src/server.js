@@ -62,7 +62,6 @@ export function makeServer({ environment = "development" } = {}) {
 					cart: [],
 					wishlist: [],
 					orders: [],
-					address: [],
 				})
 			);
 
