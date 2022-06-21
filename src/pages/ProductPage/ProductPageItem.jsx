@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import StarIcon from "@mui/icons-material/Star";
+import { ShoppingCart, Star } from "@mui/icons-material";
 
 import { useCart, useAuth, useWishList, useProduct } from "contexts";
 import {
@@ -12,9 +10,9 @@ import {
 	deleteProductInWishList,
 	getSellingPrice,
 } from "utils/";
-
 import { useDocumentTitle, useToast } from "custom-hooks";
-import { useNavigate, useParams } from "react-router-dom";
+import loadingImage from "assets/images/loader.svg";
+import "./product-page-main.css";
 
 const ProductPageItem = () => {
 	const { productId } = useParams();
@@ -39,8 +37,8 @@ const ProductPageItem = () => {
 	const { setDocumentTitle } = useDocumentTitle();
 
 	const book = products?.find((product) => product.id === productId);
-	const bookInCart = cartItems?.find(item => item.id === productId);
-	const bookInWishList = wishListItems?.find(item => item.id === productId);
+	const bookInCart = cartItems?.find((item) => item.id === productId);
+	const bookInWishList = wishListItems?.find((item) => item.id === productId);
 
 	useEffect(() => {
 		setDocumentTitle("Bookery | Book");
@@ -49,9 +47,11 @@ const ProductPageItem = () => {
 	if (loading) {
 		return (
 			<main className="main product-page-main flex-col flex-align-center flex-justify-center">
-				<h2 className="text-center loading-message success-color">
-					Loading...
-				</h2>
+				<img
+					src={loadingImage}
+					alt="Loading image"
+					className="img-responsive img"
+				/>
 			</main>
 		);
 	}
@@ -73,15 +73,16 @@ const ProductPageItem = () => {
 		genres,
 		_id,
 		id,
-		offers,
+		description,
 		originalPrice,
 		title,
 		totalRatings,
 		totalStars,
+		inStock,
 	} = book;
 
 	const sellingPrice = getSellingPrice(originalPrice, discountPercent);
-	const outOfStock = !offers.inStock;
+	const outOfStock = !inStock;
 
 	const localeOriginalPrice = originalPrice.toLocaleString("en-IN", {
 		minimumFractionDigits: 2,
@@ -103,20 +104,11 @@ const ProductPageItem = () => {
 		</li>
 	));
 
-	const productBadge =
-		bookType === "Hardcover" ? (
-			<span className="badge badge-secondary mx-0-25 my-0-75 text-reg px-0-5">
-				{bookType}
-			</span>
-		) : offers.bestSeller ? (
-			<span className="badge badge-secondary mx-0-25 my-0-75 text-reg  px-0-75">
-				Best Seller
-			</span>
-		) : offers.newArrival ? (
-			<span className="badge badge-error mx-0-25 my-0-75 text-reg  px-0-75">
-				New Arrival
-			</span>
-		) : null;
+	const productBadge = (
+		<h6 className="badge text-xs badge-secondary my-0-5 p-0-25 px-0-5">
+			{bookType}
+		</h6>
+	);
 
 	const handleAddToCart = async () => {
 		if (outOfStock) return;
@@ -203,75 +195,104 @@ const ProductPageItem = () => {
 	};
 
 	return (
-		<main className="main product-page-main flex-col flex-align-center flex-justify-center">
-			<div
-				className="product-card card card-horizontal card-wt-dismiss card-wt-badge"
-				id={_id}
-			>
-				{productBadge ?? productBadge}
-				<button
-					className={`btn btn-primary btn-icon btn-dismiss btn-card-wishlist m-0-5 flex--col flex-align-center flex-justify-center ${isOngoingNetworkCall || outOfStock ? "btn-disabled" : ""
-						}`}
-					onClick={handleAddToWishList}
-					disabled={isOngoingNetworkCall}
-				>
-					<span className="icon flex-col flex-align-center flex-justify-center">
-						{bookInWishList ? (
-							<i className="fa-solid fa-heart text-reg"></i>
-						) : (
-							<i className="fa-regular fa-heart text-reg"></i>
-						)}
-					</span>
-				</button>
-
-				<div className="card-header mx-auto mx-auto p-1">
-					<img src={coverImg} alt={title} />
-					<div className="rating-container rating-badge m-1 px-0-75">
-						<span className="rating-value flex-row flex-align-center flex-justify-center">
-							{totalStars}
-							<StarIcon className="star-icon ml-0-25 mr-0-5 success-color" />
-							|
-							<span className="ml-0-5 rating-count">
-								{localeTotalRatings}
-							</span>
-						</span>
-					</div>
+		<main className="main product-page-main mx-auto px-5 p-2 flex-col flex-align-center flex-justify-center">
+			<div className="product-page-content">
+				{productBadge}
+				<div className="product-image-container flex-col flex-justify-start mx-auto mx-auto p-1-5 px-1">
+					<img
+						src={coverImg}
+						alt={title}
+						className="img img-responsive product-image"
+					/>
 				</div>
-				<div className="card-body p-1">
-					<div className="card-description my-0-25">
+				<div className="product-details text-left flex-col flex-align-center flex-justify-start p-1">
+					<button
+						className={`btn btn-primary btn-icon btn-dismiss btn-card-wishlist mx-1 my-0-75 flex-col flex-align-center flex-justify-center ${
+							isOngoingNetworkCall || outOfStock
+								? "btn-disabled"
+								: ""
+						}`}
+						onClick={handleAddToWishList}
+						disabled={isOngoingNetworkCall}
+					>
+						<span className="icon flex-col flex-align-center flex-justify-center">
+							{bookInWishList ? (
+								<i className="fa-solid fa-heart text-reg"></i>
+							) : (
+								<i className="fa-regular fa-heart text-reg"></i>
+							)}
+						</span>
+					</button>
+					<div className="product-heading pr-2">
 						<h6 className="text-lg card-title">{title}</h6>
-						<p className="mt-0-25 text-sm card-subtitle">
-							{author}
-						</p>
+						<p className="text-sm card-subtitle">{author}</p>
 					</div>
-					<div className="card-content my-1">
-						<div className="card-price flex-row flex-align-start flex-justify-between">
+					<div className="product-price-ratings-container flex-row flex-justify-between flex-align-start">
+						<div className="product-price flex-row flex-align-start flex-justify-start">
 							<div className="discounted-price flex-col">
 								<p className="price-discounted">
 									₹ {localeSellingPrice}
 								</p>
 								<span className="success-color percentage-discount">
-									{discountPercent} %
+									{discountPercent} % Off
 								</span>
 							</div>
 							<p className="price-original">
-								<span className="text-linethrough error-color">
-									₹ {localeOriginalPrice}
-								</span>
+								₹ {localeOriginalPrice}
 							</p>
 						</div>
-						<div className="card-genres">
-							<ul className="list list-inline list-style-none mt-1-5 flex-row flex-wrap flex-justify-start">
-								{genreMapping}
-							</ul>
+						<div className="product-ratings flex-row flex-align-center flex-justify-end rating-badge">
+							<span className="rating-stars text-sm">{totalStars}</span>
+                            <i className="fa-solid fa-star ml-0-25 mr-0-5 success-color"></i>
+							|
+							<span className="ml-0-5 rating-count text-sm">
+								{localeTotalRatings} Ratings
+							</span>
 						</div>
 					</div>
-					<div className="card-footer mt-1 mb-0-75">
+                    {outOfStock ? (
+						<div className="badge-out-of-stock p-0-25">
+							Out of stock
+						</div>
+					) : null}
+					<div className="product-description text-sm">
+						{description}
+					</div>
+					<div className="card-genres">
+						<ul className="list list-inline list-style-none flex-row flex-wrap flex-justify-start">
+							{genreMapping}
+						</ul>
+					</div>
+					<div className="product-offers flex-col flex-align-start flex-justify-center">
+						<h6 className="text-sm offer flex-row flex-align-start">
+							<i class="fa-solid fa-truck-fast pt-0-25 text-reg success-color"></i>
+							<span className="offer-text">
+								Express Delivery - guaranteed delivery within 72
+								hours
+							</span>
+						</h6>
+						<h6 className="text-sm offer flex-row flex-align-start">
+							<i class="fa-solid fa-arrow-rotate-left pt-0-25 text-reg success-color"></i>
+							<span className="offer-text">
+								Fair Replacement Policy - replace within 10 days
+								after delivery
+							</span>
+						</h6>
+						<h6 className="text-sm offer flex-row flex-align-start">
+							<i class="fa-solid fa-shield-virus pt-0-25 text-reg success-color"></i>
+							<span className="offer-text">
+								Safe Delivery - Safe delivery with COVID-19
+								safety protocols and measures
+							</span>
+						</h6>
+					</div>
+					<div className="product-footer mt-1 mb-0-75">
 						<button
-							className={`btn btn-primary btn-text-icon btn-full-width p-0-25 ${isOngoingNetworkCall || outOfStock
-								? "btn-disabled"
-								: ""
-								}`}
+							className={`btn btn-primary btn-text-icon text-reg px-0-5 py-0-25 ${
+								isOngoingNetworkCall || outOfStock
+									? "btn-disabled"
+									: ""
+							}`}
 							disabled={isOngoingNetworkCall}
 							onClick={handleAddToCart}
 						>
@@ -281,15 +302,11 @@ const ProductPageItem = () => {
 								<span>Add to Cart</span>
 							)}
 							<span className="icon">
-								<ShoppingCartIcon />
+								<ShoppingCart />
 							</span>
 						</button>
 					</div>
-					{outOfStock ? (
-						<div className="btn p-0-5 mt-2 mx-auto">
-							Out of stock
-						</div>
-					) : null}
+					
 				</div>
 			</div>
 		</main>

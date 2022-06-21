@@ -23,8 +23,8 @@ const ProductItem = ({ book }) => {
 		authState: { token, isAuth },
 	} = useAuth();
 	const { showToast } = useToast();
-	const bookInCart = cartItems?.find(item => item._id === book._id);
-	const bookInWishList = wishListItems?.find(item => item._id === book._id);
+	const bookInCart = cartItems?.find((item) => item._id === book._id);
+	const bookInWishList = wishListItems?.find((item) => item._id === book._id);
 	const navigate = useNavigate();
 	const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);
 
@@ -41,11 +41,12 @@ const ProductItem = ({ book }) => {
 		title,
 		totalRatings,
 		totalStars,
+		inStock,
 	} = book;
 
 	const sellingPrice = getSellingPrice(originalPrice, discountPercent);
 
-	const outOfStock = !offers.inStock;
+	const outOfStock = !inStock;
 
 	const localeOriginalPrice = originalPrice.toLocaleString("en-IN", {
 		minimumFractionDigits: 2,
@@ -69,17 +70,13 @@ const ProductItem = ({ book }) => {
 
 	const productBadge =
 		bookType === "Hardcover" ? (
-			<span className="badge badge-secondary my-0-5 text-sm px-0-5">
+			<span className="badge badge-secondary my-0-5 text-sm px-0-75">
 				{bookType}
 			</span>
-		) : offers.bestSeller ? (
-			<span className="badge badge-secondary my-0-5 text-sm px-0-75">
-				Best Seller
-			</span>
-		) : offers.newArrival ? (
-			<span className="badge badge-error my-0-5 text-sm px-0-75">
-				New Arrival
-			</span>
+		) : offers.filter((offer) => offer.isOffer)?.length ? (
+			<h6 className="badge badge-secondary my-0-5 text-sm px-0-75">
+				{offers.filter((offer) => offer.isOffer)[0].offerText}
+			</h6>
 		) : null;
 
 	const handleAddToCart = async (e) => {
