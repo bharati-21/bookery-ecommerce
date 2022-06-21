@@ -59,7 +59,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .main {
-	min-height: 100vh;
+	min-height: 95vh;
 }
 
 .badge-error {
@@ -95,9 +95,10 @@ body::-webkit-scrollbar-thumb {
     height: 100%;
 }
 
-button:disabled, input[type="submit"]:disabled {
+button:disabled, input[type="submit"]:disabled, .btn-disabled {
     opacity: 0.7;
-    pointer-events: none;
+    cursor: not-allowed;
+    pointer-events: all;
 }
 
 @media screen and (max-width: 768px) {
