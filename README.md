@@ -1,7 +1,7 @@
 <h1 align="center">
   <br />
   <a href="https://bookery.netlify.app/">
-      <img src="https://github.com/bharati-21/elixir-ui/blob/9e0021ca0eb8952f6bf408d9f2a119439ac359a2/logo-assets/elixir-logo.png" alt="Elixir UI" width="200"></a>
+      <img src="https://github.com/bharati-21/bookery-ecommerce/blob/b3d7b79cae9feb3ac8bef5a61ebe66e0f1e5886e/src/assets/images/bookery-icon.png" alt="Elixir UI" width="200"></a>
   <br />
   <br />
   Bookery 
@@ -42,8 +42,7 @@
     Bookery is an e-commerce store that satisfies your bookish needs and moods. 
 </p>
 <br />
-Visit <a href="https://bookery.netlify.app/">bookery</a> and buy your favorite books today! We serve all your book needs with simple, well strcutured website that offers books across various genres. Check out the popular genres, hot picks of the month and get great deals with books delivered within 24 hours! Grab the best deal for your book. 
-
+Visit <a href="https://bookery.netlify.app/">bookery</a> and check out popular and hot picks across multiple genres.
 <br />
 <br />
 <!-- FEATURES -->
@@ -51,25 +50,28 @@ Visit <a href="https://bookery.netlify.app/">bookery</a> and buy your favorite b
 ## **FEATURES**
 
 Features include-
-- Users can see a list of top categories and genres of books. When user clicks any of them, they are redirected to the product listing page where the products are filtered based on the selected category.
-- Users can see the top book picks on the landing page
-- Users can go to the product listing page, and filter/ sort based on any categories.
-- Users can click on a product to view information about it.
-- Users can also add books to the cart or wishlist.
-- Users can additionally search for books from the search bar on the navigation bar which navigates them to the product listing page. The books are filtered based on the entered search text matching either the title or author.
+- List of categories/ genres of products available. When user clicks any of them, they are redirected to the product listing page where the products are filtered based on the selected category.
+- List of the top picks/ best sellers on the landing page. When user clicks on any of the product, they are navigated to the single product page.
+- Users can navigate to the product listing page, and filter/ sort based on any categories.
+- Users can click on a product to view detailed information on the product.
+- Users can also add products to the cart or wishlist.
+- Users can additionally search for products from the search bar on the navigation bar which navigates them to the product listing page. The products are filtered based on the entered search text matching either the title or author.
+- In the cart page, user can increase, decrease or remove products added to the cart. They can also move a product from the cart to wishlist.
+- In the wishlist page, user can either remove products from wishlist or move it to the cart.
 
 UI consists of -
 - Home page
   - Popular genre categories
   - Top picks
-    - Screenshot - ![Home page screenshot](https://user-images.githubusercontent.com/51514137/162260696-92795832-5188-4098-8d5c-0bb7262dbc6a.png)
+    ![Home Page](https://user-images.githubusercontent.com/51514137/174832581-bd6b215d-80e2-46f4-b6f6-d615080becc2.png)
    
 - Product catalog
-  - Filter sidebar
-  - Product cards
-    - Screenshot - ![Product catalog screenshot](https://user-images.githubusercontent.com/51514137/162260781-4945b7bf-12b4-4dd7-ad59-01ec6f2a90b2.png)
-  - Single Product Item Page
-    - Screenshot - ![Single product item screenshot](https://user-images.githubusercontent.com/51514137/162261412-d59fe97c-cfe9-4d82-a9e5-1ee16af32348.png)
+  - Filters
+  - Products displayed
+    ![Product Catalog](https://user-images.githubusercontent.com/51514137/174850050-9ab98166-d805-4af9-8483-1f9089c99a67.png)
+  
+- Single Product Item Page
+    - ![Single Product Item Page](https://user-images.githubusercontent.com/51514137/174850231-45cd1fb9-56a1-46b5-a6a9-e2c6a2cd28ea.png)
    
 - Wishlist Page
     - Screenshot - ![Wishlist page screenshot](https://user-images.githubusercontent.com/51514137/162260948-182a6617-7ebb-44b3-9ad2-185a6db17058.png)
