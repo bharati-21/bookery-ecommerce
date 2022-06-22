@@ -1,9 +1,9 @@
-import { useCart, useAddress } from "contexts/";
-import { CouponOptions } from "pages/Cart/CouponOptions";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+
+import { useCart, useAddress } from "contexts/";
+import { CouponOptions } from "pages";
 import { getCartItemsData } from "utils/";
-import { v4 as uuid } from "uuid";
 
 const CartSummary = () => {
 	const {

@@ -1,5 +1,7 @@
-import { BookTypeFilterOption } from "./BookTypeFilterOption";
+import React from "react";
 import { v4 as uuid } from "uuid";
+
+import { BookTypeFilterOption } from "./BookTypeFilterOption";
 
 const BookTypeFilters = () => {
 	const bookTypeFiltersList = [

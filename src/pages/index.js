@@ -12,3 +12,4 @@ export { Checkout } from "./Checkout/";
 export { AddressItem } from "./Profile/Address/AddressItem";
 export { OrderSummary } from './OrderSummary';
 export { Orders } from './Orders';
+export { CouponOptions } from './Cart/CouponOptions';

@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+
 import { useProduct, useFilter } from "contexts/";
 import { Filters, ProductList } from "components/";
-import "./products.css";
 import { useDocumentTitle, useMedia } from "custom-hooks";
+import loadingImage from "assets/images/loader.svg";
+import "./products.css";
 
 const Products = () => {
 	const {
@@ -49,9 +51,11 @@ const Products = () => {
 	return (
 		<main className="main products-main my-2 mx-auto py-2 px-3 grid grid-2">
 			{loading ? (
-				<h1 className="loading text success-color my-2 text-center">
-					Loading Books...
-				</h1>
+				<img
+					src={loadingImage}
+					alt="Loading svg"
+					className="img img-responsive mx-auto"
+				/>
 			) : error ? (
 				<h1 className="error text error-color my-2 text-center">
 					{error}

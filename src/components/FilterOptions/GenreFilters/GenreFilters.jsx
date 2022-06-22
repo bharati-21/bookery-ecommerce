@@ -1,7 +1,9 @@
-import { GenreFilterOption } from "./GenreFilterOption";
+import React from "react";
 import { v4 as uuid } from "uuid";
 
-const GenreFilters = ({ categoryName }) => {
+import { GenreFilterOption } from "./GenreFilterOption";
+
+const GenreFilters = () => {
 	const genreFiltersList = [
 		{ id: uuid(), categoryName: "Fiction" },
 		{ id: uuid(), categoryName: "Non-Fiction" },

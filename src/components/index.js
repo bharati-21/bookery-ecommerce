@@ -27,4 +27,5 @@ export { NotFound } from "./NotFound/NotFound";
 export { AddressForm } from "./AddressForm";
 export { CouponOptionsModal } from "./CouponOptionsModal";
 
-export { OrderItem } from './OrderItem';
+export { OrderItem } from "./OrderItem";
+export { AccountOptions } from "./AccountOptions/AccountOptions";

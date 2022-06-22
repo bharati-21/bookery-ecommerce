@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useCart } from "contexts/";
-import "./checkout.css";
 import { useDocumentTitle } from "custom-hooks";
 import { AddressList } from "./AddressList";
 import { CheckoutSummary } from "./CheckoutSummary";
+import "./checkout.css";
 
 const Checkout = () => {
 	const {

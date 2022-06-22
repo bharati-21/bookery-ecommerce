@@ -90,7 +90,7 @@
 
 .icon-show-psd {
     position: absolute;
-    top: 50%;
+    top: 55%;
     right: var(--space-0-25);
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
@@ -104,9 +104,27 @@
     width: 100%;
 }
 
+.auth-button-container .btn {
+    word-wrap: break-word;
+    max-width: 100%;
+    white-space: normal;
+}
+
+.auth-button-container .btn-link {
+    min-width: unset;
+}
+
 @media screen and (max-width: 480px) {
     .auth-container.logout-container .auth-head {
         max-width: min-content;
         margin: 0 auto;
+    }
+
+    .auth-main {
+        padding: var(--space-1);
+    }
+
+    .auth-container {
+        padding: var(--space-1) 0;
     }
 }

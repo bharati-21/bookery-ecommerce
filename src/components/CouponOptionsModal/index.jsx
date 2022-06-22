@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+
 import { useOutsideClick } from "custom-hooks";
 import { useCart } from "contexts";
 import { getCartItemsData } from "utils";
@@ -7,11 +8,7 @@ const CouponOptionsModal = () => {
 	const {
 		cartDispatch,
 		couponOptions,
-		cartState: {
-			cartItems,
-			couponOptionsModalVisibility,
-			selectedCoupon: previouslySelectedCoupon,
-		},
+		cartState: { cartItems, selectedCoupon: previouslySelectedCoupon },
 	} = useCart();
 
 	const [selectedCoupon, setSelectedCoupon] = useState(
@@ -20,7 +17,7 @@ const CouponOptionsModal = () => {
 
 	const { cartItemsTotalPrice } = getCartItemsData(cartItems);
 
-	const handleModalClose = (event) => {
+	const handleModalClose = () => {
 		cartDispatch({
 			type: "SET_COUPON_OPTIONS_MODAL_VISIBILITY",
 			payload: { modalVisibility: false },

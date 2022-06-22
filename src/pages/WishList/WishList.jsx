@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { WishListItem } from "components";
 import { useWishList } from "contexts";
-import "./WishList.css";
 import { useDocumentTitle } from "custom-hooks";
+import loadingImage from "assets/images/loader.svg";
+import "./WishList.css";
 
 const WishList = () => {
 	const {
@@ -20,9 +21,11 @@ const WishList = () => {
 	return (
 		<main className="main wishlist-main my-2 mx-auto py-2 px-3">
 			{loading ? (
-				<h1 className="loading text success-color my-2 text-center">
-					Loading Wishlist Items...
-				</h1>
+				<img
+					src={loadingImage}
+					alt="Loading svg"
+					className="img img-responsive mx-auto"
+				/>
 			) : error ? (
 				<h1 className="error text error-color my-2 text-center">
 					{error}

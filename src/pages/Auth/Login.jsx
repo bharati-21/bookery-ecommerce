@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-import "./auth.css";
 import { initiateLogin } from "utils/";
-import { useToast } from "custom-hooks/useToast";
 import { useAuth, useCart, useWishList } from "contexts/";
-import { useDocumentTitle } from "custom-hooks";
+import { useDocumentTitle, useToast } from "custom-hooks";
+import "./auth.css";
 
 const Login = () => {
 	const initialFormData = {
@@ -132,7 +131,7 @@ const Login = () => {
 									type="email"
 									name="email"
 									id="input-login-email"
-									className="input-text text-sm px-0-75 py-0-5 mt-0-25"
+									className="input-text text-sm px-0-75 py-0-25 mt-0-25"
 									placeholder="janedoe@gmail.com"
 									value={email}
 									onChange={handleFormDataChange}
@@ -153,7 +152,7 @@ const Login = () => {
 											showPassword ? "text" : "password"
 										}`}
 										id="input-login-psd"
-										className="input-text px-0-75 py-0-5 mt-0-25 text-sm"
+										className="input-text px-0-75 py-0-25 mt-0-25 text-sm"
 										placeholder="********"
 										name="password"
 										value={password}
@@ -193,9 +192,6 @@ const Login = () => {
 								/>
 								Remember me
 							</label>
-							<div className="btn btn-link btn-primary btn-forgot-psd text-sm">
-								Forgot password?
-							</div>
 						</div>
 						<div className="auth-button-container mt-1 flex-col flex-align-center">
 							<div className="login-button-container flex-col flex-align-center flex-justify-center">

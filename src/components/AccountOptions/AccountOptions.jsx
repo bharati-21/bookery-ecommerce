@@ -1,7 +1,8 @@
-import { useAuth } from "contexts";
 import React, { useEffect, useRef, useState } from "react";
-import { useOutsideClick, useToast } from "custom-hooks";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import { useAuth } from "contexts";
+import { useOutsideClick, useToast } from "custom-hooks";
 
 const AccountOptions = ({}) => {
 	const { authState, setAuthState } = useAuth();

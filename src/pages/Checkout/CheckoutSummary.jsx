@@ -1,11 +1,12 @@
-import { useAuth, useCart, useOrders } from "contexts";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+
+import { useAuth, useCart, useOrders } from "contexts";
 import ProfileCSS from "pages/Profile/Profile.module.css";
 import { clearCartItems, postNewOrder } from "utils";
 import bookeryIcon from "assets/images/bookery-icon.png";
 import { useToast } from "custom-hooks";
-import { v4 as uuid } from "uuid";
 
 const RAZORPAY_URL = "https://checkout.razorpay.com/v1/checkout.js";
 
@@ -44,11 +45,15 @@ const CheckoutSummary = () => {
 			orderId.split("-")?.length >= 3
 				? orderId.split("-").slice(0, 3).join("-")
 				: orderId;
-        
+
 		try {
 			const {
 				data: { orders },
-			} = await postNewOrder(token, { ...order, orderId, selectedCoupon });
+			} = await postNewOrder(token, {
+				...order,
+				orderId,
+				selectedCoupon,
+			});
 			ordersDispatch({
 				type: "SET_ORDERS",
 				payload: { orders },

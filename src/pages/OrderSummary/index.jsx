@@ -1,8 +1,10 @@
-import { useOrders } from "contexts";
-import loadingImage from "assets/images/loader.svg";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
-import "./order-summary.css";
+
+import { useOrders } from "contexts";
 import { OrderItem } from "components/";
+import "./order-summary.css";
+import loadingImage from "assets/images/loader.svg";
 
 const OrderSummary = () => {
 	const { orders, ordersLoading, ordersError } = useOrders();

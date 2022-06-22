@@ -1,8 +1,9 @@
-import { useAddress, useAuth } from "contexts";
 import React, { useState } from "react";
-import ProfileCSS from "../Profile.module.css";
+
+import { useAddress, useAuth } from "contexts";
 import { deleteAddress } from "utils";
 import { useToast } from "custom-hooks";
+import ProfileCSS from "../Profile.module.css";
 
 const AddressItem = ({ address, page }) => {
 	const { addressCityState, addressItem, buttonsContainer } = ProfileCSS;
@@ -64,8 +65,7 @@ const AddressItem = ({ address, page }) => {
 				<span>{address.pincode}</span>
 			</div>
 			<span>{address.phoneNumber}</span>
-			{(page === "checkout" || page === "orderSummary") ? null : (
-
+			{page === "checkout" || page === "orderSummary" ? null : (
 				<div
 					className={`${buttonsContainer} mt-1 flex-row flex-align-center flex-justify-start`}
 				>

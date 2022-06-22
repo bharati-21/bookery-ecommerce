@@ -1,6 +1,6 @@
 import React, { useReducer, useRef, useState } from "react";
-import ProfileCSS from "pages/Profile/Profile.module.css";
 import { Close, DeleteSharp } from "@mui/icons-material";
+
 import { useAddress, useAuth } from "contexts";
 import { useOutsideClick, useToast } from "custom-hooks";
 import { editAddress, postNewAddress, validateAddressData } from "utils";
@@ -8,6 +8,7 @@ import {
 	formDataReducerFunction,
 	formDataErrorReducerFunction,
 } from "reducers";
+import ProfileCSS from "pages/Profile/Profile.module.css";
 
 const AddressForm = () => {
 	const {

@@ -1,5 +1,7 @@
-import { RatingFilterOption } from "./RatingFilterOption";
+import React from "react";
 import { v4 as uuid } from "uuid";
+
+import { RatingFilterOption } from "./RatingFilterOption";
 
 const RatingFilters = () => {
 	const ratingFiltersList = [

@@ -1,7 +1,9 @@
-import React from "react";
-import ProfileCSS from "./Profile.module.css";
-import { v4 as uuid } from "uuid";
+import React, { useEffect } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+
+import { useDocumentTitle } from "custom-hooks";
+import ProfileCSS from "./Profile.module.css";
 
 const Profile = () => {
 	const { profileTabItem, activeLink, tabName, tabsWrapper, profileMain } =
@@ -24,6 +26,12 @@ const Profile = () => {
 			linkTo: "/profile/orders",
 		},
 	];
+
+	const { setDocumentTitle } = useDocumentTitle();
+
+	useEffect(() => {
+		setDocumentTitle("Bookery | Profile");
+	}, []);
 
 	const getActiveClass = ({ isActive }) =>
 		isActive

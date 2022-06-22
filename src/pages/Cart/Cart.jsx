@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { CartList, CartSummary } from "components";
 import { useCart } from "contexts/";
-import "./Cart.css";
-import loadingImage from "assets/images/loader.svg";
 import { useDocumentTitle } from "custom-hooks";
+import loadingImage from "assets/images/loader.svg";
+import "./Cart.css";
 
 const Cart = () => {
 	const {

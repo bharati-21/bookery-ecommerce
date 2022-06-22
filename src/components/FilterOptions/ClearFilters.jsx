@@ -1,5 +1,7 @@
+import React from "react";
+import { Close } from "@mui/icons-material";
+
 import { useFilter } from "contexts/";
-import CloseIcon from "@mui/icons-material/Close";
 
 const ClearFilters = ({ handleChangeShowFilterDrawer }) => {
 	const { filterDispatch } = useFilter();
@@ -22,7 +24,7 @@ const ClearFilters = ({ handleChangeShowFilterDrawer }) => {
 					className="btn btn-icon btn-close-filters"
 					onClick={() => handleChangeShowFilterDrawer(false)}
 				>
-					<CloseIcon />
+					<Close />
 				</button>
 			</div>
 		</div>

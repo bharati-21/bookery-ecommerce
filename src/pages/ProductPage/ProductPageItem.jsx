@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { ShoppingCart, Star } from "@mui/icons-material";
+import { ShoppingCart } from "@mui/icons-material";
 
 import { useCart, useAuth, useWishList, useProduct } from "contexts";
 import {
@@ -41,7 +41,7 @@ const ProductPageItem = () => {
 	const bookInWishList = wishListItems?.find((item) => item.id === productId);
 
 	useEffect(() => {
-		setDocumentTitle("Bookery | Book");
+		setDocumentTitle("Bookery | Product");
 	}, []);
 
 	if (loading) {
@@ -72,7 +72,6 @@ const ProductPageItem = () => {
 		discountPercent,
 		genres,
 		_id,
-		id,
 		description,
 		originalPrice,
 		title,
@@ -242,15 +241,17 @@ const ProductPageItem = () => {
 							</p>
 						</div>
 						<div className="product-ratings flex-row flex-align-center flex-justify-end rating-badge">
-							<span className="rating-stars text-sm">{totalStars}</span>
-                            <i className="fa-solid fa-star ml-0-25 mr-0-5 success-color"></i>
+							<span className="rating-stars text-sm">
+								{totalStars}
+							</span>
+							<i className="fa-solid fa-star ml-0-25 mr-0-5 success-color"></i>
 							|
 							<span className="ml-0-5 rating-count text-sm">
 								{localeTotalRatings} Ratings
 							</span>
 						</div>
 					</div>
-                    {outOfStock ? (
+					{outOfStock ? (
 						<div className="badge-out-of-stock p-0-25">
 							Out of stock
 						</div>
@@ -306,7 +307,6 @@ const ProductPageItem = () => {
 							</span>
 						</button>
 					</div>
-					
 				</div>
 			</div>
 		</main>

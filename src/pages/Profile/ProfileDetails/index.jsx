@@ -1,5 +1,6 @@
-import { useAuth } from "contexts";
 import React from "react";
+
+import { useAuth } from "contexts";
 import ProfileCSS from "../Profile.module.css";
 
 const ProfileDetails = () => {

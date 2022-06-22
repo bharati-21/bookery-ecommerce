@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { Header } from "components/Header/Header";
-import "./landing-page.css";
-import { Link } from "react-router-dom";
 import { useProduct } from "contexts";
 import { useDocumentTitle } from "custom-hooks";
+import "./landing-page.css";
+import loadingImage from "assets/images/loader.svg";
 
 const LandingPage = () => {
 	const {
@@ -46,6 +47,30 @@ const LandingPage = () => {
 	);
 
 	const sampleProducts = products?.slice(0, 4);
+
+	const sampleProductsMapping = sampleProducts.map(
+		({ _id, id, title, author, coverImg }) => (
+			<Link
+				to={`/products/${id}`}
+				className="product-card card card-vertical"
+				key={_id}
+			>
+				<div className="card-header p-0-75">
+					<img
+						src={coverImg}
+						className="book-cover"
+						alt={`${title} book cover`}
+					/>
+				</div>
+				<div className="card-body px-0-75 pb-0-75">
+					<div className="card-description my-0-25">
+						<p className="card-title text-sm">{title}</p>
+						<p className="text-xs card-subtitle mt-0-5">{author}</p>
+					</div>
+				</div>
+			</Link>
+		)
+	);
 	return (
 		<>
 			<Header />
@@ -64,9 +89,11 @@ const LandingPage = () => {
 					</p>
 					<article className="category-container">
 						{loading ? (
-							<h3 className="success-color text-center my-2 mx-auto">
-								Loading Categories...
-							</h3>
+							<img
+								src={loadingImage}
+								alt="Loading svg"
+								className="img img-responsive mx-auto"
+							/>
 						) : error ? (
 							<h3 className="error-color text-center my-2 mx-auto">
 								{error}
@@ -93,36 +120,20 @@ const LandingPage = () => {
 					<p className="section__lead my-2">
 						Find out what books are loved by all!
 					</p>
-					<article className="top-picks-container">
-						<div className="products-container grid grid-autofit mx-auto">
-							{sampleProducts.map(
-								({ _id, id, title, author, coverImg }) => (
-									<Link
-										to={`/products/${id}`}
-										className="product-card card card-vertical"
-										key={_id}
-									>
-										<div className="card-header p-0-75">
-											<img
-												src={coverImg}
-												className="book-cover"
-												alt={`${title} book cover`}
-											/>
-										</div>
-										<div className="card-body px-0-75 pb-0-75">
-											<div className="card-description my-0-25">
-												<p className="card-title text-sm">
-													{title}
-												</p>
-												<p className="text-xs card-subtitle mt-0-5">
-													{author}
-												</p>
-											</div>
-										</div>
-									</Link>
-								)
-							)}
-						</div>
+					<article className="top-picks-container mx-auto">
+						{productLoading ? (
+							<img
+								src={loadingImage}
+								alt="Loading svg"
+								className="img img-responsive mx-auto"
+							/>
+						) : error ? (
+							<h3 className="error-color text-center my-2 mx-auto">
+								{productError}
+							</h3>
+						) : (
+							sampleProductsMapping
+						)}
 					</article>
 					<Link
 						to="/products"

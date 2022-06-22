@@ -1,5 +1,7 @@
-import ArrowRightAltSharpIcon from "@mui/icons-material/ArrowRightAltSharp";
+import React from "react";
 import { Link } from "react-router-dom";
+import { ArrowRightAltSharp } from "@mui/icons-material";
+
 import "./header.css";
 
 const Header = () => {
@@ -16,9 +18,7 @@ const Header = () => {
 					>
 						Shop Now!
 						<span className="icon flex flex-col flex-align-center flex-justify-center">
-							<ArrowRightAltSharpIcon
-								style={{ fontSize: "2rem" }}
-							/>
+							<ArrowRightAltSharp style={{ fontSize: "2rem" }} />
 						</span>
 					</Link>
 				</h6>

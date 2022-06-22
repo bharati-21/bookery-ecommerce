@@ -1,5 +1,5 @@
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -117,7 +117,7 @@ const Signup = () => {
 								<input
 									type="text"
 									id="input-signup-fname"
-									className="input-text text-sm px-0-75 py-0-5 mt-0-25"
+									className="input-text text-sm px-0-75 py-0-25 mt-0-25"
 									placeholder="Jane"
 									name="firstName"
 									onChange={handleFormDataChange}
@@ -136,7 +136,7 @@ const Signup = () => {
 								<input
 									type="text"
 									id="input-signup-lname"
-									className="input-text text-sm px-0-75 py-0-5 mt-0-25"
+									className="input-text text-sm px-0-75 py-0-25 mt-0-25"
 									placeholder="Dow"
 									name="lastName"
 									onChange={handleFormDataChange}
@@ -155,7 +155,7 @@ const Signup = () => {
 								<input
 									type="email"
 									id="input-login-email"
-									className="input-text text-sm px-0-75 py-0-5 mt-0-25"
+									className="input-text text-sm px-0-75 py-0-25 mt-0-25"
 									placeholder="janedoe@example.com"
 									name="email"
 									onChange={handleFormDataChange}
@@ -177,7 +177,7 @@ const Signup = () => {
 											showPassword ? "text" : "password"
 										}`}
 										id="input-psd"
-										className="input-text px-0-75 py-0-5 mt-0-25 text-sm"
+										className="input-text px-0-75 py-0-25 mt-0-25 text-sm"
 										placeholder="********"
 										autoComplete="off"
 										name="password"
@@ -215,7 +215,7 @@ const Signup = () => {
 												: "password"
 										}`}
 										id="input-confirm-psd"
-										className="input-text px-0-75 py-0-5 mt-0-25 text-sm"
+										className="input-text px-0-75 py-0-25 mt-0-25 text-sm"
 										placeholder="********"
 										autoComplete="off"
 										name="confirmPassword"
@@ -254,9 +254,6 @@ const Signup = () => {
 								/>
 								I accept terms and conditions
 							</label>
-							<div className="btn btn-link btn-primary btn-forgot-psd text-sm display-none">
-								Forgot password?
-							</div>
 						</div>
 
 						<div className="auth-button-container mt-1 flex-col flex-align-center">

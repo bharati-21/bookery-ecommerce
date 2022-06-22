@@ -1,3 +1,5 @@
+import React from "react";
+
 import { compose } from "utils/";
 import { ProductItem } from "./ProductItem/ProductItem";
 

@@ -1,15 +1,15 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Close, Search } from "@mui/icons-material";
 
-import "./navbar.css";
 import { useAuth, useCart, useFilter, useWishList } from "contexts";
 import { getCartItemsTotal } from "utils";
 import { useOutsideClick, useToast } from "custom-hooks";
-import { AccountOptions } from "components/AccountOptions/AccountOptions";
+import { AccountOptions } from "components";
+import "./navbar.css";
 
 const Navbar = () => {
-	const { authState, setAuthState } = useAuth();
+	const { authState } = useAuth();
 	const { isAuth } = authState;
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -19,7 +19,6 @@ const Navbar = () => {
 	const {
 		cartState: { cartItems },
 	} = useCart();
-	const { showToast } = useToast();
 
 	const {
 		filterState: { searchText },
@@ -43,9 +42,9 @@ const Navbar = () => {
 	const navigateToProducts = (event) => {
 		event.preventDefault();
 		if (searchText.trim() !== "" && location.pathName !== "/products") {
-			handleShowSearchDrawerChange(false);
 			navigate("/products");
 		}
+		handleShowSearchDrawerChange(false);
 	};
 
 	const handleChangeSearchText = (event) => {
@@ -53,6 +52,9 @@ const Navbar = () => {
 			filterType: "SET_SEARCH_TEXT",
 			filterPayload: event.target.value,
 		});
+		if (searchText.trim() !== "" && location.pathName !== "/products") {
+			navigate("/products");
+		}
 	};
 
 	const totalCartItems = isAuth
@@ -160,10 +162,10 @@ const Navbar = () => {
 								htmlFor="input-inline-search"
 							>
 								<input
-									type="text"
+									type="search"
 									id="input-inline-search"
 									className="px-0-25 input-text text-reg"
-									placeholder="Search Book..."
+									placeholder="Search books by name or author..."
 									value={searchText}
 									onChange={handleChangeSearchText}
 								/>

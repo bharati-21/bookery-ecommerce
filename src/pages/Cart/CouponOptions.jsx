@@ -1,6 +1,6 @@
-import { useCart } from "contexts";
 import React from "react";
-import { getCartItemsData } from "utils";
+
+import { useCart } from "contexts";
 
 const CouponOptions = () => {
 	const { cartDispatch } = useCart();

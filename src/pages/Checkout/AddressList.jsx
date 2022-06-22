@@ -1,7 +1,7 @@
-import { AddTwoTone } from "@mui/icons-material";
+import React, { useEffect, useState } from "react";
+
 import { useAddress, useCart } from "contexts";
 import { AddressItem } from "pages";
-import React, { useEffect, useState } from "react";
 
 const AddressList = () => {
 	const { addresses, addressDispatch } = useAddress();

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAuth, useCart, useWishList } from "contexts/";
 import {
 	updateProductInCart,
@@ -6,7 +6,7 @@ import {
 	postToWishList,
 	getSellingPrice,
 } from "utils/";
-import { useToast } from "custom-hooks/useToast";
+import { useToast } from "custom-hooks";
 
 const CartListItem = ({ cartItem }) => {
 	const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);

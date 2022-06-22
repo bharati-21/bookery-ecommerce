@@ -1,8 +1,9 @@
 import React from "react";
-import { useOrders } from "contexts";
-import loadingImage from "assets/images/loader.svg";
-import { OrderItem } from "components";
 import { Link } from "react-router-dom";
+
+import { useOrders } from "contexts";
+import { OrderItem } from "components";
+import loadingImage from "assets/images/loader.svg";
 
 const Orders = () => {
 	const { orders, ordersLoading, ordersError } = useOrders();
@@ -44,7 +45,7 @@ const Orders = () => {
 						to="/products"
 						className="btn btn-primary p-0-25 mt-1 mx-auto"
 					>
-						Shop { orders?.length ? "more" : "now" }
+						Shop {orders?.length ? "more" : "now"}
 					</Link>
 				</>
 			)}

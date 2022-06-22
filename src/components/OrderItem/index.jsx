@@ -1,6 +1,7 @@
-import { AddressItem } from "pages";
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { AddressItem } from "pages";
 import { getSellingPrice } from "utils";
 
 const OrderItem = ({ order, page }) => {
@@ -18,11 +19,14 @@ const OrderItem = ({ order, page }) => {
 	};
 
 	return (
-		<section className={`order-wrapper mx-auto ${page === "orders" ? 'border-bottom py-3': 'border-none'}`}>
+		<section
+			className={`order-wrapper mx-auto ${
+				page === "orders" ? "border-bottom py-3" : "border-none"
+			}`}
+		>
 			{Object.keys(order)?.length ? (
 				<div className="order-details mx-auto text-left">
 					<div className="order-summary p-0-75 flex-col flex-align-start flex-justify-start">
-						
 						<div className="order-id flex-row flex-align-start flex-justify-start">
 							<h6 className="text-reg">Order Id:</h6>
 							<p>{orderId}</p>
