@@ -3,7 +3,8 @@ import { ShoppingCart } from "@mui/icons-material";
 
 import { useAuth, useCart, useWishList } from "contexts";
 import { useToast, useUpdateCart } from "custom-hooks/";
-import { deleteProductInWishList, getSellingPrice, postToCart } from "utils";
+import { getSellingPrice } from "utils";
+import { postToCart, deleteProductInWishList } from "services";
 
 const WishListItem = ({ wishListItem }) => {
 	const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);
@@ -38,37 +39,28 @@ const WishListItem = ({ wishListItem }) => {
 	) => {
 		setIsOngoingNetworkCall(true);
 		try {
-			const prodcutDeletedFromWishList = await deleteProductInWishList(
-				_id,
-				token
-			);
-			if (prodcutDeletedFromWishList) {
-				setIsOngoingNetworkCall(false);
-				if (showToastAfterRemovingItem)
-					showToast("Item removed from wishlist", "success");
-				wishListDispatch({
-					type: "ADD_TO_WISHLIST",
-					payload: {
-						wishListItems: prodcutDeletedFromWishList,
-						error: false,
-						loading: false,
-					},
-				});
-			} else {
-				setIsOngoingNetworkCall(false);
-				if (showToastAfterRemovingItem)
-					showToast(
-						"Failed to remove item from wishlist. Please try again later.",
-						"error"
-					);
-			}
-		} catch (error) {
+			const {
+				data: { wishlist },
+			} = await deleteProductInWishList(_id, token);
+
 			setIsOngoingNetworkCall(false);
 			if (showToastAfterRemovingItem)
-				showToast(
-					"Failed to remove item from wishlist. Please try again later.",
-					"error"
-				);
+				showToast("Item removed from wishlist", "success");
+
+			wishListDispatch({
+				type: "ADD_TO_WISHLIST",
+				payload: {
+					wishListItems: wishlist,
+					error: false,
+					loading: false,
+				},
+			});
+		} catch (error) {
+			setIsOngoingNetworkCall(false);
+			showToast(
+				"Failed to remove item from wishlist. Please try again later.",
+				"error"
+			);
 		}
 	};
 
@@ -94,35 +86,29 @@ const WishListItem = ({ wishListItem }) => {
 			}
 		} else {
 			try {
-				const productPostedToCart = await postToCart(
-					wishListItem,
-					token
-				);
-				if (productPostedToCart) {
-					showToast("Item moved to cart", "success");
-					cartDispatch({
-						type: "SET_CART_ITEMS",
-						payload: {
-							cartItems: productPostedToCart,
-							error: null,
-							loading: false,
-						},
-					});
-					handleRemoveFromWishList(false);
-				} else {
-					showToast(
-						"Failed to move item to cart. Please try again later.",
-						"error"
-					);
-				}
+				const {
+					data: { cart },
+				} = await postToCart(wishListItem, token);
+
+				showToast("Item moved to cart", "success");
+
+				cartDispatch({
+					type: "SET_CART_ITEMS",
+					payload: {
+						cartItems: cart,
+						error: null,
+						loading: false,
+					},
+				});
+				handleRemoveFromWishList(false);
 			} catch (error) {
 				showToast(
 					"Failed to move item to cart. Please try again later.",
 					"error"
 				);
+				setIsOngoingNetworkCall(false);
 			}
 		}
-		setIsOngoingNetworkCall(false);
 	};
 
 	return (

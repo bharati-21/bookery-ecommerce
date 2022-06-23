@@ -1,4 +1,4 @@
-import { getSellingPrice } from "./getSellingPrice";
+import { getSellingPrice } from "../getSellingPrice";
 
 const sortBooks = (filteredBooks, sortByOption) => {
 	switch (sortByOption) {

@@ -163,3 +163,9 @@
         text-align: left;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .profileMain > section {
+        padding: var(--space-2) var(--space-1);
+    }
+}

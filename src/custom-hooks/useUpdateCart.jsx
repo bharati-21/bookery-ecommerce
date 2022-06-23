@@ -2,7 +2,7 @@ import React from "react";
 
 import { useToast } from "./useToast";
 import { useCart, useAuth } from "contexts/";
-import { updateProductInCart } from "utils";
+import { updateProductInCart } from "services";
 
 const useUpdateCart = () => {
 	const { showToast } = useToast();
@@ -17,34 +17,29 @@ const useUpdateCart = () => {
 		showToastAfterCall = true
 	) => {
 		try {
-			const productUpdatedInCart = await updateProductInCart(
-				_id,
-				token,
-				operation
-			);
-			if (productUpdatedInCart) {
-				if (showToastAfterCall)
-					showToast("Item quantity updated in cart!", "success");
-				cartDispatch({
-					type: "SET_CART_ITEMS",
-					payload: {
-						cartItems: productUpdatedInCart,
-						error: null,
-						loading: false,
-					},
-				});
-				return true;
-			} else {
-				if (showToastAfterCall)
-					"Failed to update item quantity in cart. Please try again later.",
-						"error";
-				return false;
-			}
-		} catch (error) {
+			const {
+				data: { cart },
+			} = await updateProductInCart(_id, token, operation);
+
 			if (showToastAfterCall)
+				showToast("Item quantity updated in cart!", "success");
+                
+			cartDispatch({
+				type: "SET_CART_ITEMS",
+				payload: {
+					cartItems: cart,
+					error: null,
+					loading: false,
+				},
+			});
+			return true;
+		} catch (error) {
+			showToast(
 				"Failed to update item quantity in cart. Please try again later.",
-					"error";
+				"error"
+			);
 		}
+		return false;
 	};
 
 	return { callUpdateProductInCart };

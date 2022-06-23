@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { useAddress, useAuth } from "contexts";
-import { deleteAddress } from "utils";
+import { deleteAddress } from "services";
 import { useToast } from "custom-hooks";
 import ProfileCSS from "../Profile.module.css";
 

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from 'react';
 
-import { fetchWishListItems } from 'utils/';
+import { fetchWishListItems } from 'services';
 import { useAuth } from './';
 import { wishListReducerFunction } from 'reducers/';
 

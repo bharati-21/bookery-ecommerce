@@ -20,10 +20,10 @@ export const fetchProducts = async (productDispatch) => {
 		productDispatch({
 			type: "INIT_PRODUCTS_FAILURE",
 			payload: {
-                productsMessages: {
-                    error: "Products could not be fetched. Try again later.",
-                    loading: false,
-                }
+				productsMessages: {
+					error: "Products could not be fetched. Try again later.",
+					loading: false,
+				},
 			},
 		});
 	}

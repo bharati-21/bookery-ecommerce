@@ -4,12 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ShoppingCart } from "@mui/icons-material";
 
 import { useCart, useAuth, useWishList, useProduct } from "contexts";
-import {
-	postToCart,
-	postToWishList,
-	deleteProductInWishList,
-	getSellingPrice,
-} from "utils/";
+import { getSellingPrice } from "utils/";
+import { postToCart, postToWishList, deleteProductInWishList } from "services";
 import { useDocumentTitle, useToast } from "custom-hooks";
 import loadingImage from "assets/images/loader.svg";
 import "./product-page-main.css";
@@ -112,31 +108,34 @@ const ProductPageItem = () => {
 	const handleAddToCart = async () => {
 		if (outOfStock) return;
 		setIsOngoingNetworkCall(true);
-		if (isAuth) {
-			if (bookInCart) {
-				navigate("/cart");
-			} else {
-				const productPostedToCart = await postToCart(book, token);
 
-				if (productPostedToCart) {
-					showToast("Item added to cart", "success");
-					cartDispatch({
-						type: "SET_CART_ITEMS",
-						payload: {
-							cartItems: productPostedToCart,
-							error: null,
-							loading: false,
-						},
-					});
-				} else {
-					showToast(
-						"Failed to add item to cart. Please try again later.",
-						"error"
-					);
-				}
-			}
+		if (!isAuth) {
+			return navigate("/login");
+		}
+
+		if (bookInCart) {
+			return navigate("/cart");
 		} else {
-			navigate("/login");
+			try {
+				const {
+					data: { cart },
+				} = await postToCart(book, token);
+
+				showToast("Item added to cart", "success");
+				cartDispatch({
+					type: "SET_CART_ITEMS",
+					payload: {
+						cartItems: cart,
+						error: null,
+						loading: false,
+					},
+				});
+			} catch (error) {
+				showToast(
+					"Failed to add item to cart. Please try again later.",
+					"error"
+				);
+			}
 		}
 		setIsOngoingNetworkCall(false);
 	};
@@ -144,58 +143,41 @@ const ProductPageItem = () => {
 	const handleAddToWishList = async () => {
 		if (outOfStock) return;
 		setIsOngoingNetworkCall(true);
-		if (isAuth) {
-			if (bookInWishList) {
-				const prodcutDeletedFromWishList =
-					await deleteProductInWishList(_id, token);
-				if (prodcutDeletedFromWishList) {
-					showToast("Item removed from wishlist", "success");
-					wishListDispatch({
-						type: "ADD_TO_WISHLIST",
-						payload: {
-							wishListItems: prodcutDeletedFromWishList,
-							error: false,
-							loading: false,
-						},
-					});
-				} else {
-					showToast(
-						"Failed to remove item from wishlist. Please try again later.",
-						"error"
-					);
-				}
-			} else {
-				const productPostedToWishList = await postToWishList(
-					book,
-					token
-				);
 
-				if (productPostedToWishList) {
-					showToast("Item added to wishlist", "success");
-					wishListDispatch({
-						type: "ADD_TO_WISHLIST",
-						payload: {
-							wishListItems: productPostedToWishList,
-							error: false,
-							loading: false,
-						},
-					});
-				} else {
-					showToast(
-						"Failed to add item to wishlist. Please try again later.",
-						"error"
-					);
-				}
-			}
-		} else {
-			navigate("/login");
+		if (!isAuth) {
+			return navigate("/login");
+		}
+
+		try {
+			const {
+				data: { wishlist },
+			} = bookInWishList
+				? await deleteProductInWishList(_id, token)
+				: await postToWishList(book, token);
+			showToast(
+				`Item ${bookInWishList ? "removed from" : "added to"} wishlist`,
+				"success"
+			);
+			wishListDispatch({
+				type: "ADD_TO_WISHLIST",
+				payload: {
+					wishListItems: wishlist,
+					error: false,
+					loading: false,
+				},
+			});
+		} catch (error) {
+			showToast(
+				"Failed to remove item from wishlist. Please try again later.",
+				"error"
+			);
 		}
 		setIsOngoingNetworkCall(false);
 	};
 
 	return (
 		<main className="main product-page-main mx-auto px-5 p-2 flex-col flex-align-center flex-justify-center">
-			<div className="product-page-content">
+			<section className="product-page-content">
 				{productBadge}
 				<div className="product-image-container flex-col flex-justify-start mx-auto mx-auto p-1-5 px-1">
 					<img
@@ -266,21 +248,21 @@ const ProductPageItem = () => {
 					</div>
 					<div className="product-offers flex-col flex-align-start flex-justify-center">
 						<h6 className="text-sm offer flex-row flex-align-start">
-							<i class="fa-solid fa-truck-fast pt-0-25 text-reg success-color"></i>
+							<i className="fa-solid fa-truck-fast pt-0-25 text-reg success-color"></i>
 							<span className="offer-text">
 								Express Delivery - guaranteed delivery within 72
 								hours
 							</span>
 						</h6>
 						<h6 className="text-sm offer flex-row flex-align-start">
-							<i class="fa-solid fa-arrow-rotate-left pt-0-25 text-reg success-color"></i>
+							<i className="fa-solid fa-arrow-rotate-left pt-0-25 text-reg success-color"></i>
 							<span className="offer-text">
 								Fair Replacement Policy - replace within 10 days
 								after delivery
 							</span>
 						</h6>
 						<h6 className="text-sm offer flex-row flex-align-start">
-							<i class="fa-solid fa-shield-virus pt-0-25 text-reg success-color"></i>
+							<i className="fa-solid fa-shield-virus pt-0-25 text-reg success-color"></i>
 							<span className="offer-text">
 								Safe Delivery - Safe delivery with COVID-19
 								safety protocols and measures
@@ -308,7 +290,7 @@ const ProductPageItem = () => {
 						</button>
 					</div>
 				</div>
-			</div>
+			</section>
 		</main>
 	);
 };

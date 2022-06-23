@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-import { fetchProducts, fetchCategories } from "utils/";
+import { fetchCategories, fetchProducts } from 'services'
 import { productReducerFunction } from "reducers/";
 
 const initalProductState = {

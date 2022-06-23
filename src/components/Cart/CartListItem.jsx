@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import { useAuth, useCart, useWishList } from "contexts/";
-import {
-	updateProductInCart,
-	deleteProductInCart,
-	postToWishList,
-	getSellingPrice,
-} from "utils/";
-import { useToast } from "custom-hooks";
+import { getSellingPrice } from "utils/";
+import { deleteProductInCart, postToWishList } from "services";
+import { useToast, useUpdateCart } from "custom-hooks";
 
 const CartListItem = ({ cartItem }) => {
 	const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);
@@ -38,6 +34,8 @@ const CartListItem = ({ cartItem }) => {
 		wishListDispatch,
 	} = useWishList();
 
+	const { callUpdateProductInCart } = useUpdateCart();
+
 	const handleCartQuantityButtonClick = async (event) => {
 		const { value } = event.target;
 		let operation = "";
@@ -57,69 +55,38 @@ const CartListItem = ({ cartItem }) => {
 			return handleRemoveFromCart();
 		}
 
-		try {
-			setIsOngoingNetworkCall(true);
-			const productUpdatedInCart = await updateProductInCart(
-				_id,
-				token,
-				operation
-			);
+		setIsOngoingNetworkCall(true);
+		await callUpdateProductInCart(_id, operation);
 
-			if (productUpdatedInCart) {
-				showToast("Quantity updated successfully!", "success");
-				cartDispatch({
-					type: "SET_CART_ITEMS",
-					payload: {
-						cartItems: productUpdatedInCart,
-						error: null,
-						loading: false,
-					},
-				});
-			} else {
-				showToast(
-					"Failed to update quantity. Please try again later.",
-					"error"
-				);
-			}
-			setIsOngoingNetworkCall(false);
-		} catch (error) {
-			showToast(
-				"Failed to update quantity. Please try again later.",
-				"error"
-			);
-			setIsOngoingNetworkCall(false);
-		}
+		setIsOngoingNetworkCall(false);
 	};
 
 	const handleRemoveFromCart = async (showToastAfterRemovingItem = true) => {
 		setIsOngoingNetworkCall(true);
 		try {
-			const productDeletedInCart = await deleteProductInCart(_id, token);
-			if (productDeletedInCart) {
-				if (showToastAfterRemovingItem) setIsOngoingNetworkCall(false);
-				showToast("Item removed from cart!", "success");
-				cartDispatch({
-					type: "SET_CART_ITEMS",
-					payload: {
-						cartItems: productDeletedInCart,
-						error: null,
-						loading: false,
-					},
-				});
-			} else {
-				setIsOngoingNetworkCall(false);
-				if (showToastAfterRemovingItem)
-					showToast(
-						"Failed to remove item from cart. Please try again later.",
-						"error"
-					);
-			}
-		} catch (error) {
+			const {
+				data: { cart },
+			} = await deleteProductInCart(_id, token);
+
 			setIsOngoingNetworkCall(false);
+
+			if (showToastAfterRemovingItem)
+				showToast("Item removed from cart!", "success");
+
+			cartDispatch({
+				type: "SET_CART_ITEMS",
+				payload: {
+					cartItems: cart,
+					error: null,
+					loading: false,
+				},
+			});
+		} catch (error) {
 			showToast(
 				"Failed to remove item from cart. Please try again later.",
 				"error"
 			);
+			setIsOngoingNetworkCall(false);
 		}
 	};
 
@@ -133,36 +100,32 @@ const CartListItem = ({ cartItem }) => {
 			handleRemoveFromCart(false);
 		} else {
 			setIsOngoingNetworkCall(true);
-
 			try {
-				const itemPostedToWishList = await postToWishList(
-					cartItem,
-					token
-				);
-				if (itemPostedToWishList) {
-					showToast("Item added to wishlist", "success");
-					wishListDispatch({
-						type: "ADD_TO_WISHLIST",
-						payload: {
-							wishListItems: itemPostedToWishList,
-							error: false,
-							loading: false,
-						},
-					});
-					handleRemoveFromCart(false);
-				} else {
-					showToast(
-						"Failed to add item to wishlist. Please try again later.",
-						"error"
-					);
-				}
+				const {
+					data: { wishlist },
+				} = await postToWishList(cartItem, token);
+
+				showToast("Item added to wishlist", "success");
+
+				wishListDispatch({
+					type: "ADD_TO_WISHLIST",
+					payload: {
+						wishListItems: wishlist,
+						error: false,
+						loading: false,
+					},
+				});
+
+				setIsOngoingNetworkCall(false);
+
+				handleRemoveFromCart(false);
 			} catch (error) {
 				showToast(
 					"Failed to add item to wishlist. Please try again later.",
 					"error"
 				);
+				setIsOngoingNetworkCall(false);
 			}
-			setIsOngoingNetworkCall(false);
 		}
 	};
 
@@ -231,6 +194,7 @@ const CartListItem = ({ cartItem }) => {
 						className={`btn btn-primary px-0-75 py-0-25 btn-full-width text-sm ${
 							isOngoingNetworkCall ? "btn-disabled" : ""
 						}`}
+						disabled={isOngoingNetworkCall}
 						onClick={handleMoveItemToWishList}
 					>
 						Move to wishlist
@@ -239,6 +203,7 @@ const CartListItem = ({ cartItem }) => {
 						className={`btn btn-primary btn-outline px-0-75 py-0-25 btn-full-width text-sm ${
 							isOngoingNetworkCall ? "btn-disabled" : ""
 						}`}
+						disabled={isOngoingNetworkCall}
 						onClick={handleRemoveFromCart}
 					>
 						Remove from cart

@@ -5,7 +5,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-import { initiateSignup } from "utils/";
+import { initiateSignup } from "services";
 import { useToast, useDocumentTitle } from "custom-hooks";
 import { useAuth } from "contexts/";
 import "./auth.css";

@@ -113,28 +113,21 @@
 
 .top-picks-container {
 	margin: 0 auto;
-    display: grid;
+	display: grid;
 	justify-content: center;
 	justify-items: center;
-    gap: var(--space-1);
+	gap: var(--space-1);
 	grid-template-columns: repeat(4, 1fr);
 }
 
-.top-picks-container .product-card {
-	max-width: 220px;
+.top-picks-container .product-card.card-vertical .card-header {
 	height: 100%;
-}
-
-.top-picks-container .card-header {
-	height: 100%;
-	width: 100%;
-    min-height: 20rem;
 }
 
 .top-picks-container .card-header img.book-cover {
 	height: 100%;
 	width: 100%;
-	object-fit: contain;
+	object-fit: cover;
 	border-radius: var(--br-2);
 	-webkit-border-radius: var(--br-2);
 	-moz-border-radius: var(--br-2);
@@ -143,20 +136,22 @@
 }
 
 .top-picks-container .card-body {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .top-picks-container .card-description {
-    flex: 1;
-    justify-content: start;
+	flex: 1;
+	justify-content: start;
 }
 
 @media screen and (max-width: 840px) {
 	.category-container {
 		grid-template-columns: repeat(2, 1fr);
 	}
+}
 
+@media screen and (max-width: 960px) {
 	.top-picks-container {
 		grid-template-columns: repeat(2, 1fr);
 	}

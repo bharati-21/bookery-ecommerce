@@ -50,6 +50,7 @@
 .order-summary-main .card-horizontal .card-header {
 	max-height: 12rem;
 	flex: unset;
+    height: 100%;
 }
 
 .order-summary-main .card-horizontal .card-header img {
@@ -99,4 +100,15 @@
 		max-width: 30rem;
 		width: 100%;
 	}
+}
+
+@media screen and (max-width: 480px) {
+    .order-summary-main a.card-horizontal {
+        grid-template-columns: 1fr;
+        padding: var(--space-1);
+    }
+
+    .order-summary-main .card-horizontal .card-header img {
+        align-self: flex-start;
+    }
 }

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { ordersReducerFunction } from "reducers";
 
-import { getAllOrders } from "utils/";
+import { getAllOrders } from "services";
 import { useAuth } from "./";
 
 const initialOrdersState = {

@@ -1,9 +1,10 @@
 import React, { useReducer, useRef, useState } from "react";
-import { Close, DeleteSharp } from "@mui/icons-material";
+import { Close } from "@mui/icons-material";
 
 import { useAddress, useAuth } from "contexts";
 import { useOutsideClick, useToast } from "custom-hooks";
-import { editAddress, postNewAddress, validateAddressData } from "utils";
+import { validateAddressData } from "utils";
+import { editAddress, postNewAddress, } from 'services';
 import {
 	formDataReducerFunction,
 	formDataErrorReducerFunction,

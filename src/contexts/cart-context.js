@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-import { fetchCartItems } from "utils/";
+import { fetchCartItems } from "services";
 import { useAuth } from "./";
 import { cartReducerFunction, couponOptions } from "reducers/";
 

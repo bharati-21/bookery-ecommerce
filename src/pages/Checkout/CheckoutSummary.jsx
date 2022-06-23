@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 import { useAuth, useCart, useOrders } from "contexts";
 import ProfileCSS from "pages/Profile/Profile.module.css";
-import { clearCartItems, postNewOrder } from "utils";
+import { clearCartItems, postNewOrder } from "services";
 import bookeryIcon from "assets/images/bookery-icon.png";
 import { useToast } from "custom-hooks";
 
@@ -39,12 +39,16 @@ const CheckoutSummary = () => {
 	const { addressCityState, addressItem } = ProfileCSS;
 	const { showToast } = useToast();
 
+	const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);
+
 	const placeOrder = async (order) => {
 		let orderId = uuid();
 		orderId =
 			orderId.split("-")?.length >= 3
 				? orderId.split("-").slice(0, 3).join("-")
 				: orderId;
+
+		setIsOngoingNetworkCall(true);
 
 		try {
 			const {
@@ -75,6 +79,7 @@ const CheckoutSummary = () => {
 
 			navigate(`/order-summary/${orderId}`);
 		} catch (error) {
+			setIsOngoingNetworkCall(false);
 			showToast(
 				"Failed to place order. Please try again later.",
 				"error"
@@ -181,7 +186,9 @@ const CheckoutSummary = () => {
 			</div>
 			<button
 				className="btn btn-full-width mt-1  py-0-25 px-0-5 text-reg"
-				disabled={checkoutData?.address ? false : true}
+				disabled={
+					checkoutData?.address ? false : true || isOngoingNetworkCall
+				}
 				onClick={handleShowRazorPay}
 			>
 				Place Order

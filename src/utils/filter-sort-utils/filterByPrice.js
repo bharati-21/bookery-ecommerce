@@ -1,4 +1,4 @@
-import { getSellingPrice } from "./getSellingPrice";
+import { getSellingPrice } from "../getSellingPrice";
 
 const filterByPrice = (genreFilteredBooks, maxPriceValue) =>
 	genreFilteredBooks.filter(

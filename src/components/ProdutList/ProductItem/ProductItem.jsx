@@ -2,12 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import { useCart, useAuth, useWishList } from "contexts";
-import {
-	postToCart,
-	postToWishList,
-	deleteProductInWishList,
-	getSellingPrice,
-} from "utils/";
+import { getSellingPrice } from "utils/";
+import { postToCart, postToWishList, deleteProductInWishList } from "services";
 import { useToast } from "custom-hooks";
 
 const ProductItem = ({ book }) => {
@@ -81,90 +77,104 @@ const ProductItem = ({ book }) => {
 
 	const handleAddToCart = async (e) => {
 		if (outOfStock) return;
+
 		e.preventDefault();
 		e.stopPropagation();
+
 		setIsOngoingNetworkCall(true);
+
 		if (isAuth) {
 			if (bookInCart) {
 				navigate("/cart");
 			} else {
-				const productPostedToCart = await postToCart(book, token);
+				try {
+					const {
+						data: { cart },
+					} = await postToCart(book, token);
 
-				if (productPostedToCart) {
 					showToast("Item added to cart", "success");
 					cartDispatch({
 						type: "SET_CART_ITEMS",
 						payload: {
-							cartItems: productPostedToCart,
+							cartItems: cart,
 							error: null,
 							loading: false,
 						},
 					});
-				} else {
+					setIsOngoingNetworkCall(false);
+				} catch (error) {
 					showToast(
 						"Failed to add item to cart. Please try again later.",
 						"error"
 					);
+					setIsOngoingNetworkCall(false);
 				}
 			}
 		} else {
 			navigate("/login");
 		}
-		setIsOngoingNetworkCall(false);
 	};
 
 	const handleAddToWishList = async (e) => {
 		if (outOfStock) return;
+
 		e.preventDefault();
 		e.stopPropagation();
 		setIsOngoingNetworkCall(true);
-		if (isAuth) {
-			if (bookInWishList) {
-				const prodcutDeletedFromWishList =
-					await deleteProductInWishList(_id, token);
-				if (prodcutDeletedFromWishList) {
-					showToast("Item removed from wishlist", "success");
-					wishListDispatch({
-						type: "ADD_TO_WISHLIST",
-						payload: {
-							wishListItems: prodcutDeletedFromWishList,
-							error: false,
-							loading: false,
-						},
-					});
-				} else {
-					showToast(
-						"Failed to remove item from wishlist. Please try again later.",
-						"error"
-					);
-				}
-			} else {
-				const productPostedToWishList = await postToWishList(
-					book,
-					token
-				);
 
-				if (productPostedToWishList) {
-					showToast("Item added to wishlist", "success");
-					wishListDispatch({
-						type: "ADD_TO_WISHLIST",
-						payload: {
-							wishListItems: productPostedToWishList,
-							error: false,
-							loading: false,
-						},
-					});
-				} else {
-					showToast(
-						"Failed to add item to wishlist. Please try again later.",
-						"error"
-					);
-				}
+		if (!isAuth) {
+			navigate("/login");
+			return;
+		}
+
+		if (bookInWishList) {
+			try {
+				const {
+					data: { wishlist },
+				} = await deleteProductInWishList(_id, token);
+
+				showToast("Item removed from wishlist", "success");
+				setIsOngoingNetworkCall(false);
+
+				wishListDispatch({
+					type: "ADD_TO_WISHLIST",
+					payload: {
+						wishListItems: wishlist,
+						error: false,
+						loading: false,
+					},
+				});
+			} catch (error) {
+				showToast(
+					"Failed to remove item from wishlist. Please try again later.",
+					"error"
+				);
+				setIsOngoingNetworkCall(false);
 			}
 		} else {
-			navigate("/login");
+			try {
+				const {
+					data: { wishlist },
+				} = await postToWishList(book, token);
+
+				showToast("Item added to wishlist", "success");
+				wishListDispatch({
+					type: "ADD_TO_WISHLIST",
+					payload: {
+						wishListItems: wishlist,
+						error: false,
+						loading: false,
+					},
+				});
+				setIsOngoingNetworkCall(false);
+			} catch (error) {
+				showToast(
+					"Failed to add item to wishlist. Please try again later.",
+					"error"
+				);
+				setIsOngoingNetworkCall(false);
+			}
 		}
-		setIsOngoingNetworkCall(false);
 	};
 
 	return (
@@ -172,6 +182,7 @@ const ProductItem = ({ book }) => {
 			to={`/products/${id}`}
 			className={`product-card card card-vertical card-wt-dismiss card-wt-badge ${
 				outOfStock ? "out-of-stock" : "in-stock"
+			} ${isOngoingNetworkCall ? "link-disabled" : "link"}
 			}`}
 		>
 			<div id={_id}></div>
