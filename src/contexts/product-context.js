@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-import { fetchCategories, fetchProducts } from 'services'
+import { fetchCategories, fetchProducts } from "services";
 import { productReducerFunction } from "reducers/";
 
 const initalProductState = {
@@ -15,7 +15,6 @@ const ProductContext = createContext(initalProductState);
 const { Provider } = ProductContext;
 
 const ProductProvider = ({ children }) => {
-
 	useEffect(() => {
 		fetchProducts(productDispatch);
 		fetchCategories(productDispatch);

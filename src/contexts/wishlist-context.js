@@ -1,36 +1,40 @@
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import { createContext, useContext, useEffect, useReducer } from "react";
 
-import { fetchWishListItems } from 'services';
-import { useAuth } from './';
-import { wishListReducerFunction } from 'reducers/';
+import { fetchWishListItems } from "services";
+import { useAuth } from "./";
+import { wishListReducerFunction } from "reducers/";
 
 const initialWishListState = {
-    wishListItems: [],
-    loading: true,
-    error: null
-}
+	wishListItems: [],
+	loading: true,
+	error: null,
+};
 
 const WishListContext = createContext(initialWishListState);
 const { Provider } = WishListContext;
 
 const WishListProvider = ({ children }) => {
+	const {
+		authState: { isAuth, token },
+	} = useAuth();
 
-    const { authState: { isAuth, token } } = useAuth();
-    
-    useEffect(() => {
-        if(isAuth) {
-            fetchWishListItems(wishListDispatch, token);
-        }
-    }, [isAuth]);
+	useEffect(() => {
+		if (isAuth) {
+			fetchWishListItems(wishListDispatch, token);
+		}
+	}, [isAuth]);
 
-    const [wishListState, wishListDispatch] = useReducer(wishListReducerFunction, initialWishListState);
+	const [wishListState, wishListDispatch] = useReducer(
+		wishListReducerFunction,
+		initialWishListState
+	);
 
-    return (
-        <Provider value={{wishListState, wishListDispatch}}>
-            {children}
-        </Provider>
-    );
-}
+	return (
+		<Provider value={{ wishListState, wishListDispatch }}>
+			{children}
+		</Provider>
+	);
+};
 
 const useWishList = () => useContext(WishListContext);
 

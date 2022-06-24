@@ -9,15 +9,10 @@ const productReducerFunction = (
 	prevProductState,
 	{
 		type,
-		payload: {
-			products,
-			categories,
-			productsMessages,
-			categoriesMessages,
-		},
+		payload: { products, categories, productsMessages, categoriesMessages },
 	}
 ) => {
-	switch (type) {  
+	switch (type) {
 		case productActionTypes.INIT_PRODUCTS_SUCCESS:
 			return {
 				...prevProductState,

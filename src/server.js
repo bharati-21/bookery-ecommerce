@@ -4,7 +4,10 @@ import {
 	getAllAddressesHandler,
 	removeAddressHandler,
 } from "backend/controllers/AddressController";
-import { addItemToOrdersHandler, getAllOrdersHandler } from "backend/controllers/OrderController";
+import {
+	addItemToOrdersHandler,
+	getAllOrdersHandler,
+} from "backend/controllers/OrderController";
 import { Server, Model, RestSerializer } from "miragejs";
 import {
 	loginHandler,
@@ -94,7 +97,7 @@ export function makeServer({ environment = "development" } = {}) {
 				"/user/cart/:productId",
 				removeItemFromCartHandler.bind(this)
 			);
-			this.get("/user/cart/clear", clearCart.bind(this))
+			this.get("/user/cart/clear", clearCart.bind(this));
 
 			// wishlist routes (private)
 			this.get("/user/wishlist", getWishlistItemsHandler.bind(this));
@@ -117,8 +120,8 @@ export function makeServer({ environment = "development" } = {}) {
 			);
 
 			// orders routes(private)
-			this.get('/user/orders', getAllOrdersHandler.bind(this));
-			this.post('/user/order', addItemToOrdersHandler.bind(this))
+			this.get("/user/orders", getAllOrdersHandler.bind(this));
+			this.post("/user/order", addItemToOrdersHandler.bind(this));
 		},
 	});
 }

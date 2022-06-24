@@ -1,72 +1,71 @@
 .profileMain {
-    max-width: 1280px;
-    margin: auto;
-    width: 100%;
+	max-width: 1280px;
+	margin: auto;
+	width: 100%;
 }
 
 .profileMain > section {
-    border: 2px solid var(--light-gray-color);
+	border: 2px solid var(--light-gray-color);
 }
 
 .profileTabItem {
-    text-transform: uppercase;
-    max-width: max-content;
+	text-transform: uppercase;
+	max-width: max-content;
 }
 
-.activeLink > .tabName  {
-    border-bottom: 2px solid var(--primary-color);
+.activeLink > .tabName {
+	border-bottom: 2px solid var(--primary-color);
 }
 
 .tabsWrapper {
-    width: 100%;
-    border-bottom: 2px solid var(--light-gray-color);
+	width: 100%;
+	border-bottom: 2px solid var(--light-gray-color);
 }
 
 .tabName {
-    max-width: max-content;
+	max-width: max-content;
 }
 
 .tabName:hover {
-    color: var(--secondary-color);
+	color: var(--secondary-color);
 }
-
 
 /* Profile Details */
 .profileDetails {
-    width: 100%;
-    text-align: left;
-    gap: var(--space-1);
+	width: 100%;
+	text-align: left;
+	gap: var(--space-1);
 }
 
 .profileDetails li {
-    flex-wrap: wrap;
-    gap: var(--space-0-5) var(--space-0-5);
+	flex-wrap: wrap;
+	gap: var(--space-0-5) var(--space-0-5);
 }
 
 .profileDetails li:hover {
-    color: unset;
+	color: unset;
 }
 
 /* Address */
 .addressWrapper {
-    width: 100%;
+	width: 100%;
 }
 
 .addressHeader {
-    gap: var(--space-1);
-    width: 100%;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--light-gray-color);
+	gap: var(--space-1);
+	width: 100%;
+	flex-wrap: wrap;
+	border-bottom: 1px solid var(--light-gray-color);
 }
 
 .addressFormContainer {
-    max-width: 500px;
-    margin: auto;
-    width: 100%;
-    max-height: 90vh;
-    gap: var(--space-1);
-    overflow-y: auto;
-    background-color: var(--bg-card-color);
+	max-width: 500px;
+	margin: auto;
+	width: 100%;
+	max-height: 90vh;
+	gap: var(--space-1);
+	overflow-y: auto;
+	background-color: var(--bg-card-color);
 }
 
 .addressFormContainer::-webkit-scrollbar {
@@ -85,87 +84,90 @@
 }
 
 .addressFormContainer > div {
-    gap: 1rem;
+	gap: 1rem;
 }
 
 .addressFormHeader {
-    width: 100%;
-    gap: 1rem;
+	width: 100%;
+	gap: 1rem;
 }
 
 .addressForm {
-    gap: var(--space-0-75);
+	gap: var(--space-0-75);
 }
 
-.addressForm, .inputGroup {
-    width: 100%;
+.addressForm,
+.inputGroup {
+	width: 100%;
 }
 
 .inputGroup input {
-    border-radius: var(--br-2);
-    -webkit-border-radius: var(--br-2);
-    -moz-border-radius: var(--br-2);
-    -ms-border-radius: var(--br-2);
-    -o-border-radius: var(--br-2);
+	border-radius: var(--br-2);
+	-webkit-border-radius: var(--br-2);
+	-moz-border-radius: var(--br-2);
+	-ms-border-radius: var(--br-2);
+	-o-border-radius: var(--br-2);
 }
 
 .inputGroup input:focus {
-    outline-width: 1px;
+	outline-width: 1px;
 }
 
 .formButtonsContainer {
-    width: 100%;
-    gap: 1rem;
-    flex-wrap: wrap;
+	width: 100%;
+	gap: 1rem;
+	flex-wrap: wrap;
 }
 
 /* address item */
 .addressList {
-    width: 100%;
+	width: 100%;
 }
 
 .addressItem {
-    width: 100%;
-    gap: 0.25rem;
-    border-bottom: 1px solid var(--light-gray-color);
+	width: 100%;
+	gap: 0.25rem;
+	border-bottom: 1px solid var(--light-gray-color);
 }
 
 .addressItem:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+	border-bottom: none;
+	padding-bottom: 0;
 }
 
 .addressItem:first-child {
-    padding-top: 0;
+	padding-top: 0;
 }
 
 .addressCityState {
-    gap: 0 0.35rem;
-    flex-wrap: wrap;
+	gap: 0 0.35rem;
+	flex-wrap: wrap;
 }
 
 .buttonsContainer {
-    gap: var(--space-0-5) var(--space-1);
+	gap: var(--space-0-5) var(--space-1);
 }
 
 @media screen and (max-width: 640px) {
-    .tabsWrapper {
-        flex-direction: column;
-        gap: var(--space-1-5);
-        align-items: center;
-    }
-    
-    .tabsWrapper a, .tabsWrapper h5 {
-        text-align: left;
-           }
+	.tabsWrapper {
+		flex-direction: column;
+		gap: var(--space-1-5);
+		align-items: center;
+	}
 
-    .profileDetails li, .profileDetails {
-        text-align: left;
-    }
+	.tabsWrapper a,
+	.tabsWrapper h5 {
+		text-align: left;
+	}
+
+	.profileDetails li,
+	.profileDetails {
+		text-align: left;
+	}
 }
 
 @media screen and (max-width: 400px) {
-    .profileMain > section {
-        padding: var(--space-2) var(--space-1);
-    }
+	.profileMain > section {
+		padding: var(--space-2) var(--space-1);
+	}
 }

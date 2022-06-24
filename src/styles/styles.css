@@ -109,7 +109,7 @@ input[type="submit"]:disabled,
 }
 
 @media screen and (max-width: 480px) {
-    .main {
-        padding: var(--space-2) var(--space-1);
-    }
+	.main {
+		padding: var(--space-2) var(--space-1);
+	}
 }

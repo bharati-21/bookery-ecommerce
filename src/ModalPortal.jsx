@@ -10,7 +10,7 @@ const ModalPortal = () => {
 	if (!addressFormModalVisibility && !couponOptionsModalVisibility) {
 		return null;
 	}
-  
+
 	return ReactDOM.createPortal(
 		<div
 			className={`modal-wrapper flex-col flex-align-center flex-justify-center p-2`}

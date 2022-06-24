@@ -97,7 +97,7 @@ const Signup = () => {
 				lastName,
 				password,
 				confirmPassword,
-                setFormDataError,
+				setFormDataError,
 				setError
 			)
 		) {
@@ -310,7 +310,6 @@ const Signup = () => {
 							<span className="text-message mt-0-5  error-color">
 								{confirmPasswordError}
 							</span>
-                            
 						</div>
 						{error ? (
 							<div className="error-message text-left error-color text-sm">

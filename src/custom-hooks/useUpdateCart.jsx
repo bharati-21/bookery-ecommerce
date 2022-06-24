@@ -23,7 +23,7 @@ const useUpdateCart = () => {
 
 			if (showToastAfterCall)
 				showToast("Item quantity updated in cart!", "success");
-                
+
 			cartDispatch({
 				type: "SET_CART_ITEMS",
 				payload: {

@@ -1,7 +1,7 @@
 .order-wrapper {
 	max-width: 1280px;
 	margin: auto;
-    width: 100%;
+	width: 100%;
 }
 
 .order-summary-main .order-details {
@@ -44,13 +44,13 @@
 }
 
 .order-summary-main a.card-horizontal {
-    height: unset;
+	height: unset;
 }
 
 .order-summary-main .card-horizontal .card-header {
 	max-height: 12rem;
 	flex: unset;
-    height: 100%;
+	height: 100%;
 }
 
 .order-summary-main .card-horizontal .card-header img {
@@ -103,12 +103,12 @@
 }
 
 @media screen and (max-width: 480px) {
-    .order-summary-main a.card-horizontal {
-        grid-template-columns: 1fr;
-        padding: var(--space-1);
-    }
+	.order-summary-main a.card-horizontal {
+		grid-template-columns: 1fr;
+		padding: var(--space-1);
+	}
 
-    .order-summary-main .card-horizontal .card-header img {
-        align-self: flex-start;
-    }
+	.order-summary-main .card-horizontal .card-header img {
+		align-self: flex-start;
+	}
 }

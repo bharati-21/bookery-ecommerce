@@ -6,7 +6,6 @@ import { Navbar, Footer } from "./components";
 import { Routes } from "./routes/WebsiteRoutes";
 
 /* External Imports */
-import { ToastContainer } from "react-toastify";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 

@@ -1,7 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import { useAddress, useAuth, useCart, useFilter, useOrders, useWishList } from "contexts";
+import {
+	useAddress,
+	useAuth,
+	useCart,
+	useFilter,
+	useOrders,
+	useWishList,
+} from "contexts";
 import { useOutsideClick, useToast } from "custom-hooks";
 
 const AccountOptions = ({}) => {
@@ -10,7 +17,7 @@ const AccountOptions = ({}) => {
 	const { cartDispatch } = useCart();
 	const { filterDispatch } = useFilter();
 	const { ordersDispatch } = useOrders();
-    const { wishListDispatch } = useWishList();
+	const { wishListDispatch } = useWishList();
 	const { isAuth } = authState;
 	const { showToast } = useToast();
 	const location = useLocation();

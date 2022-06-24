@@ -293,7 +293,7 @@ export const products = [
 		totalStars: 4.4,
 		genres: ["Historical", "Fiction", "Young Adult", "Classics", "War"],
 		bookType: "Paperback",
-        inStock: true,
+		inStock: true,
 		offers: [
 			{
 				id: 1,

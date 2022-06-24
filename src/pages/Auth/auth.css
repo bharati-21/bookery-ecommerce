@@ -1,139 +1,140 @@
 .auth-main {
-    min-height: 90vh;
+	min-height: 90vh;
 }
 
 .auth-container.logout-container .auth-head {
-    line-height: 0;
+	line-height: 0;
 }
 
 .auth-container.logout-container .auth-head-text {
-    line-height: 1.2;
-    font-variant: small-caps;
+	line-height: 1.2;
+	font-variant: small-caps;
 }
 
 .auth-container.logout-container .auth-head-icon {
-    font-size: var(--space-3);
+	font-size: var(--space-3);
 }
 
 .auth-wrapper {
-    width: 100%;
+	width: 100%;
 }
 
 .auth-container {
-    background-color: var(--bg-horizontal-card);
-    border-radius: var(--br-4);
-    max-width: 400px;
-    border: 2px solid var(--light-gray-color);
+	background-color: var(--bg-horizontal-card);
+	border-radius: var(--br-4);
+	max-width: 400px;
+	border: 2px solid var(--light-gray-color);
 }
 
 .auth-container.signup-container {
-    max-width: 500px;
+	max-width: 500px;
 }
 
 .auth-container.logout-container {
-    height: 300px;
-    max-width: 600px;
+	height: 300px;
+	max-width: 600px;
 }
 
 .auth-form {
-    gap: var(--space-1);
+	gap: var(--space-1);
 }
 
 .auth-form .input-group {
-    width: 100%;
+	width: 100%;
 }
 
 .auth-form .text-label {
-    width: 100%;
+	width: 100%;
 }
 
 .input-checkbox-remember {
-    gap:var(--space-0-5);
+	gap: var(--space-0-5);
 }
 
 .error-message {
-    width: 100%;
-    font-weight: var(--weight-sbold);
+	width: 100%;
+	font-weight: var(--weight-sbold);
 }
 
 #checkbox-remember {
-    color: var(--primary-active-color);
-    width: 0.9rem;
-    height: 0.9rem;
-    border: 0.125rem solid var(--primary-active-color);
-    border-radius: 0.1rem;
-    transform: translateY(0.07rem);
-    -webkit-transform: translateY(0.07rem);
-    -moz-transform: translateY(0.07rem);
-    -ms-transform: translateY(0.07rem);
-    -o-transform: translateY(0.07rem);
-    -webkit-border-radius: 0.15rem;
-    -moz-border-radius: 0.15rem;
-    -ms-border-radius: 0.15rem;
-    -o-border-radius: 0.15rem;
+	color: var(--primary-active-color);
+	width: 0.9rem;
+	height: 0.9rem;
+	border: 0.125rem solid var(--primary-active-color);
+	border-radius: 0.1rem;
+	transform: translateY(0.07rem);
+	-webkit-transform: translateY(0.07rem);
+	-moz-transform: translateY(0.07rem);
+	-ms-transform: translateY(0.07rem);
+	-o-transform: translateY(0.07rem);
+	-webkit-border-radius: 0.15rem;
+	-moz-border-radius: 0.15rem;
+	-ms-border-radius: 0.15rem;
+	-o-border-radius: 0.15rem;
 }
 
 .psd-mgmt-container {
-    width: 100%;
+	width: 100%;
 }
 
 .btn.btn-forgot-psd {
-    color: var(--primary-color);
+	color: var(--primary-color);
 }
 
 #checkbox-remember {
-    accent-color: var(--primary-active-color);
+	accent-color: var(--primary-active-color);
 }
 
 .psd-mgmt-container label:hover {
-    color: var(--primary-color);
+	color: var(--primary-color);
 }
 
 .password-input-toggler {
-    position: relative;
+	position: relative;
 }
 
 .password-input-toggler .input-text {
-    width: 100%;
+	width: 100%;
 }
 
 .icon-show-psd {
-    position: absolute;
-    top: 55%;
-    right: var(--space-0-25);
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
+	position: absolute;
+	top: 55%;
+	right: var(--space-0-25);
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
 }
 
-.auth-button-container, .login-button-container {
-    gap: var(--space-1);
-    width: 100%;
+.auth-button-container,
+.login-button-container {
+	gap: var(--space-1);
+	width: 100%;
 }
 
 .auth-button-container .btn {
-    word-wrap: break-word;
-    max-width: 100%;
-    white-space: normal;
+	word-wrap: break-word;
+	max-width: 100%;
+	white-space: normal;
 }
 
 .auth-button-container .btn-link {
-    min-width: unset;
+	min-width: unset;
 }
 
 @media screen and (max-width: 480px) {
-    .auth-container.logout-container .auth-head {
-        max-width: min-content;
-        margin: 0 auto;
-    }
+	.auth-container.logout-container .auth-head {
+		max-width: min-content;
+		margin: 0 auto;
+	}
 
-    .auth-main {
-        padding: var(--space-1);
-    }
+	.auth-main {
+		padding: var(--space-1);
+	}
 
-    .auth-container {
-        padding: var(--space-1) 0;
-    }
+	.auth-container {
+		padding: var(--space-1) 0;
+	}
 }

@@ -5,4 +5,4 @@ export { wishListReducerFunction } from "./wishListReducer";
 export { addressReducerFunction } from "./addressReducer";
 export { formDataReducerFunction } from "./formDataReducer";
 export { formDataErrorReducerFunction } from "./formDataErrorReducer";
-export { ordersReducerFunction } from './ordersReducer';
+export { ordersReducerFunction } from "./ordersReducer";

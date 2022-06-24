@@ -1,9 +1,9 @@
 .not-found-img {
-    object-position: center center;
-    height: 60vh;
-    object-fit:contain;
+	object-position: center center;
+	height: 60vh;
+	object-fit: contain;
 }
 
 .not-found-main {
-    gap: var(--space-1);
+	gap: var(--space-1);
 }

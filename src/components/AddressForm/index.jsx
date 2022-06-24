@@ -4,7 +4,7 @@ import { Close } from "@mui/icons-material";
 import { useAddress, useAuth } from "contexts";
 import { useOutsideClick, useToast } from "custom-hooks";
 import { validateAddressData } from "utils";
-import { editAddress, postNewAddress, } from 'services';
+import { editAddress, postNewAddress } from "services";
 import {
 	formDataReducerFunction,
 	formDataErrorReducerFunction,
@@ -77,7 +77,7 @@ const AddressForm = () => {
 			} = addressToEdit
 				? await editAddress(token, formData)
 				: await postNewAddress(token, formData);
-            
+
 			addressDispatch({
 				type: "SET_ADDRESSES",
 				payload: { addresses: address },

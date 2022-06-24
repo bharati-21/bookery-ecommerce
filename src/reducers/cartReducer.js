@@ -43,7 +43,11 @@ const cartReducerFunction = (
 	switch (type) {
 		case cartActionTypes.INIT_CART_ITEMS:
 			return {
-				...prevCartState, cartItems, error, loading, couponOptionsModalVisibility: false,
+				...prevCartState,
+				cartItems,
+				error,
+				loading,
+				couponOptionsModalVisibility: false,
 				selectedCoupon: null,
 				checkoutData: null,
 			};
