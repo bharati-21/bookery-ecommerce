@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -9,6 +9,7 @@ import { initiateSignup } from "services";
 import { useToast, useDocumentTitle } from "custom-hooks";
 import { useAuth } from "contexts/";
 import "./auth.css";
+import { isSignupDataValid } from "utils";
 
 const Signup = () => {
 	const initialFormData = {
@@ -35,6 +36,28 @@ const Signup = () => {
 
 	const { setDocumentTitle } = useDocumentTitle();
 
+	const initialErrorState = {
+		firstNameError: null,
+		lastNameError: null,
+		usernameError: null,
+		passwordError: null,
+		confirmPasswordError: null,
+	};
+
+	const errorReducer = (state, { type, payload: { error, errorValue } }) => {
+		switch (type) {
+			case "RESET_ERROR_STATES":
+				return { ...initialErrorState };
+			case "SET_ERROR":
+				return { ...state, [error]: errorValue };
+		}
+	};
+	const [formDataError, setFormDataError] = useReducer(
+		errorReducer,
+		initialErrorState
+	);
+	const [error, setError] = useState(null);
+
 	useEffect(() => {
 		if (isAuth) {
 			navigate(state?.from ? state.from : "/");
@@ -44,26 +67,43 @@ const Signup = () => {
 
 	const handleFormDataChange = (event) => {
 		const { name, value } = event.target;
+		if (name === "password" || name === "confirmPassword") {
+			if (name === "confirmPassword") {
+				if (password && password !== value) {
+					setError("Passwords do not match");
+				} else setError(null);
+			} else {
+				if (name === "password") {
+					if (confirmPassword && confirmPassword !== value) {
+						setError("Passwords do not match");
+					} else setError(null);
+				}
+			}
+		}
+		if (formDataError[name + "Error"]) {
+			setFormDataError({
+				type: "SET_ERROR",
+				payload: { error: name + "Error", errorValue: null },
+			});
+		}
 		setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
 	};
 
-	const showPasswordIcon = showPassword ? (
-		<VisibilityOffIcon />
-	) : (
-		<VisibilityIcon />
-	);
-	const showConfirmPasswordIcon = showConfirmPassword ? (
-		<VisibilityOffIcon />
-	) : (
-		<VisibilityIcon />
-	);
-
-	const { firstName, lastName, email, password, confirmPassword } = formData;
-
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
+		if (
+			!isSignupDataValid(
+				firstName,
+				lastName,
+				password,
+				confirmPassword,
+                setFormDataError,
+				setError
+			)
+		) {
+			return;
+		}
 		if (confirmPassword !== password) {
-			showToast("Passwords do not match.", "error");
 			return;
 		}
 		setIsOngoingNetworkCall(true);
@@ -85,8 +125,11 @@ const Signup = () => {
 			setIsOngoingNetworkCall(false);
 			navigate("/");
 		} catch (error) {
+			if (error.message.includes("422"))
+				showToast("Email already exists!", "error");
+			else showToast("Sign up failed. Try again later.", "error");
+
 			setIsOngoingNetworkCall(false);
-			showToast("Sign up failed. Try again later.", "error");
 		}
 	};
 
@@ -97,6 +140,25 @@ const Signup = () => {
 			(prevShowConfirmPassword) => !prevShowConfirmPassword
 		);
 
+	const showPasswordIcon = showPassword ? (
+		<VisibilityOffIcon />
+	) : (
+		<VisibilityIcon />
+	);
+	const showConfirmPasswordIcon = showConfirmPassword ? (
+		<VisibilityOffIcon />
+	) : (
+		<VisibilityIcon />
+	);
+
+	const { firstName, lastName, email, password, confirmPassword } = formData;
+	const {
+		firstNameError,
+		lastNameError,
+		passwordError,
+		confirmPasswordError,
+	} = formDataError;
+
 	return (
 		<section className="auth-main flex-col flex-align-center flex-justify-center mx-auto py-2 px-3">
 			<div className="auth-wrapper">
@@ -105,10 +167,10 @@ const Signup = () => {
 						Sign Up
 					</h3>
 					<form
-						className="auth-form px-1"
+						className="auth-form px-1 flex-col flex-align-center flex-justify-center"
 						onSubmit={handleFormSubmit}
 					>
-						<div className="input-group input-default mt-1-5 mx-auto">
+						<div className="input-group input-default mx-auto">
 							<label
 								className="text-label text-reg flex-col mx-auto"
 								htmlFor="input-signup-fname"
@@ -125,9 +187,11 @@ const Signup = () => {
 									required
 								/>
 							</label>
-							<span className="text-message mt-0-5"></span>
+							<span className="text-message mt-0-5 error-color">
+								{firstNameError}
+							</span>
 						</div>
-						<div className="input-group input-default mt-1-5 mx-auto">
+						<div className="input-group input-default mx-auto">
 							<label
 								className="text-label text-reg flex-col mx-auto"
 								htmlFor="input-signup-lname"
@@ -144,9 +208,11 @@ const Signup = () => {
 									required
 								/>
 							</label>
-							<span className="text-message mt-0-5"></span>
+							<span className="text-message mt-0-5  error-color">
+								{lastNameError}
+							</span>
 						</div>
-						<div className="input-group input-default mt-1-5 mx-auto">
+						<div className="input-group input-default mx-auto">
 							<label
 								className="text-label text-reg flex-col mx-auto"
 								htmlFor="input-login-email"
@@ -165,7 +231,7 @@ const Signup = () => {
 							</label>
 							<span className="text-message mt-0-5"></span>
 						</div>
-						<div className="input-group input-default mt-1-5 mb-1 mx-auto">
+						<div className="input-group input-default mx-auto">
 							<label
 								className="text-label text-reg flex-col mx-auto text-sm"
 								htmlFor="input-psd"
@@ -199,9 +265,11 @@ const Signup = () => {
 									</button>
 								</span>
 							</label>
-							<span className="text-message mt-0-5"></span>
+							<span className="text-message mt-0-5 error-color">
+								{passwordError}
+							</span>
 						</div>
-						<div className="input-group input-default mt-1-5 mb-1 mx-auto">
+						<div className="input-group input-default mx-auto">
 							<label
 								className="text-label text-reg flex-col mx-auto text-sm"
 								htmlFor="input-psd"
@@ -239,9 +307,17 @@ const Signup = () => {
 									</button>
 								</span>
 							</label>
-							<span className="text-message mt-0-5"></span>
+							<span className="text-message mt-0-5  error-color">
+								{confirmPasswordError}
+							</span>
+                            
 						</div>
-						<div className="psd-mgmt-container mt-2 flex-row flex-align-center flex-justify-between flex-wrap">
+						{error ? (
+							<div className="error-message text-left error-color text-sm">
+								{error}
+							</div>
+						) : null}
+						<div className="psd-mgmt-container flex-row flex-align-center flex-justify-between flex-wrap">
 							<label
 								htmlFor="checkbox-remember"
 								className="flex-row input-checkbox-remember flex-align-center text-sm"
@@ -256,7 +332,7 @@ const Signup = () => {
 							</label>
 						</div>
 
-						<div className="auth-button-container mt-1 flex-col flex-align-center">
+						<div className="auth-button-container mt-0-25 mb-0-5 flex-col flex-align-center">
 							<input
 								type="submit"
 								value="Sign Up"

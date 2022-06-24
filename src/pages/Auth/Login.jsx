@@ -121,7 +121,7 @@ const Login = () => {
 						className="auth-form px-1 flex-col flex-align-center flex-justify-center"
 						onSubmit={handleFormSubmit}
 					>
-						<div className="input-group input-default mt-1-5 mx-auto">
+						<div className="input-group input-default mx-auto">
 							<label
 								className="text-label text-reg flex-col mx-auto"
 								htmlFor="input-login-email"
@@ -138,9 +138,9 @@ const Login = () => {
 									required
 								/>
 							</label>
-							<span className="text-message mt-0-5"></span>
+							<span className="text-message mt-0-5 text-xs"></span>
 						</div>
-						<div className="input-group input-default mt-1-5 mb-1 mx-auto">
+						<div className="input-group input-default mx-auto">
 							<label
 								className="text-label text-reg flex-col mx-auto text-sm"
 								htmlFor="input-login-psd"
@@ -175,9 +175,9 @@ const Login = () => {
 									</button>
 								</span>
 							</label>
-							<span className="text-message mt-0-5"></span>
+							<span className="text-message text-xs mt-0-5"></span>
 						</div>
-						<div className="psd-mgmt-container mt-2 flex-row flex-align-center flex-justify-between flex-wrap">
+						<div className="psd-mgmt-container flex-row flex-align-center flex-justify-between flex-wrap my-0-5">
 							<label
 								htmlFor="checkbox-remember"
 								className="flex-row input-checkbox-remember flex-align-center text-sm"
@@ -193,7 +193,7 @@ const Login = () => {
 								Remember me
 							</label>
 						</div>
-						<div className="auth-button-container mt-1 flex-col flex-align-center">
+						<div className="auth-button-container flex-col flex-align-center">
 							<div className="login-button-container flex-col flex-align-center flex-justify-center">
 								<input
 									type="submit"

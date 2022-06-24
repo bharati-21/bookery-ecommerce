@@ -27,6 +27,7 @@ const Footer = () => {
 						<a
 							href="https://twitter.com/_bhaaratii"
 							className="btn btn-link btn-light"
+							target="_blank"
 						>
 							<span className="icon">
 								<i className="fab fa-twitter text-lg"></i>
@@ -35,6 +36,7 @@ const Footer = () => {
 						<a
 							href="https://github.com/bharati-21"
 							className="btn btn-link btn-light"
+							target="_blank"
 						>
 							<span className="icon">
 								<i className="fab fa-github text-lg"></i>
@@ -43,6 +45,7 @@ const Footer = () => {
 						<a
 							href="https://www.linkedin.com/in/bharati-subramanian-29734b152/"
 							className="btn btn-link btn-light"
+							target="_blank"
 						>
 							<span className="icon">
 								<i className="fab fa-linkedin text-lg"></i>
@@ -51,6 +54,7 @@ const Footer = () => {
 						<a
 							href="mailto:bharatisharada@gmail.com"
 							className="btn btn-link btn-light"
+							target="_blank"
 						>
 							<span className="icon">
 								<i className="fas fa-envelope text-lg"></i>
@@ -64,8 +68,11 @@ const Footer = () => {
 					<li className="list-item">
 						<ul className="list list-stacked list-style-none">
 							<li className="list-item">
-								<Link to="/" className="btn-link text-sm">
-									About Us
+								<Link
+									to="/profile"
+									className="btn-link text-sm"
+								>
+									Profile
 								</Link>
 							</li>
 							<li className="list-item">
@@ -117,6 +124,7 @@ const Footer = () => {
 							<a
 								href="http://bharati-21.github.io/"
 								className="ml-0-25"
+								target="_blank"
 							>
 								Bharati Subramanian
 							</a>

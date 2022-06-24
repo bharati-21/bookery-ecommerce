@@ -35,6 +35,10 @@
     max-width: 600px;
 }
 
+.auth-form {
+    gap: var(--space-1);
+}
+
 .auth-form .input-group {
     width: 100%;
 }
@@ -45,6 +49,11 @@
 
 .input-checkbox-remember {
     gap:var(--space-0-5);
+}
+
+.error-message {
+    width: 100%;
+    font-weight: var(--weight-sbold);
 }
 
 #checkbox-remember {

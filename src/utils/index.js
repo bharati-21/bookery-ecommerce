@@ -10,3 +10,4 @@ export { getCartItemsTotal } from "./getCartItemsTotal";
 export { getSellingPrice } from "./getSellingPrice";
 export { getCartItemsData } from "./getCartItemsData";
 export { validateAddressData } from "./address-utils/validateAddressData";
+export { isSignupDataValid } from "./auth-utils/isSignupDataValid";
