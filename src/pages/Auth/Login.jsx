@@ -21,7 +21,7 @@ const Login = () => {
 	const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);
 
 	const navigate = useNavigate();
-	const { state } = useLocation();
+	const location = useLocation();
 
 	const {
 		setAuthState,
@@ -34,7 +34,7 @@ const Login = () => {
 
 	useEffect(() => {
 		if (isAuth) {
-			navigate(state?.from ?? -1, { replace: true });
+			navigate(location?.state?.from ?? -1, { replace: true });
 		}
 		setDocumentTitle("Bookery | Login");
 	}, []);
@@ -91,7 +91,7 @@ const Login = () => {
 			}
 			setFormData(initialFormData);
 			setIsOngoingNetworkCall(false);
-			navigate(state?.from ?? "/");
+			navigate(location?.state?.from ?? -1, { replace: true });
 		} catch (error) {
 			showToast("Login Failed. Please try again later", "error");
 			setIsOngoingNetworkCall(false);

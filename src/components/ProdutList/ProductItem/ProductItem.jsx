@@ -83,35 +83,35 @@ const ProductItem = ({ book }) => {
 
 		setIsOngoingNetworkCall(true);
 
-		if (isAuth) {
-			if (bookInCart) {
-				navigate("/cart");
-			} else {
-				try {
-					const {
-						data: { cart },
-					} = await postToCart(book, token);
+		if (!isAuth) {
+			return navigate("/login", { state: { from: "/products" } });
+		}
 
-					showToast("Item added to cart", "success");
-					cartDispatch({
-						type: "SET_CART_ITEMS",
-						payload: {
-							cartItems: cart,
-							error: null,
-							loading: false,
-						},
-					});
-					setIsOngoingNetworkCall(false);
-				} catch (error) {
-					showToast(
-						"Failed to add item to cart. Please try again later.",
-						"error"
-					);
-					setIsOngoingNetworkCall(false);
-				}
-			}
+		if (bookInCart) {
+			navigate("/cart");
 		} else {
-			navigate("/login");
+			try {
+				const {
+					data: { cart },
+				} = await postToCart(book, token);
+
+				showToast("Item added to cart", "success");
+				cartDispatch({
+					type: "SET_CART_ITEMS",
+					payload: {
+						cartItems: cart,
+						error: null,
+						loading: false,
+					},
+				});
+				setIsOngoingNetworkCall(false);
+			} catch (error) {
+				showToast(
+					"Failed to add item to cart. Please try again later.",
+					"error"
+				);
+				setIsOngoingNetworkCall(false);
+			}
 		}
 	};
 
@@ -123,8 +123,7 @@ const ProductItem = ({ book }) => {
 		setIsOngoingNetworkCall(true);
 
 		if (!isAuth) {
-			navigate("/login");
-			return;
+			return navigate("/login", { state: { from: "/products" } });
 		}
 
 		if (bookInWishList) {

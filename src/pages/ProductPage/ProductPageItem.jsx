@@ -68,6 +68,7 @@ const ProductPageItem = () => {
 		discountPercent,
 		genres,
 		_id,
+		id,
 		description,
 		originalPrice,
 		title,
@@ -110,7 +111,7 @@ const ProductPageItem = () => {
 		setIsOngoingNetworkCall(true);
 
 		if (!isAuth) {
-			return navigate("/login");
+			return navigate("/login", { state: { from: `/products/${id}` } });
 		}
 
 		if (bookInCart) {
@@ -145,7 +146,7 @@ const ProductPageItem = () => {
 		setIsOngoingNetworkCall(true);
 
 		if (!isAuth) {
-			return navigate("/login");
+			return navigate("/login", { state: { from: `/products/${id}` } });
 		}
 
 		try {

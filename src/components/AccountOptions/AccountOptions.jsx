@@ -1,11 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import { useAuth } from "contexts";
+import { useAddress, useAuth, useCart, useFilter, useOrders, useWishList } from "contexts";
 import { useOutsideClick, useToast } from "custom-hooks";
 
 const AccountOptions = ({}) => {
 	const { authState, setAuthState } = useAuth();
+	const { addressDispatch } = useAddress();
+	const { cartDispatch } = useCart();
+	const { filterDispatch } = useFilter();
+	const { ordersDispatch } = useOrders();
+    const { wishListDispatch } = useWishList();
 	const { isAuth } = authState;
 	const { showToast } = useToast();
 	const location = useLocation();
@@ -34,6 +39,31 @@ const AccountOptions = ({}) => {
 			localStorage.removeItem("bookery-token");
 			localStorage.removeItem("bookery-user");
 			setAuthState({ ...authState, isAuth: false, user: {} });
+			addressDispatch({
+				type: "SET_ADDRESSES",
+				payload: { addresses: [] },
+			});
+			cartDispatch({
+				type: "SET_CART_ITEMS",
+				payload: {
+					cartItems: [],
+					error: null,
+					loading: false,
+				},
+			});
+			filterDispatch({ filterType: "CLEAR_FILTERS" });
+			ordersDispatch({
+				type: "SET_ORDERS",
+				payload: { orders: [] },
+			});
+			wishListDispatch({
+				type: "ADD_TO_WISHLIST",
+				payload: {
+					wishListItems: [],
+					error: null,
+					loading: false,
+				},
+			});
 			showToast("Logged out successfully.", "success");
 		}
 		navigate("/login");
