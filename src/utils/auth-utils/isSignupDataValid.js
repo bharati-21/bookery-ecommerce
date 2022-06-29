@@ -105,7 +105,7 @@ const isSignupDataValid = (
 			payload: {
 				error: "confirmPasswordError",
 				errorValue:
-					"Invalid confirm password. Password should only contain only letters and numbers.",
+					"Invalid confirm password. Password should have at least one uppercase, lowercase letter, number and special character.",
 			},
 		});
 		isValidData = false;

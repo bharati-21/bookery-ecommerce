@@ -12,7 +12,7 @@ const ProductList = ({ products }) => {
 				{sortedFilteredBooks.length > 0 ? (
 					<>
 						<p className="text-lg grid-row-span text-left">
-							Nu\mber of Books:{" "}
+							Number of Books:{" "}
 							<span className="primary-color">
 								{sortedFilteredBooks.length}
 							</span>
