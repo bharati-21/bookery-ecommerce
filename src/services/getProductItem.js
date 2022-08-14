@@ -1,6 +1,6 @@
 import axios from "axios";
 
 const getProductItem = (productId) =>
-	axios.get(`http://localhost:5000/api/products/${productId}`);
+	axios.get(`https://bookery-server.herokuapp.com/api/products/${productId}`);
 
 export { getProductItem };

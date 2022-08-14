@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const initiateLogin = (formData) =>
-	axios.post("http://localhost:5000/api/auth/login", {
+	axios.post("https://bookery-server.herokuapp.com/api/auth/login", {
 		data: { ...formData },
 	});
 

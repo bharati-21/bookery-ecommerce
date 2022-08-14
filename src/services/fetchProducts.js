@@ -4,7 +4,7 @@ export const fetchProducts = async (productDispatch) => {
 	try {
 		const {
 			data: { products },
-		} = await axios.get("http://localhost:5000/api/products");
+		} = await axios.get("https://bookery-server.herokuapp.com/api/products");
 
 		productDispatch({
 			type: "INIT_PRODUCTS_SUCCESS",

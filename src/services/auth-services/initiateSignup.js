@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const initiateSignup = ({ firstName, lastName, email, password }) =>
-	axios.post("http://localhost:5000/api/auth/signup", {
+	axios.post("https://bookery-server.herokuapp.com/api/auth/signup", {
 		data: {
 			firstName,
 			lastName,

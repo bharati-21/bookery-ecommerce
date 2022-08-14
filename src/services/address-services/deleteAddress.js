@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const deleteAddress = (authToken, addressId) =>
-	axios.delete(`http://localhost:5000/api/users/addresses/${addressId}`, {
+	axios.delete(`https://bookery-server.herokuapp.com/api/users/addresses/${addressId}`, {
 		headers: { authorization: authToken },
 	});
 
