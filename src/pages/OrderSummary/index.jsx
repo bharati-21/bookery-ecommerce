@@ -12,7 +12,7 @@ const OrderSummary = () => {
 	const order = orders?.find((order) => order.orderId === orderId);
 
 	return (
-		<main className="main order-summary-main my-2 mx-auto">
+		<main className="main order-summary-main my-2 mx-auto px-3 py-2">
 			{ordersLoading ? (
 				<img
 					src={loadingImage}

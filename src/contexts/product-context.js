@@ -7,10 +7,8 @@ const initalProductState = {
 	products: [],
 	categories: [],
 	productsMessages: { loading: true, error: null },
-	productItemMessages: { loading: true, error: null },
 	categoriesMessages: { loading: true, error: null },
 	isOngoingNetworkCall: false,
-	productItem: null,
 };
 
 const ProductContext = createContext(initalProductState);

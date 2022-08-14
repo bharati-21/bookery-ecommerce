@@ -2,7 +2,7 @@ import axios from "axios";
 
 const updateProductInCart = async (productId, token, type) =>
 	axios.post(
-		`https://bookery-server.herokuapp.com/api/users/cart/${productId}`,
+		`/api/user/cart/${productId}`,
 		{ action: { type } },
 		{ headers: { authorization: token } }
 	);

@@ -18,7 +18,6 @@ export { initiateSignup } from "./auth-services/initiateSignup";
 
 export { fetchCategories } from "./fetchCategories";
 export { fetchProducts } from "./fetchProducts";
-export { getProductItem } from './getProductItem';
 
 export { getAllOrders } from './orders-services/getAllOrders';
 export { postNewOrder } from './orders-services/postNewOrder';

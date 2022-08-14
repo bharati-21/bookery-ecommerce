@@ -1,8 +1,6 @@
 import axios from "axios";
 
 const getAllAddresses = (authToken) =>
-	axios.get("https://bookery-server.herokuapp.com/api/users/addresses", {
-		headers: { authorization: authToken },
-	});
+	axios.get("/api/user/addresses", { headers: { authorization: authToken } });
 
 export { getAllAddresses };

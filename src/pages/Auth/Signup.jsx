@@ -108,13 +108,27 @@ const Signup = () => {
 		}
 		setIsOngoingNetworkCall(true);
 		try {
-			await initiateSignup(formData);
+			const { data } = await initiateSignup(formData);
 			showToast("Sign up successful!", "success");
-			navigate("/login", { replace: true });
+
+			const {
+				encodedToken,
+				createdUser: { wishlist, cart, ...otherUserDetails },
+			} = data;
+			setAuthState({
+				isAuth: true,
+				token: encodedToken,
+				user: { ...otherUserDetails },
+			});
+
+			setFormData(initialFormData);
+			setIsOngoingNetworkCall(false);
+			navigate("/");
 		} catch (error) {
 			if (error.message.includes("422"))
 				showToast("Email already exists!", "error");
 			else showToast("Sign up failed. Try again later.", "error");
+
 			setIsOngoingNetworkCall(false);
 		}
 	};

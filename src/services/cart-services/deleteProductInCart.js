@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const deleteProductInCart = async (productId, token) =>
-	axios.delete(`https://bookery-server.herokuapp.com/api/users/cart/${productId}`, {
+	axios.delete(`/api/user/cart/${productId}`, {
 		headers: { authorization: token },
 	});
 

@@ -3,22 +3,13 @@ const productActionTypes = {
 	INIT_PRODUCTS_FAILURE: "INIT_PRODUCTS_FAILURE",
 	INIT_CATEGORIES_SUCCESS: "INIT_CATEGORIES_SUCCESS",
 	INIT_CATEGORIES_FAILURE: "INIT_CATEGORIES_FAILURE",
-	SET_PRODUCT_ITEM: "SET_PRODUCT_ITEM",
-	SET_PROUCT_ITEM_MESSAGES: "SET_PROUCT_ITEM_MESSAGES",
 };
 
 const productReducerFunction = (
 	prevProductState,
 	{
 		type,
-		payload: {
-			products,
-			categories,
-			productsMessages,
-			categoriesMessages,
-			productItem,
-			productItemMessages,
-		},
+		payload: { products, categories, productsMessages, categoriesMessages },
 	}
 ) => {
 	switch (type) {
@@ -46,19 +37,6 @@ const productReducerFunction = (
 			return {
 				...prevProductState,
 				categoriesMessages,
-			};
-
-		case productActionTypes.SET_PRODUCT_ITEM:
-			return {
-				...prevProductState,
-				productItem,
-				productItemMessages,
-			};
-
-		case productActionTypes.SET_PROUCT_ITEM_MESSAGES:
-			return {
-				...prevProductState,
-				productItemMessages,
 			};
 
 		default:

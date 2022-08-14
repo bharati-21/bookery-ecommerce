@@ -1,5 +1,6 @@
 /* External imports */
 import { Routes, Route } from "react-router-dom";
+import Mockman from "mockman-js";
 
 /* Page imports */
 import {
@@ -27,6 +28,7 @@ const WebsiteRoutes = () => {
 			<Route path="/products/:productId" element={<ProductPageItem />} />
 			<Route path="/signup" element={<Signup />} />
 			<Route path="/login" element={<Login />} />
+			<Route path="/mockman" element={<Mockman />} />
 			<Route path="*" element={<NotFound />} />
 			<Route path="/" element={<LandingPage />} />
 			<Route path="/" element={<ProtectedRoutes />}>

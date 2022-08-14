@@ -51,7 +51,7 @@ const LandingPage = () => {
 	const sampleProductsMapping = sampleProducts.map(
 		({ _id, id, title, author, coverImg }) => (
 			<Link
-				to={`/products/${_id}`}
+				to={`/products/${id}`}
 				className="product-card card card-vertical"
 				key={_id}
 			>

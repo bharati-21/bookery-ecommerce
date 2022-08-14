@@ -6,7 +6,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 import { initiateLogin } from "services";
-import { useAuth, useCart, useOrders, useWishList } from "contexts/";
+import { useAuth, useCart, useWishList } from "contexts/";
 import { useDocumentTitle, useToast } from "custom-hooks";
 import "./auth.css";
 
@@ -30,7 +30,6 @@ const Login = () => {
 	const { cartDispatch } = useCart();
 	const { wishListDispatch } = useWishList();
 	const { showToast } = useToast();
-	const { ordersDispatch } = useOrders();
 	const { setDocumentTitle } = useDocumentTitle();
 
 	useEffect(() => {
@@ -64,18 +63,12 @@ const Login = () => {
 			const { data } = await initiateLogin(formData);
 			showToast("Login Successful!", "success");
 			const {
-				user: {
-					token,
-					cart: cartItems,
-					wishlist,
-					orders,
-					address,
-					...otherUserDetails
-				},
+				encodedToken,
+				foundUser: { cart: cartItems, wishlist, ...otherUserDetails },
 			} = data;
 			setAuthState({
 				isAuth: true,
-				token,
+				token: encodedToken,
 				user: { ...otherUserDetails },
 			});
 
@@ -88,18 +81,16 @@ const Login = () => {
 					loading: false,
 				},
 			});
-			ordersDispatch({
-				type: "SET_ORDERS",
-				payload: { orders },
-			});
 
 			if (rememberMe) {
-				localStorage.setItem("bookery-token", token);
+				localStorage.setItem("bookery-token", encodedToken);
 				localStorage.setItem(
 					"bookery-user",
 					JSON.stringify(otherUserDetails)
 				);
 			}
+			setFormData(initialFormData);
+			setIsOngoingNetworkCall(false);
 			navigate(location?.state?.from ?? -1, { replace: true });
 		} catch (error) {
 			showToast("Login Failed. Please try again later", "error");
