@@ -2,7 +2,7 @@ import axios from "axios";
 
 const postNewAddress = (authToken, address) =>
 	axios.post(
-		"/api/user/address",
+		"http://localhost:5000/api/users/addresses",
 		{ address },
 		{ headers: { authorization: authToken } }
 	);

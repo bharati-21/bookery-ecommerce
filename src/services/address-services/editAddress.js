@@ -2,7 +2,7 @@ import axios from "axios";
 
 const editAddress = (authToken, address) =>
 	axios.post(
-		`/api/user/address/edit/${address._id}`,
+		`http://localhost:5000/api/users/addresses/${address._id}`,
 		{ address },
 		{ headers: { authorization: authToken } }
 	);

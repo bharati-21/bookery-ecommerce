@@ -4,7 +4,7 @@ const fetchWishListItems = async (wishListDispatch, token) => {
 	try {
 		const {
 			data: { wishlist },
-		} = await axios.get("/api/user/wishlist", {
+		} = await axios.get("http://localhost:5000/api/users/wishlist", {
 			headers: { authorization: token },
 		});
 

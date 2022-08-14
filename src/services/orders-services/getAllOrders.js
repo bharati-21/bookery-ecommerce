@@ -1,4 +1,6 @@
 import axios from "axios";
 
 export const getAllOrders = (token) =>
-  axios.get("/api/user/orders", { headers: { authorization: token } });
+	axios.get("http://localhost:5000/api/users/orders", {
+		headers: { authorization: token },
+	});

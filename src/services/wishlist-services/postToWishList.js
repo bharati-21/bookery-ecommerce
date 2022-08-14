@@ -2,7 +2,7 @@ import axios from "axios";
 
 const postToWishList = async (product, token) =>
 	axios.post(
-		"/api/user/wishlist",
+		"http://localhost:5000/api/users/wishlist",
 		{ product: { ...product } },
 		{
 			headers: { authorization: token },
