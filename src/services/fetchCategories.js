@@ -4,7 +4,7 @@ export const fetchCategories = async (productDispatch) => {
 	try {
 		const {
 			data: { categories },
-		} = await axios.get("/api/categories");
+		} = await axios.get("https://bookery-server.herokuapp.com/api/categories");
 		productDispatch({
 			type: "INIT_CATEGORIES_SUCCESS",
 			payload: {

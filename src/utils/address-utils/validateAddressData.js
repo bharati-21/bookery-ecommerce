@@ -78,7 +78,7 @@ const validateAddressData = (formData, formDataErrorDispatch) => {
 		return false;
 	}
 
-	if (!pincode.trim().length || !/^[1-9]\d{5}$/.test(pincode)) {
+	if (!pincode.toString().trim().length || !/^[1-9]\d{5}$/.test(pincode)) {
 		formDataErrorDispatch({
 			type: "SET_ERROR",
 			payload: {
@@ -90,7 +90,7 @@ const validateAddressData = (formData, formDataErrorDispatch) => {
 	}
 
 	if (
-		!phoneNumber.trim().length ||
+		!phoneNumber.toString().trim().length ||
 		!/^(0|\+91)?[6-9]\d{9}$/.test(phoneNumber)
 	) {
 		formDataErrorDispatch({
