@@ -5,7 +5,12 @@ import { ShoppingCart } from "@mui/icons-material";
 
 import { useCart, useAuth, useWishList, useProduct } from "contexts";
 import { getSellingPrice } from "utils/";
-import { postToCart, postToWishList, deleteProductInWishList } from "services";
+import {
+	postToCart,
+	postToWishList,
+	deleteProductInWishList,
+	getProductItem,
+} from "services";
 import { useDocumentTitle, useToast } from "custom-hooks";
 import loadingImage from "assets/images/loader.svg";
 import "./product-page-main.css";
@@ -13,8 +18,9 @@ import "./product-page-main.css";
 const ProductPageItem = () => {
 	const { productId } = useParams();
 	const {
-		products,
-		productsMessages: { loading, error },
+		productItem,
+		productItemMessages: { loading, error },
+		productDispatch,
 	} = useProduct();
 	const {
 		cartState: { cartItems },
@@ -32,13 +38,44 @@ const ProductPageItem = () => {
 	const [isOngoingNetworkCall, setIsOngoingNetworkCall] = useState(false);
 	const { setDocumentTitle } = useDocumentTitle();
 
-	const book = products?.find((product) => product.id === productId);
-	const bookInCart = cartItems?.find((item) => item.id === productId);
-	const bookInWishList = wishListItems?.find((item) => item.id === productId);
-
 	useEffect(() => {
 		setDocumentTitle("Bookery | Product");
+
+		(async () => {
+			productDispatch({
+				type: "SET_PRODUCT_ITEM_MESSAGES",
+				payload: {
+					productItemMessages: { loading: true, error: null },
+				},
+			});
+			try {
+				const {
+					data: { product },
+				} = await getProductItem(productId);
+				productDispatch({
+					type: "SET_PRODUCT_ITEM",
+					payload: {
+						productItem: product,
+						productItemMessages: { loading: false, error: null },
+					},
+				});
+			} catch (error) {
+				showToast("Could not retrieve product item details.", "error");
+				productDispatch({
+					type: "SET_PRODUCT_ITEM_MESSAGES",
+					payload: {
+						productItemMessages: {
+							loading: false,
+							error: "Could not retrieve product item details.",
+						},
+					},
+				});
+			}
+		})();
 	}, []);
+
+	const bookInCart = cartItems?.find((item) => item._id == productId);
+	const bookInWishList = wishListItems?.find((item) => item._id == productId);
 
 	if (loading) {
 		return (
@@ -75,7 +112,7 @@ const ProductPageItem = () => {
 		totalRatings,
 		totalStars,
 		inStock,
-	} = book;
+	} = productItem;
 
 	const sellingPrice = getSellingPrice(originalPrice, discountPercent);
 	const outOfStock = !inStock;
@@ -111,7 +148,7 @@ const ProductPageItem = () => {
 		setIsOngoingNetworkCall(true);
 
 		if (!isAuth) {
-			return navigate("/login", { state: { from: `/products/${id}` } });
+			return navigate("/login", { state: { from: `/products/${_id}` } });
 		}
 
 		if (bookInCart) {
@@ -120,7 +157,7 @@ const ProductPageItem = () => {
 			try {
 				const {
 					data: { cart },
-				} = await postToCart(book, token);
+				} = await postToCart(productItem, token);
 
 				showToast("Item added to cart", "success");
 				cartDispatch({
@@ -146,7 +183,7 @@ const ProductPageItem = () => {
 		setIsOngoingNetworkCall(true);
 
 		if (!isAuth) {
-			return navigate("/login", { state: { from: `/products/${id}` } });
+			return navigate("/login", { state: { from: `/products/${_id}` } });
 		}
 
 		try {
@@ -154,7 +191,7 @@ const ProductPageItem = () => {
 				data: { wishlist },
 			} = bookInWishList
 				? await deleteProductInWishList(_id, token)
-				: await postToWishList(book, token);
+				: await postToWishList(productItem, token);
 			showToast(
 				`Item ${bookInWishList ? "removed from" : "added to"} wishlist`,
 				"success"

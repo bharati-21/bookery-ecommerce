@@ -24,10 +24,10 @@ const Cart = () => {
 				<img
 					src={loadingImage}
 					alt="Loading svg"
-					className="img img-responsive mx-auto"
+					className="img img-responsive mx-auto loader-img"
 				/>
 			) : error ? (
-				<h1 className="error text error-color my-2 text-center">
+				<h1 className="error text error-color my-2 text-center loader-error">
 					{error}
 				</h1>
 			) : (

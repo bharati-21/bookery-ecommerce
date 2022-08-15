@@ -4,7 +4,9 @@ export const fetchCategories = async (productDispatch) => {
 	try {
 		const {
 			data: { categories },
-		} = await axios.get("/api/categories");
+		} = await axios.get(
+			"https://bookery-server.herokuapp.com/api/categories"
+		);
 		productDispatch({
 			type: "INIT_CATEGORIES_SUCCESS",
 			payload: {
@@ -19,8 +21,10 @@ export const fetchCategories = async (productDispatch) => {
 		productDispatch({
 			type: "INIT_CATEGORIES_FAILURE",
 			payload: {
-				error: "Categories could not be fetched. Try again later.",
-				loading: false,
+				categoriesMessages: {
+					error: "Categories could not be fetched. Try again later.",
+					loading: false,
+				},
 			},
 		});
 	}

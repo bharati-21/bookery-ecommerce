@@ -12,15 +12,15 @@ const OrderSummary = () => {
 	const order = orders?.find((order) => order.orderId === orderId);
 
 	return (
-		<main className="main order-summary-main my-2 mx-auto px-3 py-2">
+		<main className="main order-summary-main my-2 mx-auto">
 			{ordersLoading ? (
 				<img
 					src={loadingImage}
 					alt="Loading svg"
-					className="img img-responsive mx-auto"
+					className="img img-responsive mx-auto loader-img"
 				/>
 			) : ordersError ? (
-				<h1 className="error text error-color my-2 text-center">
+				<h1 className="error text error-color my-2 text-center loader-error">
 					{ordersError}
 				</h1>
 			) : (

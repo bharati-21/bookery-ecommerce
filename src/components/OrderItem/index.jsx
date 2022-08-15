@@ -65,7 +65,7 @@ const OrderItem = ({ order, page }) => {
 					<div className="order-items flex-col flex-justify-start flex-align-center">
 						{items.map((item) => (
 							<Link
-								to={`/products/${item?.id}`}
+								to={`/products/${item?._id}`}
 								className="item card card-horizontal p-0-75"
 								key={item?.id}
 							>

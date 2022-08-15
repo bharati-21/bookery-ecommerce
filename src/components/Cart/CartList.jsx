@@ -11,7 +11,7 @@ const CartList = () => {
 	return (
 		<section className="cart-list flex-col flex-align-center flex-justify-center">
 			{cartItems.map((cartItem) => (
-				<CartListItem cartItem={cartItem} key={cartItem.id} />
+				<CartListItem cartItem={cartItem} key={cartItem._id} />
 			))}
 		</section>
 	);

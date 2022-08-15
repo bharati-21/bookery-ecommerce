@@ -3,7 +3,7 @@ export const fetchCartItems = async (cartDispatch, token) => {
 	try {
 		const {
 			data: { cart },
-		} = await axios.get("/api/user/cart", {
+		} = await axios.get("https://bookery-server.herokuapp.com/api/users/cart", {
 			headers: { authorization: token },
 		});
 

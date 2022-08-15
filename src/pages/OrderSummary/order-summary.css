@@ -4,6 +4,12 @@
 	width: 100%;
 }
 
+.order-summary-main {
+    padding: 0;
+    max-width: 768px;
+    width: 100%;
+}
+
 .order-summary-main .order-details {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -19,6 +25,7 @@
 	overflow-y: auto;
 	max-height: 85vh;
 	height: 100%;
+    width: 100%;
 	gap: var(--space-1);
 }
 
@@ -45,6 +52,7 @@
 
 .order-summary-main a.card-horizontal {
 	height: unset;
+	min-height: 10rem;
 }
 
 .order-summary-main .card-horizontal .card-header {
@@ -62,6 +70,7 @@
 	background-color: var(--bg-card-color);
 	width: 100%;
 	gap: var(--space-0-5);
+	width: 100%;
 }
 
 .order-wrapper .order-id,
@@ -93,11 +102,9 @@
 	.order-summary-main .order-items {
 		max-height: unset;
 	}
-
-	.order-summary-main .card-horizontal,
+    .order-summary-main .card-horizontal,
 	.order-wrapper .order-summary,
 	.order-summary-main .order-items {
-		max-width: 30rem;
 		width: 100%;
 	}
 }

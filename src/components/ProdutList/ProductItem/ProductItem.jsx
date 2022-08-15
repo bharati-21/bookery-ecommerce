@@ -178,7 +178,7 @@ const ProductItem = ({ book }) => {
 
 	return (
 		<Link
-			to={`/products/${id}`}
+			to={`/products/${_id}`}
 			className={`product-card card card-vertical card-wt-dismiss card-wt-badge ${
 				outOfStock ? "out-of-stock" : "in-stock"
 			} ${isOngoingNetworkCall ? "link-disabled" : "link"}
