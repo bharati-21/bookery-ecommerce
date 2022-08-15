@@ -10,7 +10,7 @@ import loadingImage from "assets/images/loader.svg";
 const LandingPage = () => {
 	const {
 		products,
-		productsMessages: { productLoading, productError },
+		productsMessages: { loading: productLoading, error: productError },
 		categories,
 		categoriesMessages: { loading, error },
 	} = useProduct();
@@ -92,10 +92,10 @@ const LandingPage = () => {
 							<img
 								src={loadingImage}
 								alt="Loading svg"
-								className="img img-responsive mx-auto"
+								className="img img-responsive mx-auto loader-img"
 							/>
 						) : error ? (
-							<h3 className="error-color text-center my-2 mx-auto">
+							<h3 className="error-color text-center my-2 mx-auto loader-error">
 								{error}
 							</h3>
 						) : (
@@ -125,10 +125,10 @@ const LandingPage = () => {
 							<img
 								src={loadingImage}
 								alt="Loading svg"
-								className="img img-responsive mx-auto"
+								className="img img-responsive mx-auto loader-img"
 							/>
 						) : error ? (
-							<h3 className="error-color text-center my-2 mx-auto">
+							<h3 className="error-color text-center my-2 mx-auto loader-error">
 								{productError}
 							</h3>
 						) : (

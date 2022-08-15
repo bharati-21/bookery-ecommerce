@@ -102,6 +102,10 @@ input[type="submit"]:disabled,
 	pointer-events: none;
 }
 
+.loader-img, .loader-error {
+    grid-column: 1/ -1;
+}
+
 @media screen and (max-width: 768px) {
 	.btn.btn-floating {
 		bottom: var(--space-4);
