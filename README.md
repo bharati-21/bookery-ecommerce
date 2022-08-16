@@ -5,6 +5,7 @@
   <br />
   <br />
   Bookery 
+  <a href="https://github.com/bharati-21/bookery-server">Backend Code Repository</a>
 </h1>
 <p align="center">by elixir designs</p>
 <br />
@@ -74,16 +75,16 @@ UI consists of -
     - ![Single Product Item Page](https://user-images.githubusercontent.com/51514137/174850231-45cd1fb9-56a1-46b5-a6a9-e2c6a2cd28ea.png)
    
 - Wishlist Page
-    - Screenshot - ![Wishlist page screenshot](https://user-images.githubusercontent.com/51514137/162260948-182a6617-7ebb-44b3-9ad2-185a6db17058.png)
+    - Screenshot - ![Wishlist page screenshot](https://user-images.githubusercontent.com/51514137/184867441-cac31bd9-4164-4c4e-aba8-90a14ceeeac5.png)
     
 - My Shelf/ Cart Page
-    - Screenshot -  ![Cart page screenshot](https://user-images.githubusercontent.com/51514137/162261164-86edad75-b6cf-4ef4-b941-9357ec4e5d22.png)
+    - Screenshot -  ![Cart page screenshot]https://user-images.githubusercontent.com/51514137/184867570-4105a95b-1d2f-4777-9a02-6bc1d8192455.png)
    
 - Authentication
   - Login Page
-    - Screenshot - ![Login page screenshot](https://user-images.githubusercontent.com/51514137/162261528-da586f0b-b79b-4235-94ba-c130ae6a1ca9.png)
+    - Screenshot - ![Login page screenshot](https://user-images.githubusercontent.com/51514137/184892526-d7a7f30d-de39-4ec0-b46c-1053f8f4c51e.png)
   - Sign up Page
-    - Screenshot - ![Sign up page screenshot](https://user-images.githubusercontent.com/51514137/162261883-d382a5ce-ba12-4aa5-a6e1-b86a9e7c2802.png)
+    - Screenshot - ![Sign up page screenshot](https://user-images.githubusercontent.com/51514137/184892633-08575713-8e16-451b-b999-55b22842a469.png)
 
 <br />
 <br />
@@ -95,7 +96,8 @@ UI consists of -
 - <a href="https://elixir-ui.netlify.app/">Elixir UI - Component Library</a>
 - ReactJS
 - React Router v6
-- MockBee
+- Backend with Node.js, Express.js, and MongoDB
+  - [Backend code repository](https://github.com/bharati-21/bookery-server)
 
 <br />
 <br />
