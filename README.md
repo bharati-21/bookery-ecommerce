@@ -10,7 +10,6 @@
   <a href="https://github.com/bharati-21/bookery-server">Backend Code Repository</a>
 </h3>
 <p align="center">by elixir designs</p>
-<br />
 <h3 align="center">
     One stop shop for all your book needs and moods.
 </h3>
