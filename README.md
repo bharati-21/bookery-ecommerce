@@ -6,8 +6,10 @@
   <br />
   Bookery 
 </h1>
+<h3 align="center">
+  <a href="https://github.com/bharati-21/bookery-server">Backend Code Repository</a>
+</h3>
 <p align="center">by elixir designs</p>
-<br />
 <h3 align="center">
     One stop shop for all your book needs and moods.
 </h3>
@@ -50,14 +52,15 @@ Visit <a href="https://bookery.netlify.app/">bookery</a> and check out popular a
 ## **FEATURES**
 
 Features include-
-- List of categories/ genres of products available. When user clicks any of them, they are redirected to the product listing page where the products are filtered based on the selected category.
-- List of the top picks/ best sellers on the landing page. When user clicks on any of the product, they are navigated to the single product page.
-- Users can navigate to the product listing page, and filter/ sort based on any categories.
-- Users can click on a product to view detailed information on the product.
-- Users can also add products to the cart or wishlist.
-- Users can additionally search for products from the search bar on the navigation bar which navigates them to the product listing page. The products are filtered based on the entered search text matching either the title or author.
-- In the cart page, user can increase, decrease or remove products added to the cart. They can also move a product from the cart to wishlist.
-- In the wishlist page, user can either remove products from wishlist or move it to the cart.
+- List of categories
+- Product listing page
+- Single product page
+- Filter, search, sort products
+- Users can click on a product to view detailed information on the product
+- Wishlist Management
+- Cart Management
+- Address Management
+- Orders Management
 
 UI consists of -
 - Home page
@@ -74,16 +77,23 @@ UI consists of -
     - ![Single Product Item Page](https://user-images.githubusercontent.com/51514137/174850231-45cd1fb9-56a1-46b5-a6a9-e2c6a2cd28ea.png)
    
 - Wishlist Page
-    - Screenshot - ![Wishlist page screenshot](https://user-images.githubusercontent.com/51514137/162260948-182a6617-7ebb-44b3-9ad2-185a6db17058.png)
+    - Screenshot - ![Wishlist page screenshot](https://user-images.githubusercontent.com/51514137/184867441-cac31bd9-4164-4c4e-aba8-90a14ceeeac5.png)
     
-- My Shelf/ Cart Page
-    - Screenshot -  ![Cart page screenshot](https://user-images.githubusercontent.com/51514137/162261164-86edad75-b6cf-4ef4-b941-9357ec4e5d22.png)
+- Cart Page
+    - Screenshot -  ![Cart page screenshot]https://user-images.githubusercontent.com/51514137/184867570-4105a95b-1d2f-4777-9a02-6bc1d8192455.png)
+
+- Address Management Page
+    -  Screenshot -  ![Address Management](https://user-images.githubusercontent.com/51514137/184894743-cca2e894-6980-47e8-b1c7-2c57f0272681.png)
+    -  Screenshot -  ![Create New Address](https://user-images.githubusercontent.com/51514137/184894974-03cddb71-73ad-4916-8030-52cd080eeaa6.png)
+
+- Orders Management Page
+    -  Screenshot -  ![Orders page](https://user-images.githubusercontent.com/51514137/184897993-f433d227-e844-4f52-a36c-e45268d76348.png)
    
 - Authentication
   - Login Page
-    - Screenshot - ![Login page screenshot](https://user-images.githubusercontent.com/51514137/162261528-da586f0b-b79b-4235-94ba-c130ae6a1ca9.png)
+    - Screenshot - ![Login page screenshot](https://user-images.githubusercontent.com/51514137/184892526-d7a7f30d-de39-4ec0-b46c-1053f8f4c51e.png)
   - Sign up Page
-    - Screenshot - ![Sign up page screenshot](https://user-images.githubusercontent.com/51514137/162261883-d382a5ce-ba12-4aa5-a6e1-b86a9e7c2802.png)
+    - Screenshot - ![Sign up page screenshot](https://user-images.githubusercontent.com/51514137/184892633-08575713-8e16-451b-b999-55b22842a469.png)
 
 <br />
 <br />
@@ -95,7 +105,8 @@ UI consists of -
 - <a href="https://elixir-ui.netlify.app/">Elixir UI - Component Library</a>
 - ReactJS
 - React Router v6
-- MockBee
+- Backend with Node.js, Express.js, and MongoDB
+  - [Backend code repository](https://github.com/bharati-21/bookery-server)
 
 <br />
 <br />
