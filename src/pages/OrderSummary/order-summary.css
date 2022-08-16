@@ -5,9 +5,9 @@
 }
 
 .order-summary-main {
-    padding: 0;
-    max-width: 768px;
-    width: 100%;
+	padding: 0;
+	max-width: 768px;
+	width: 100%;
 }
 
 .order-summary-main .order-details {
@@ -25,7 +25,7 @@
 	overflow-y: auto;
 	max-height: 85vh;
 	height: 100%;
-    width: 100%;
+	width: 100%;
 	gap: var(--space-1);
 }
 
@@ -48,15 +48,14 @@
 	display: grid;
 	grid-template-columns: 1fr 0.5fr;
 	gap: var(--space-1);
+	height: 100%;
 }
 
 .order-summary-main a.card-horizontal {
-	height: unset;
-	min-height: 10rem;
+	min-height: 12rem;
 }
 
 .order-summary-main .card-horizontal .card-header {
-	max-height: 12rem;
 	flex: unset;
 	height: 100%;
 }
@@ -64,6 +63,7 @@
 .order-summary-main .card-horizontal .card-header img {
 	height: 100%;
 	object-fit: contain;
+	max-height: 12rem;
 }
 
 .order-wrapper .order-summary {
@@ -102,7 +102,7 @@
 	.order-summary-main .order-items {
 		max-height: unset;
 	}
-    .order-summary-main .card-horizontal,
+	.order-summary-main .card-horizontal,
 	.order-wrapper .order-summary,
 	.order-summary-main .order-items {
 		width: 100%;
@@ -113,6 +113,7 @@
 	.order-summary-main a.card-horizontal {
 		grid-template-columns: 1fr;
 		padding: var(--space-1);
+		min-height: unset;
 	}
 
 	.order-summary-main .card-horizontal .card-header img {
