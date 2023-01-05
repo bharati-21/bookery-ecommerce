@@ -387,7 +387,7 @@ li.list-head:hover {
 		bottom: 0;
 		left: 0;
 		right: 0;
-		min-height: 100vh;
+		min-height: 90vh;
 		overflow: scroll;
 		display: block;
 		background-color: var(--light-gray-color);
