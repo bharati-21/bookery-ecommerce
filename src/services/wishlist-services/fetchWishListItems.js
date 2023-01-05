@@ -4,7 +4,7 @@ const fetchWishListItems = async (wishListDispatch, token) => {
 	try {
 		const {
 			data: { wishlist },
-		} = await axios.get("https://bookery-server.herokuapp.com/api/users/wishlist", {
+		} = await axios.get(`${process.env.REACT_APP_API_URL}/users/wishlist`, {
 			headers: { authorization: token },
 		});
 

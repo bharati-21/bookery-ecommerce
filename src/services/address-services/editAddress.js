@@ -2,7 +2,7 @@ import axios from "axios";
 
 const editAddress = (authToken, address) =>
 	axios.post(
-		`https://bookery-server.herokuapp.com/api/users/addresses/${address._id}`,
+		`${process.env.REACT_APP_API_URL}/users/addresses/${address._id}`,
 		{ address },
 		{ headers: { authorization: authToken } }
 	);

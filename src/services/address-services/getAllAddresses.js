@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getAllAddresses = (authToken) =>
-	axios.get("https://bookery-server.herokuapp.com/api/users/addresses", {
+	axios.get(`${process.env.REACT_APP_API_URL}/users/addresses`, {
 		headers: { authorization: authToken },
 	});
 
