@@ -9,10 +9,10 @@ import loadingImage from "assets/images/loader.svg";
 
 const LandingPage = () => {
 	const {
-		products,
-		productsMessages: { loading: productLoading, error: productError },
-		categories,
-		categoriesMessages: { loading, error },
+		products = [],
+		productsMessages: { loading: productLoading, error: productError } = {},
+		categories = [],
+		categoriesMessages: { loading, error } = {},
 	} = useProduct();
 
 	const { setDocumentTitle } = useDocumentTitle();
